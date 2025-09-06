@@ -21,7 +21,8 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <!-- Agregamos ms-auto aquí para mover el menú a la derecha -->
+                    <ul class="navbar-nav ms-auto mb-2 mb-md-0"> 
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Home</a>
                         </li>
@@ -38,15 +39,13 @@
                             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Contacto</a>
                         </li>    
                     </ul>
-                    <form class="d-flex ms-auto" role="search">
-                        
-                    <a href="https://www.youtube.com/watch?v=nNUiVCKu_9Y&list=RDnNUiVCKu_9Y&start_radio=1"></form>
-                        <img src="assets/Img/carrito_blanco-removebg-preview.png" alt="carrito" height="35px"> 
-                    </a>
-                    <a class="a_carrito" href="https://www.youtube.com/watch?v=nNUiVCKu_9Y&list=RDnNUiVCKu_9Y&start_radio=1"> Carrito</a>
-                    
-
-                    </form>
+                    <!-- El formulario para el carrito ahora también estará a la derecha, después del menú -->
+                    <div class="d-flex align-items-center"> <!-- Usamos un div para agrupar el carrito y su texto -->
+                        <a href="https://www.youtube.com/watch?v=nNUiVCKu_9Y&list=RDnNUiVCKu_9Y&start_radio=1">
+                            <img class="carrito_logo" src="assets/Img/carrito_blanco-removebg-preview.png" alt="carrito"> 
+                        </a>
+                        <a class="a_carrito" href="https://www.youtube.com/watch?v=nNUiVCKu_9Y&list=RDnNUiVCKu_9Y&start_radio=1"> Carrito</a>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -67,7 +66,7 @@
     <!--Productos: -->
     <div class="ajuste">    
         <div class="carta_producto">
-            <div class="Borde_de_imagen"> <img src="assets/Img/manzanas_fuji.jpg" alt="Manzana"></div>
+            <div class="product-image"> <img src="assets/Img/manzanas_fuji.jpg" alt="Manzana"></div>
             <div class="titulo_producto">Manzanas Fuji</div>
             <div class="detalle_producto">
                 <span>Precio</span>
@@ -118,12 +117,71 @@
                 <span class="precio">$100</span>
             </div>
         </div>
+
+        <div class="carta_producto">
+            <div class="product-image"> 
+                <img src="assets/Img/Pimientos_Tricolor.jpg" alt="Pimientos Tricolor">
+            </div>
+            <div class="titulo_producto">Pimientos Tricolor</div>
+            <div class="detalle_producto">
+                <span>Precio</span>
+                <span class="precio">$100</span>
+            </div>
+        </div>
+
+        <div class="carta_producto">
+            <div class="product-image"> 
+                <img src="assets/Img/Miel Organica.jpg" alt="Miel Organica">
+            </div>
+            <div class="titulo_producto">Miel Organica</div>
+            <div class="detalle_producto">
+                <span>Precio</span>
+                <span class="precio">$100</span>
+            </div>
+        </div>
+
+        <div class="carta_producto">
+            <div class="product-image"> 
+                <img src="assets/Img/Quinoa Organica.jpg" alt="Quinoa Organica">
+            </div>
+            <div class="titulo_producto">Quinoa Organica</div>
+            <div class="detalle_producto">
+                <span>Precio</span>
+                <span class="precio">$100</span>
+            </div>
+        </div>
+
+        <div class="carta_producto">
+            <div class="product-image"> 
+                <img src="assets/Img/Leche Entera.jpg" alt="Leche Entera">
+            </div>
+            <div class="titulo_producto">Leche Entera</div>
+            <div class="detalle_producto">
+                <span>Precio</span>
+                <span class="precio">$100</span>
+            </div>
+        </div>
     </div>
 </body>
 
 <footer>
-    
+    <div class="footer">
+            <div class="footer-left">
+                <span>Tienda Huerta</span>
+                <a href="#">Instagram</a> |
+                <a href="#">Facebook</a> |
+                <a href="#">Twitter</a>
+                <div class="social-icons">
+                    <div class="social-icon instagram"><img src="assets/Img/Instagram_logo.jpg" alt="Instagram"></div>
+                    <div class="social-icon facebook"><img src="assets/Img/facebook_logo.png" alt="Facebook"></div>
+                    <div class="social-icon twitter"><img src="assets/Img/Twitter_logo.png" alt="Twitter"></div>
+                </div>
+            </div>
+            <div class="footer-right">
+                <span>Unetenos: </span>
+                <input type="email" placeholder="Ingresa Email">
+                <button>Suscribirse</button>
+            </div>
+    </div>
 </footer>
 </html>
-
-    

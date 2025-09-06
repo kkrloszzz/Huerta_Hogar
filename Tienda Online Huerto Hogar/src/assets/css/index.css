@@ -1,10 +1,28 @@
-/* Tu CSS existente */
+* { /*Reiniciar el estilo de todos los elementos para evitar inconsistencias entre navegadores*/
+    box-sizing: border-box; /*Garantizar que el relleno y el borde estén incluidos en el ancho y largo  del elemento*/
+    font-family: 'Segoe UI', sans-serif; /*Fuente por defecto para el texto*/
+    text-align: center; /*Alinea el texto al centro por defecto*/
+}
+
+/* Regla general para imágenes responsivas */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.carrito_logo{
+    height: 35px; /* Puedes cambiar este valor */
+    width: auto; /* Mantiene la proporción de la imagen */
+    margin-right: 10px; 
+}
 .p{
     color: white;
 }
 
 .a_carrito{
     color: white;
+    text-decoration: none; /* Quita el subrayado del enlace del carrito */
 }
 
 .contenedor {
@@ -28,7 +46,8 @@
     color: #333;
 }
 
-.Borde_de_imagen {
+/* ELIMINAMOS O SIMPLIFICAMOS Borde_de_imagen si ya usaremos product-image */
+/* .Borde_de_imagen {
     flex: 1;
     background-color: white;
     border: 1px solid #999;
@@ -36,74 +55,145 @@
     position: relative;
     max-width: 100%;
     height: auto;
-}
+} */
+
 
 /*Productos*/
 .carta_producto{
-    color: red;
+    color: red; /* Este color rojo parece un error, lo mantengo pero deberías revisarlo */
     border: 1px solid #ccc; 
     padding: 10px;
     text-align: center;
     background-color: #fff;
+    display: flex; /* Para organizar el contenido internamente si es necesario */
+    flex-direction: column; /* Para que los elementos se apilen verticalmente */
+    justify-content: space-between; /* Distribuye el espacio entre los elementos */
+    height: 100%; /* Asegura que la tarjeta ocupe toda la altura disponible en la celda de la cuadrícula */
 }
 .titulo_producto{
     color: #2E8B57;
+    margin-top: 10px; /* Espacio entre la imagen y el título */
+    margin-bottom: 5px; /* Espacio entre el título y el detalle */
+    flex-grow: 1; /* Permite que el título crezca y empuje el detalle hacia abajo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
 .ajuste {
     display: grid;
-    
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    /* Cambiamos a 4 columnas */
+    grid-template-columns: repeat(4, 1fr); 
     gap: 15px;
     padding: 20px;
     background-color: #f8f8f8;
 }
+
+/* Para pantallas más pequeñas, ajustamos a menos columnas */
+@media (max-width: 992px) { /* Por ejemplo, para tabletas */
+    .ajuste {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) { /* Por ejemplo, para móviles grandes */
+    .ajuste {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) { /* Para móviles pequeños */
+    .ajuste {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
 .detalle_producto {
     display: flex;
     justify-content: space-between;
     font-size: 11px;
     color:#2E8B57;
-    padding: 0 10px; /* Un poco de espaciado */
+    padding: 0 10px; 
+    margin-top: auto; 
 }
 .precio{
     font-weight: bold;
 }
 
-/* Para que la imagen se ajuste a su contenedor */
-/* --- NUEVAS REGLAS MEJORADAS --- */
 
-/* 1. Contenedor de la Imagen */
 .product-image {
-    /* Le damos una altura fija a todos los contenedores de imagen */
+    
     height: 200px; 
-    margin-bottom: 15px;
-    overflow: hidden; /* Opcional, pero buena práctica */
+    margin-bottom: 5px; 
+    overflow: hidden; 
     border-radius: 4px;
+    width: 100%; 
 }
 
-/* 2. La Imagen dentro del Contenedor */
 .product-image img {
-    /* Hacemos que la imagen ocupe el 100% del contenedor */
+    
     width: 100%;
     height: 100%;
     
-    /* Esta es la propiedad clave:
-       - 'cover' hace que la imagen cubra todo el espacio,
-         manteniendo su proporción y recortando el exceso. */
+    
     object-fit: cover;
     
     /* Centra la imagen dentro de su marco antes de recortar */
     object-position: center; 
 }
 
-#producto-manzana {
-    grid-row: 1;
-    grid-column: 1;
+.footer {
+    background-color: #0c0808;
+    padding: 15px 20px;
+    border-top: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* Coloca la tarjeta de las espinacas en la segunda fila, primera columna */
-#producto-espinaca {
-    grid-row: 2;
-    grid-column: 1;
+    .footer-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 11px;
 }
+
+    .footer-left a {
+    color: #0066cc;
+    text-decoration: underline;
+    }
+
+    .footer-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    }
+
+    .footer-right input {
+    border: 1px solid #999;
+    padding: 3px 6px;
+    font-size: 11px;
+    }
+
+    .footer-right button {
+    background-color: #666;
+    color: white;
+    border: none;
+    padding: 4px 12px;
+    font-size: 11px;
+    cursor: pointer;
+    }
+
+    .social-icons {
+    display: flex;
+    gap: 5px;
+    }
+
+    .social-icon {
+    width: 16px;
+    height: 16px;
+    background-color: #999;
+    border: 1px solid #666;
+    }
