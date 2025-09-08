@@ -1,0 +1,105 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap');
+
+body {
+    background-color: #F7F7F7;
+    font-family: 'Montserrat', sans-serif;
+    color: #333333;
+}
+
+.a_carrito{
+    color: #2E8B57;
+    text-decoration: none; 
+}
+
+.carrito_logo{
+    height: 35px; 
+    width: auto; 
+    margin-right: 10px; 
+}
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 60px);
+    padding: 20px;
+    margin-top: 70px;
+}
+
+.form-container {
+    background-color: #e8e8e8;
+    border: 2px solid #999;
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-title {
+    font-family: 'Playfair Display', serif;
+    background-color: #8B4513;
+    color: white;
+    text-align: center;
+    padding: 8px;
+    margin: -30px -30px 20px -30px;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.form-group {
+    margin-bottom: 20px;
+
+}
+
+.form-group label {
+    display: block;
+    font-size: 12px;
+    color: #333;
+    margin-bottom: 3px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid #999;
+    background-color: white;
+    font-size: 12px;
+    height: 24px;
+}
+
+.form-group select {
+    height: 26px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.submit-container {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.submit-btn {
+    background-color: #2E8B57;
+    color: white;
+    border: 1px solid #999;
+    padding: 6px 20px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #25a25a;
+}
+
+.submit-btn:active {
+    background-color: #1e8a4c;
+}

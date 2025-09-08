@@ -1,10 +1,16 @@
-* { /*Reiniciar el estilo de todos los elementos para evitar inconsistencias entre navegadores*/
-    box-sizing: border-box; /*Garantizar que el relleno y el borde estén incluidos en el ancho y largo  del elemento*/
-    font-family: 'Segoe UI', sans-serif; /*Fuente por defecto para el texto*/
-    text-align: center; /*Alinea el texto al centro por defecto*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap');
+
+* { 
+    box-sizing: border-box; 
+    text-align: center; 
 }
 
-/* Regla general para imágenes responsivas */
+body {
+    background-color: #F7F7F7;
+    font-family: 'Montserrat', sans-serif;
+    color: #333333;
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -12,17 +18,14 @@ img {
 }
 
 .carrito_logo{
-    height: 35px; /* Puedes cambiar este valor */
-    width: auto; /* Mantiene la proporción de la imagen */
+    height: 35px; 
+    width: auto; 
     margin-right: 10px; 
-}
-.p{
-    color: white;
 }
 
 .a_carrito{
-    color: white;
-    text-decoration: none; /* Quita el subrayado del enlace del carrito */
+    color: #2E8B57;
+    text-decoration: none; 
 }
 
 .contenedor {
@@ -39,42 +42,34 @@ img {
     padding: 50px;
     gap: 20px;
 }
-.Borde_de_titulo_h1 {
+.Borde_de_titulo h1 {
+    font-family: 'Playfair Display', serif;
+    color: #8B4513;
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 15px;
-    color: #333;
 }
 
-/* ELIMINAMOS O SIMPLIFICAMOS Borde_de_imagen si ya usaremos product-image */
-/* .Borde_de_imagen {
-    flex: 1;
-    background-color: white;
-    border: 1px solid #999;
-    height: 200px;
-    position: relative;
-    max-width: 100%;
-    height: auto;
-} */
+.Borde_de_titulo p {
+    color: #666666;
+}
 
-
-/*Productos*/
 .carta_producto{
-    color: red; /* Este color rojo parece un error, lo mantengo pero deberías revisarlo */
     border: 1px solid #ccc; 
     padding: 10px;
     text-align: center;
     background-color: #fff;
-    display: flex; /* Para organizar el contenido internamente si es necesario */
-    flex-direction: column; /* Para que los elementos se apilen verticalmente */
-    justify-content: space-between; /* Distribuye el espacio entre los elementos */
-    height: 100%; /* Asegura que la tarjeta ocupe toda la altura disponible en la celda de la cuadrícula */
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    height: 100%; 
 }
 .titulo_producto{
-    color: #2E8B57;
-    margin-top: 10px; /* Espacio entre la imagen y el título */
-    margin-bottom: 5px; /* Espacio entre el título y el detalle */
-    flex-grow: 1; /* Permite que el título crezca y empuje el detalle hacia abajo */
+    font-family: 'Playfair Display', serif;
+    color: #8B4513;
+    margin-top: 10px; 
+    margin-bottom: 5px; 
+    flex-grow: 1; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -83,27 +78,25 @@ img {
 
 .ajuste {
     display: grid;
-    /* Cambiamos a 4 columnas */
     grid-template-columns: repeat(4, 1fr); 
     gap: 15px;
     padding: 20px;
     background-color: #f8f8f8;
 }
 
-/* Para pantallas más pequeñas, ajustamos a menos columnas */
-@media (max-width: 992px) { /* Por ejemplo, para tabletas */
+@media (max-width: 992px) { 
     .ajuste {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-@media (max-width: 768px) { /* Por ejemplo, para móviles grandes */
+@media (max-width: 768px) { 
     .ajuste {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width: 576px) { /* Para móviles pequeños */
+@media (max-width: 576px) { 
     .ajuste {
         grid-template-columns: repeat(1, 1fr);
     }
@@ -113,17 +106,17 @@ img {
     display: flex;
     justify-content: space-between;
     font-size: 11px;
-    color:#2E8B57;
+    color: #666666;
     padding: 0 10px; 
     margin-top: auto; 
 }
 .precio{
     font-weight: bold;
+    color: #FFD700;
 }
 
 
 .product-image {
-    
     height: 200px; 
     margin-bottom: 5px; 
     overflow: hidden; 
@@ -132,14 +125,9 @@ img {
 }
 
 .product-image img {
-    
     width: 100%;
     height: 100%;
-    
-    
     object-fit: cover;
-    
-    /* Centra la imagen dentro de su marco antes de recortar */
     object-position: center; 
 }
 
@@ -160,7 +148,7 @@ img {
 }
 
     .footer-left a {
-    color: #0066cc;
+    color: #2E8B57;
     text-decoration: underline;
     }
 
@@ -178,7 +166,7 @@ img {
     }
 
     .footer-right button {
-    background-color: #666;
+    background-color: #2E8B57;
     color: white;
     border: none;
     padding: 4px 12px;
