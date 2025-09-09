@@ -1,0 +1,108 @@
+/* Importamos fuentes desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto+Slab:wght@700&display=swap');
+
+/* Estilos generales del cuerpo */
+body {
+    background-color: #f4f7f6;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    /* Espacio para la barra de navegación fija */
+    padding-top: 70px; 
+}
+
+/* --- ESTA ES LA REGLA CLAVE PARA CENTRAR TODO --- */
+main.login-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente */
+    align-items: center;   /* Centra horizontalmente */
+    min-height: calc(100vh - 70px); /* Ocupa la altura de la pantalla */
+    padding: 20px;
+    box-sizing: border-box; /* Asegura que el padding no cause problemas */
+}
+
+/* Estilos para el logo y título */
+.logo-img {
+    max-width: 120px;
+    margin-bottom: 1rem;
+}
+
+.main-title {
+    font-family: 'Roboto Slab', serif;
+    font-size: 2.5rem;
+    color: #2c5e3f;
+    margin-bottom: 2rem;
+}
+
+/* Contenedor del formulario */
+.login-container {
+    background-color: #ffffff;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 400px;
+    border-top: 5px solid #4a9661;
+}
+
+.login-header h5 {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+/* Grupo de campos (label + input) */
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+.input-field {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: #4a9661;
+    box-shadow: 0 0 0 3px rgba(74, 150, 97, 0.2);
+}
+
+/* Botón de envío */
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: #4a9661;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.1s;
+}
+
+.submit-btn:hover {
+    background-color: #3e7a51;
+}
+
+.submit-btn:active {
+    transform: scale(0.98);
+}
