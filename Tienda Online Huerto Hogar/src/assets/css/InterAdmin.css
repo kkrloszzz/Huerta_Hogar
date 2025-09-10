@@ -1,0 +1,189 @@
+/* Importar fuentes de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap');
+
+/* Reglas Generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif; /* Fuente principal */
+    background-color: #F7F7F7; /* Nuevo color de fondo */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* Añadir textura de papel sutil al fondo */
+    background-image: url('data:image/svg+xml,%3Csvg width="6" height="6" viewBox="0 0 6 6" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23e0e0e0" fill-opacity="0.2" fill-rule="evenodd"%3E%3Cpath d="M5 0h1L0 6V5zm1 6v-1L1 0h1z"/%3E%3C/g%3E%3C/svg%3E');
+}
+
+/* Header */
+.header {
+    background-color: white;
+    padding: 12px 20px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Modificado: Ahora esta clase aplica directamente a la imagen del logo */
+.logo {
+    width: 28px; /* Aumentado a 28px para que se vea mejor */
+    height: 28px;
+    border-radius: 4px;
+}
+
+.company-name {
+    font-size: 14px;
+    color: #666666; /* Texto secundario */
+    font-weight: 500;
+}
+
+.welcome-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333333; /* Texto principal */
+    font-family: 'Playfair Display', serif; /* Fuente de encabezado */
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.notification-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.notification-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #8B4513; /* Nuevo color para el avatar (marrón) */
+    cursor: pointer;
+}
+
+/* Main Content */
+.main-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 240px;
+    background-color: white;
+    border-right: 1px solid #e0e0e0;
+    padding: 20px 0;
+    overflow-y: auto;
+}
+
+.nav-section {
+    margin-bottom: 30px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    color: #666666; /* Texto secundario */
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+}
+
+.nav-item:hover {
+    background-color: #f8f9fa;
+    color: #333333; /* Texto principal */
+}
+
+.nav-item.active {
+    background-color: #d8f1e5; /* Un tono más claro del verde de acento */
+    color: #2E8B57; /* Verde Esmeralda para el item activo */
+    border-left-color: #2E8B57;
+}
+
+.nav-icon {
+    width: 20px;
+    height: 20px;
+    background-color: currentColor;
+    border-radius: 3px;
+    opacity: 0.7;
+}
+
+/* Content Area */
+.content {
+    flex: 1;
+    background-color: #F7F7F7; /* Nuevo color de fondo */
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.content-placeholder {
+    background-color: white;
+    border-radius: 8px;
+    min-height: 400px;
+    border: 2px dashed #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 16px;
+    font-family: 'Playfair Display', serif; /* Fuente de encabezado para este texto */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+    
+    .content {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 640px) {
+    .main-container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        max-height: 200px;
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .welcome-text {
+        display: none;
+    }
+}
+
+/* Modificado: Se elimina la clase .logo-img, ya que ahora el estilo lo maneja .logo */
