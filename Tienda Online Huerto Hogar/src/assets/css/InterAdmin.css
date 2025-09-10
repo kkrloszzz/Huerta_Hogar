@@ -92,7 +92,11 @@ body {
     flex: 1;
     overflow: hidden;
 }
-
+.nav-link.active {
+    background-color: #2E8B57; /* Verde esmeralda para activo */
+    color: white;
+    box-shadow: 0 2px 8px rgba(46, 139, 87, 0.2);
+}
 /* Sidebar */
 .sidebar {
     width: 240px;
