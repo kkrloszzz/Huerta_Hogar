@@ -15,6 +15,10 @@ body {
     /* Textura sutil de papel (puedes cambiar la imagen por una textura propia) */
     background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
 }
+.a_nuevo_usuario{
+    color: #2E8B57;
+    text-decoration: none; 
+}
 
 .container {
     display: flex;

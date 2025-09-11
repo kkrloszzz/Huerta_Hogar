@@ -11,27 +11,38 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 9, name: 'Leche Entera', price: 100, image: '../Img/Leche Entera.jpg', description: 'Leche fresca y entera, rica en calcio y proteínas.' }
     ];
 
-    const productContainer = document.querySelector('.ajuste');
+    const mainContent = document.querySelector('.main-content');
 
-    function renderProducts() {
-        if (!productContainer) return;
-        productContainer.innerHTML = '';
-        products.forEach(product => {
-            const productCard = document.createElement('div');
-            productCard.classList.add('carta_producto');
-            productCard.innerHTML = `
-                <a href="./InfoProducto.html?id=${product.id}" class="product-link">
-                    <div class="product-image"> <img src="${product.image}" alt="${product.name}"></div>
-                    <div class="titulo_producto">${product.name}</div>
-                    <div class="detalle_producto">
-                        <span>Precio</span>
-                        <span class="precio">$${product.price.toLocaleString()}</span>
-                    </div>
-                </a>
-                <button class="button" data-id="${product.id}">Añadir</button>
-            `;
-            productContainer.appendChild(productCard);
-        });
+    function renderProductDetails() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = parseInt(urlParams.get('id'));
+        const product = products.find(p => p.id === productId);
+
+        if (product && mainContent) {
+            const mainImage = mainContent.querySelector('.main-img');
+            if (mainImage) {
+                mainImage.src = product.image;
+                mainImage.alt = product.name;
+            }
+            
+            const productTitle = mainContent.querySelector('.product-title');
+            if (productTitle) productTitle.textContent = product.name;
+
+            const productPrice = mainContent.querySelector('.product-price');
+            if (productPrice) productPrice.textContent = `$${product.price.toLocaleString()}`;
+
+            const productDescription = mainContent.querySelector('.product-description');
+            if (productDescription) productDescription.textContent = product.description;
+
+            const addToCartBtn = mainContent.querySelector('.add-to-cart-btn');
+            if (addToCartBtn) {
+                addToCartBtn.addEventListener('click', () => {
+                    addToCart(product.id);
+                });
+            }
+        } else if (mainContent) {
+            mainContent.innerHTML = '<p>Producto no encontrado.</p>';
+        }
     }
 
     function addToCart(productId) {
@@ -39,26 +50,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const product = products.find(p => p.id === productId);
 
         if (product) {
+            const quantityInput = document.querySelector('.quantity-input');
+            const quantity = quantityInput ? parseInt(quantityInput.value) : 1;
+
             const cartItem = cart.find(item => item.id === productId);
             if (cartItem) {
-                cartItem.quantity++;
+                cartItem.quantity += quantity;
             } else {
-                cart.push({ ...product, quantity: 1 });
+                cart.push({ ...product, quantity: quantity });
             }
             localStorage.setItem('cart', JSON.stringify(cart));
-            alert(`${product.name} ha sido añadido al carrito.`);
+            alert(`${product.name} (x${quantity}) ha sido añadido al carrito.`);
         }
     }
 
-    if (productContainer) {
-        productContainer.addEventListener('click', (event) => {
-            if (event.target.classList.contains('button')) {
-                event.preventDefault(); // Evitar la navegación
-                const productId = parseInt(event.target.getAttribute('data-id'));
-                addToCart(productId);
-            }
-        });
-    }
-
-    renderProducts();
+    renderProductDetails();
 });
