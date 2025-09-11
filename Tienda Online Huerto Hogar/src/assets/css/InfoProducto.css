@@ -1,0 +1,308 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@400;700&display=swap');
+
+/* Reset y configuraciones generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    /* Color de fondo principal: Blanco Suave */
+    background-color: #F7F7F7;
+    /* Textura de papel sutil */
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 50 L10 100 L0 100 L0 50 Z M90 0 L90 50 L100 50 L100 0 Z M10 0 L10 50 L0 50 L0 0 Z M90 50 L90 100 L100 100 L100 50 Z' fill='%23e6e6e6' opacity='0.1' /%3E%3C/svg%3E");
+    background-size: 5px 5px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: transparent;
+    border: none;
+    min-height: 100vh;
+    margin-top: 150px;
+}
+
+/* Header */
+.header {
+    background-color: transparent;
+    padding: 10px 20px;
+    border-bottom: 1px solid #333333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo::before {
+    content: "■";
+    color: #8B4513; /* Marrón Claro */
+    font-size: 12px;
+}
+
+.site-name {
+    font-weight: bold;
+    font-size: 14px;
+    color: #8B4513; /* Marrón Claro */
+}
+
+.nav {
+    display: flex;
+    gap: 5px;
+}
+
+.nav a {
+    color: #2E8B57; /* Verde Esmeralda */
+    text-decoration: none;
+    font-size: 12px;
+    padding: 0 5px;
+    border-right: 1px solid #666666; /* Gris Medio */
+}
+
+.nav a:last-child {
+    border-right: none;
+}
+
+.cart {
+    font-size: 12px;
+    color: #333333; /* Gris Oscuro */
+}
+
+.cart::before {
+    content: "🛒";
+    margin-right: 5px;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    padding: 10px 20px;
+    font-size: 12px;
+    color: #2E8B57; /* Verde Esmeralda */
+    border-bottom: 1px solid #666666; /* Gris Medio */
+    margin-top: 150px;
+}
+
+/* Main Content */
+.main-content {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+}
+
+.product-images {
+    flex: 1;
+}
+
+.main-image {
+    width: 100%;
+    height: 300px;
+    border: 2px solid #8B4513; /* Marrón Claro */
+    background-color: #F7F7F7; /* Blanco Suave */
+    margin-bottom: 10px;
+    position: relative;
+    /* La imagen real debe ir aquí en HTML */
+}
+
+/* Los pseudoelementos se eliminan para usar imágenes de verdad */
+.main-image::before,
+.thumbnail::before,
+.thumbnail::after,
+.related-item::before,
+.related-item::after {
+    content: none;
+}
+
+.thumbnail-container {
+    display: flex;
+    gap: 5px;
+}
+
+.thumbnail {
+    width: 50px;
+    height: 40px;
+    border: 1px solid #8B4513; /* Marrón Claro */
+    background-color: #F7F7F7; /* Blanco Suave */
+    position: relative;
+    cursor: pointer;
+}
+
+.product-info {
+    flex: 1;
+    max-width: 300px;
+}
+
+.product-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: 'Playfair Display', serif; /* Fuente de Encabezado */
+    color: #8B4513; /* Marrón Claro */
+}
+
+.product-price {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333333; /* Gris Oscuro */
+}
+
+.product-description {
+    font-size: 12px;
+    line-height: 1.4;
+    margin-bottom: 20px;
+    text-align: justify;
+    color: #666666; /* Gris Medio */
+}
+
+.quantity-section {
+    margin-bottom: 15px;
+}
+
+.quantity-label {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333333; /* Gris Oscuro */
+}
+
+.quantity-input {
+    width: 60px;
+    padding: 5px;
+    border: 1px solid #666666; /* Gris Medio */
+    font-size: 12px;
+    color: #333333; /* Gris Oscuro */
+    background-color: #F7F7F7; /* Blanco Suave */
+}
+
+.add-to-cart-btn {
+    width: 100%;
+    background-color: #2E8B57; /* Verde Esmeralda */
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #287747; /* Un verde más oscuro para el hover */
+}
+
+/* Related Products */
+.related-products {
+    padding: 20px;
+    border-top: 1px solid #666666; /* Gris Medio */
+}
+
+.related-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-family: 'Playfair Display', serif; /* Fuente de Encabezado */
+    color: #8B4513; /* Marrón Claro */
+}
+
+.related-grid {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.related-item {
+    width: 80px;
+    height: 60px;
+    border: 1px solid #8B4513; /* Marrón Claro */
+    background-color: #F7F7F7; /* Blanco Suave */
+    position: relative;
+    cursor: pointer;
+    /* La imagen debe ir aquí */
+}
+
+.related-item:hover {
+    border-color: #2E8B57; /* Verde Esmeralda para el hover */
+}
+
+.carrito_logo {
+    height: 35px;
+    width: auto;
+    margin-right: 10px;
+}
+
+.a_carrito {
+    color: #2E8B57; /* Verde Esmeralda */
+    text-decoration: none;
+}
+
+/* Clases para aplicar los colores de acento */
+.accent-green {
+    color: #2E8B57;
+}
+
+.accent-mustard {
+    color: #FFD700;
+}
+
+.related-item-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.product-images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.main-image {
+    width: 350px;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(46,139,87,0.08);
+}
+
+.main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.thumbnail-container {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.thumbnail {
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(46,139,87,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.thumbnail-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
