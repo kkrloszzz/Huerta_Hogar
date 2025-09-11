@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Huerta Hogar - Nuevo Usuario</title>
+  <link rel="stylesheet" href="../css/NuevoUsuario.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="company-header">
+        <div class="company-logo">
+          <img src="../Img/Logo.png" alt="Logo" class="logo-icon" style="width:32px; height:32px;">
+          Huerta Hogar
+        </div>
+      </div>
+
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="InterAdmin.html" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link active">Clientes</a></li>
+        <li class="nav-item"><a href="Productos.html" class="nav-link">Productos</a></li>
+      </ul>
+    </div>
+
+    <!-- Contenido -->
+    <div class="main-content">
+      <h1>Nuevo Usuario</h1>
+      <br>
+      <form class="user-form">
+        <label>Nombre Completo</label>
+        <input type="text" placeholder="Ingrese Nombre Completo">
+
+        <label>Correo</label>
+        <input type="email" placeholder="Ingrese Correo">
+
+        <label>Usuario</label>
+        <input type="text" placeholder="Ingrese Usuario">
+
+        <label>Contraseña</label>
+        <input type="password" placeholder="Ingrese contraseña">
+
+        <label>Confirmar Contraseña</label>
+        <input type="password" placeholder="Confirme la Contraseña">
+
+        <label>Teléfono (opcional)</label>
+        <input type="text" placeholder="Ej: +56 9 1234 5678">
+
+        <label>Seleccione la región</label>
+        <select id="region">
+          <option value="">Seleccione una región</option>
+          <option value="metropolitana">Región Metropolitana</option>
+          <option value="araucania">Araucanía</option>
+          <option value="nuble">Ñuble</option>
+        </select>
+
+        <label>Seleccione la comuna</label>
+        <select id="comuna">
+          <option value="">Seleccione una comuna</option>
+        </select>
+
+        <button type="submit">Registrar</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Comunas por región
+      const comunasPorRegion = {
+        metropolitana: ["Santiago", "Providencia", "La Florida", "Maipú", "Las Condes"],
+        araucania: ["Temuco", "Padre Las Casas", "Villarrica", "Angol"],
+        nuble: ["Chillán", "San Carlos", "Coihueco", "Quirihue"]
+      };
+
+      const regionSelect = document.getElementById('region');
+      const comunaSelect = document.getElementById('comuna');
+
+      regionSelect.addEventListener('change', function() {
+        const regionKey = this.value;
+
+        // Resetear comunas
+        comunaSelect.innerHTML = "<option value=''>Seleccione una comuna</option>";
+
+        if (regionKey && comunasPorRegion[regionKey]) {
+          comunasPorRegion[regionKey].forEach(comuna => {
+            const opt = document.createElement('option');
+            opt.value = comuna.toLowerCase().replace(/\s+/g, "-");
+            opt.textContent = comuna;
+            comunaSelect.appendChild(opt);
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
