@@ -26,10 +26,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             // Solo dominios permitidos
-            const allowedDomains = ['@duoc.cl', '@profesor.duoc.cl', '@gmail.com'];
+            const allowedDomains = ['@duocuc.cl', '@profesor.duocuc.cl', '@gmail.com'];
             const domainValid = allowedDomains.some(domain => email.endsWith(domain));
             if (!domainValid) {
-                alert('Solo se permiten correos @duoc.cl, @profesor.duoc.cl y @gmail.com.');
+                alert('Solo se permiten correos @duocuc.cl, @profesor.duocuc.cl y @gmail.com.');
                 emailInput.focus();
                 return;
             }
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             alert('Inicio de sesión exitoso.');
-            window.location.href = '../../Index.html';
+            window.location.href = '../../InicioSesionempresa.html';
         });
     }
 });

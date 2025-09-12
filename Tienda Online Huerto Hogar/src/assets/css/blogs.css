@@ -63,6 +63,11 @@ body {
     margin-bottom: 20px;
 }
 
+.a_carrito{
+    color: #2E8B57;
+    text-decoration: none; 
+}
+
 /* Botón ver caso */
 .ver-caso-btn {
     background-color: white;
