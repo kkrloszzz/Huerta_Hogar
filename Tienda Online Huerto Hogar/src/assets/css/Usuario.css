@@ -16,7 +16,7 @@ body {
     background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
 }
 .a_nuevo_usuario{
-    color: #2E8B57;
+    color: #ffffff;
     text-decoration: none; 
 }
 
@@ -139,7 +139,7 @@ body {
 }
 
 .new-user-btn {
-    background-color: #8B4513; /* Marrón claro */
+    background-color: #2E8B57; /* Marrón claro */
     color: white;
     padding: 10px 20px;
     border: none;

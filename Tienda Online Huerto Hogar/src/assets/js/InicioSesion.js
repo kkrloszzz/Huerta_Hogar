@@ -57,7 +57,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             alert('Inicio de sesión exitoso.');
-            window.location.href = '../../InicioSesionempresa.html';
+            window.location.href = '../page/InterAdmin.html';
+
         });
     }
 });
