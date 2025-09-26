@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap');
+
+* { 
+    box-sizing: border-box; 
+    text-align: center; 
+}
+.profile-icon, .carrito_logo {
+    height: 35px;
+    width: auto;
+}
+body {
+    background-color: #F7F7F7;
+    font-family: 'Montserrat', sans-serif;
+    color: #333333;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.a_carrito{
+    color: #2E8B57;
+    text-decoration: none; 
+}
+
+/* El resto de tu CSS permanece igual */
+.contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    border: 2px solid #333;
+    margin-top: 125px;
+}
+
+.Borde_de_titulo {
+    display: flex;
+    background-color: #e8e8e8;
+    padding: 50px;
+    gap: 20px;
+}
+.Borde_de_titulo h1 {
+    font-family: 'Playfair Display', serif;
+    color: #8B4513;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.Borde_de_titulo p {
+    color: #666666;
+}
+
+.carta_producto{
+    border: 1px solid #ccc; 
+    padding: 10px;
+    text-align: center;
+    background-color: #fff;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    height: 100%; 
+}
+.titulo_producto{
+    font-family: 'Playfair Display', serif;
+    color: #8B4513;
+    margin-top: 10px; 
+    margin-bottom: 5px; 
+    flex-grow: 1; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.ajuste {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 15px;
+    padding: 20px;
+    background-color: #f8f8f8;
+}
+
+@media (max-width: 992px) { 
+    .ajuste {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) { 
+    .ajuste {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) { 
+    .ajuste {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.detalle_producto {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #666666;
+    padding: 0 10px; 
+    margin-top: auto; 
+}
+.precio{
+    font-weight: bold;
+    color: #256b34;
+}
+
+
+.product-image {
+    height: 200px; 
+    margin-bottom: 5px; 
+    overflow: hidden; 
+    border-radius: 4px;
+    width: 100%; 
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center; 
+}
+
+.footer {
+    background-color: #0c0808;
+    padding: 15px 20px;
+    border-top: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .footer-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 11px;
+}
+
+    .footer-left a {
+    color: #2E8B57;
+    text-decoration: underline;
+    }
+
+    .footer-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    }
+
+    .footer-right input {
+    border: 1px solid #999;
+    padding: 3px 6px;
+    font-size: 11px;
+    }
+
+    .footer-right button {
+    background-color: #2E8B57;
+    color: white;
+    border: none;
+    padding: 4px 12px;
+    font-size: 11px;
+    cursor: pointer;
+    }
+
+    .social-icons {
+    display: flex;
+    gap: 5px;
+    }
+
+    .social-icon {
+    width: 16px;
+    height: 16px;
+    background-color: #999;
+    border: 1px solid #666;
+    }
+
+    .huerta_hogar_footer{
+        color: #F7F7F7;
+        font-size: 15px;
+    }

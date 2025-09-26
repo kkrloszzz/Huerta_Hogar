@@ -1,0 +1,295 @@
+/* Importar fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap');
+
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #F7F7F7; /* Blanco suave */
+    color: #333333; /* Gris oscuro */
+    /* Textura sutil de papel (puedes cambiar la imagen por una textura propia) */
+    background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+}
+.a_nuevo_usuario{
+    color: #ffffff;
+    text-decoration: none; 
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #ffffff;
+    border-right: 1px solid #e0e0e0;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.company-header {
+    padding: 0 20px 25px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+.company-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333333;
+    font-family: 'Playfair Display', serif;
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    background-color: #2E8B57; /* Verde esmeralda */
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
+}
+
+.nav-menu {
+    list-style: none;
+    padding: 0 15px;
+}
+
+.nav-item {
+    margin-bottom: 5px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    color: #2E8B57; /* Verde esmeralda para enlaces */
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav-link:hover {
+    background-color: #E9F5EE; /* Verde claro en hover */
+    color: #2E8B57;
+}
+
+.nav-link.active {
+    background-color: #8B4513; /* Marrón claro para activo */
+    color: white;
+    box-shadow: 0 2px 8px rgba(139, 69, 19, 0.2);
+}
+
+.nav-link.active .nav-icon {
+    color: white;
+}
+
+.nav-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666666; /* Gris medio para iconos */
+    font-size: 16px;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.header {
+    background-color: #ffffff;
+    padding: 20px 30px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    z-index: 100;
+}
+
+.header-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #8B4513; /* Marrón claro para títulos */
+    font-family: 'Playfair Display', serif;
+}
+
+.new-user-btn {
+    background-color: #2E8B57; /* Marrón claro */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.new-user-btn:hover {
+    background-color: #246B43;
+    transform: translateY(-1px);
+}
+
+/* Content */
+.content {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+    
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.table-subtitle {
+    color: #8B4513; /* Marrón claro para subtítulos */
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-family: 'Playfair Display', serif;
+}
+
+.table-subtitle i {
+    font-size: 12px;
+    color: #FFD700; /* Amarillo mostaza para íconos de promociones */
+}
+
+/* Table */
+.table-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    background-color: #F7F7F7;
+    padding: 15px 25px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+    color: #8B4513; /* Marrón claro para encabezados de tabla */
+    text-transform: uppercase;
+    border-bottom: 1px solid #e9ecef;
+    font-family: 'Playfair Display', serif;
+}
+
+.table td {
+    padding: 15px 25px;
+    border-bottom: 1px solid #F7F7F7;
+    font-size: 14px;
+    color: #666666; /* Gris medio para texto secundario */
+    font-family: 'Montserrat', sans-serif;
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table tr:hover {
+    background-color: #E9F5EE; /* Verde claro en hover */
+}
+
+/* Status badges */
+.status {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 80px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.status.pending {
+    background-color: #FFD700; /* Amarillo mostaza */
+    color: #8B4513; /* Marrón claro */
+}
+
+.status.shipped {
+    background-color: #E9F5EE; /* Verde claro */
+    color: #2E8B57; /* Verde esmeralda */
+}
+
+.status.cancelled {
+    background-color: #F8D7DA;
+    color: #721c24;
+}
+
+.status.processing {
+    background-color: #D4EDDA;
+    color: #2E8B57; /* Verde esmeralda */
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    gap: 5px;
+}
+
+.pagination-btn {
+    padding: 10px 14px;
+    border: 1px solid #8B4513; /* Marrón claro */
+    border-radius: 8px;
+    background-color: white;
+    color: #8B4513;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.pagination-btn:hover {
+    background-color: #2E8B57;
+    color: white;
+    transform: translateY(-1px);
+}

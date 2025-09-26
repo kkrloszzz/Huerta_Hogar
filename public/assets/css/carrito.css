@@ -1,0 +1,253 @@
+/* Fuentes y estilos generales */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Lato', sans-serif;
+    padding-top: 70px; /* Espacio para la barra de navegación fija */
+}
+
+/* Contenedor principal del carrito */
+.cart-container {
+    max-width: 1200px; /* Aumentado de 1100px a 1200px */
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.cart-container h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+/* Layout de dos columnas (productos y resumen) */
+.cart-layout {
+    display: flex;
+    gap: 40px; /* Aumentado de 30px a 40px para más separación */
+    flex-wrap: wrap;
+    align-items: flex-start; /* Alinear al inicio para evitar que se centren */
+}
+
+/* Columna izquierda: Lista de productos */
+.product-list {
+    flex: 2.5; /* Cambiado de 2 a 2.5 para dar más espacio a los productos */
+    min-width: 350px; /* Aumentado de 300px a 350px */
+    max-width: 65%; /* Limitar el ancho máximo */
+}
+
+.product-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 15px; /* Agregado padding horizontal */
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #fff; /* Fondo blanco para mejor contraste */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra sutil */
+}
+
+/* Placeholder para la imagen del producto */
+.product-image-placeholder {
+    width: 100px;
+    height: 100px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #aaa;
+    border-radius: 8px;
+    flex-shrink: 0; /* No se reduce */
+}
+
+.product-image-placeholder::after {
+    content: '✕';
+}
+
+.product-details {
+    flex-grow: 1;
+    min-width: 0; /* Permite que el texto se ajuste */
+}
+
+.product-details h5 {
+    margin: 0 0 5px 0;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.product-details p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.product-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    min-width: 80px;
+    text-align: right;
+    flex-shrink: 0; /* No se reduce */
+}
+
+/* Selector de cantidad */
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; /* No se reduce */
+}
+
+.quantity-selector button {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 1;
+    transition: background-color 0.2s;
+}
+
+.quantity-selector button:hover {
+    background-color: #e9ecef;
+}
+
+.quantity-selector input {
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-left: none;
+    border-right: none;
+}
+
+/* Botones de acción (Eliminar) */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0; /* No se reduce */
+}
+
+.action-buttons button {
+    padding: 5px 10px;
+    border: 1px solid #dc3545;
+    background-color: transparent;
+    color: #dc3545;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.action-buttons button:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Columna derecha: Resumen del pedido */
+.order-summary {
+    flex: 1; /* Mantiene 1/3 del espacio */
+    min-width: 280px; /* Reducido de 300px */
+    max-width: 320px; /* Ancho máximo fijo */
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 25px;
+    background-color: #fff;
+    height: fit-content;
+    position: sticky; /* Hace que se mantenga en posición al hacer scroll */
+    top: 90px; /* Distancia desde arriba cuando se hace sticky */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Sombra más pronunciada */
+}
+
+.total-section {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.coupon-section label {
+    font-size: 0.9rem;
+    color: #6c757d;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.coupon-input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.coupon-input-group input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.coupon-input-group button {
+    padding: 10px 15px;
+    border: 1px solid #6c757d;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.coupon-input-group button:hover {
+    background-color: #6c757d;
+    color: white;
+}
+
+.pay-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.pay-button:hover {
+    background-color: #218838;
+}
+
+/* Responsividad mejorada */
+@media (max-width: 768px) {
+    .cart-layout {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .product-list {
+        max-width: 100%;
+    }
+    
+    .order-summary {
+        max-width: 100%;
+        position: static; /* Quitar sticky en móviles */
+    }
+    
+    .product-item {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .product-image-placeholder {
+        width: 80px;
+        height: 80px;
+    }
+}

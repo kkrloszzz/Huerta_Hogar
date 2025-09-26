@@ -1,0 +1,83 @@
+/* General Body Styles */
+body {
+    background-color: #F7F7F7;
+    font-family: 'Montserrat', sans-serif;
+    color: #333333;
+    /* Subtle paper texture */
+    background-image: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4d4d4' fill-opacity='0.4'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Header and Navigation */
+
+
+/* Main Content */
+main {
+    padding-top: 56px; /* Adjust for fixed navbar */
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    color: #8B4513; /* Marrón Claro */
+}
+
+p {
+    color: #333333; /* Gris Oscuro */
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Links and Buttons */
+a {
+    color: #2E8B57; /* Verde Esmeralda */
+}
+
+a:hover {
+    color: #256d44; /* Darker shade of green */
+}
+
+.btn, button {
+    background-color: #2E8B57; /* Verde Esmeralda */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn:hover, button:hover {
+    background-color: #256d44;
+}
+
+/* Specific elements from Nosostros.html */
+.container h1 {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.container p {
+    text-align: left;
+    color: #666666; /* Gris Medio for secondary text */
+    line-height: 1.6;
+}
+
+/* Special offer highlight */
+.special-offer {
+    background-color: #FFD700; /* Amarillo Mostaza */
+    color: #333333;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+* { 
+    box-sizing: border-box; 
+    text-align: center; 
+}
+.a_carrito {
+    color: #2E8B57;
+    text-decoration: none; 
+}
+.profile-icon, .carrito_logo {
+    height: 35px;
+    width: auto;
+}

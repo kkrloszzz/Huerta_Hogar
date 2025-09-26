@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producto</title>
+    <link rel="icon" href="../Img/Logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/InfoProducto.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                
+                <a class="navbar-brand" href="#">Huerta Hogar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <!-- Agregamos ms-auto aquí para mover el menú a la derecha -->
+                    <ul class="navbar-nav ms-auto mb-2 mb-md-0"> 
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="../../Index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="assets/page/Productos.html">Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../page/Nosostros.html" tabindex="-1" aria-disabled="true">Nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../page/blogs.html" tabindex="-1" aria-disabled="true">Blogs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="assets/page/RegistroContactos.html" tabindex="-1" aria-disabled="true">Contacto</a>
+                        </li>    
+                    </ul>
+                    <!-- El formulario para el carrito ahora también estará a la derecha, después del menú -->
+                    <div class="d-flex align-items-center"> <!-- Usamos un div para agrupar el carrito y su texto -->
+                        <a href="Carrito.html">
+                            <img class="carrito_logo" src="../Img/carrito_blanco-removebg-preview.png" alt="carrito"> 
+                        </a>
+                        <a class="a_carrito" href="Carrito.html"> Carrito</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            Home > Producto 1 > 
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="product-images">
+                <div class="main-image">
+            <img src="../Img/manzanas_fuji.jpg" alt="manzanas_fuji" class="main-img">
+        </div>
+        <div class="thumbnail-container">
+            <div class="thumbnail">
+                <img src="../Img/manzanas_fuji.jpg" alt="manzanas_fuji" class="thumbnail-img">
+            </div>
+            <div class="thumbnail">
+                <img src="../Img/manzanas_fuji.jpg" alt="manzanas_fuji" class="thumbnail-img">
+            </div>
+            <div class="thumbnail">
+                <img src="../Img/manzanas_fuji.jpg" alt="manzanas_fuji" class="thumbnail-img">
+            </div>
+        </div>
+    </div>
+
+            <div class="product-info">
+                <h1 class="product-title">Manzanas Fuji</h1>
+                <div class="product-price">$1.200</div>
+                <div class="product-description">
+                    Manzanas Fuji crujientes y dulces, cultivadas en el Valle del Maule. 
+                    Perfectas para meriendas saludables o como ingrediente en postres. Estas manzanas 
+                    son conocidas por su textura firme y su sabor equilibrado entre dulce y ácido. 
+                </div>
+                
+                <div class="quantity-section">
+                    <div class="quantity-label">Cantidad</div>
+                    <input type="number" value="1" min="1" class="quantity-input">
+                </div>
+                
+                <button class="add-to-cart-btn">Añadir al carrito</button>
+            </div>
+        </div>
+
+        <!-- Related Products -->
+        <div class="related-products">
+            <div class="related-title">Productos Similares: </div>
+            <div class="related-grid">
+                <div class="related-item">
+                    <img class="related-item-img" src="../Img/espinacas Frescas.jpg" alt="Manzana">
+                </div>
+                <div class="related-item"> <img class="related-item-img" src="../Img/Naranjas Valencia.jpg" alt="Naranjas"></div>
+                <div class="related-item"> <img class="related-item-img" src="../Img/Miel Organica.jpg" alt="Miel"></div>
+                <div class="related-item"> <img class="related-item-img" src="../Img/banana cavendish.jpg" alt="Banana Cavendish"></div>
+                <div class="related-item"><img class="related-item-img" src="../Img/Pimientos_Tricolor.jpg" alt="Pimientos_Tricolor"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="../js/infoProducto.js"></script>
+</body>
+</html>

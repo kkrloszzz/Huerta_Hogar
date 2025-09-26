@@ -1,43 +1,202 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huerta Hogar - Home</title>
+    <link rel="icon" href="assets/Img/Logo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="carousel.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/css/index.css">
+</head>
+<body>
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+            <div class="d-flex align-items-center">
+                <a class="navbar-brand me-2" href="#">Huerta Hogar</a>
+                <a href="assets/page/InicioSesionempresa.html">
+                    <img class="profile-icon" src="assets/Img/icono-inicio-sesion.jpg" alt="sesion">
+                </a>
+            </div>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ms-auto mb-2 mb-md-0"> 
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="assets/page/Productos.html">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../src/assets/page/Nosostros.html" >Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="assets/page/blogs.html" >Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="assets/page/RegistroContactos.html" >Contacto</a>
+                    </li> 
+                </ul>
+                <div class="d-flex align-items-center">
+                        <img class="carrito_logo" src="assets/Img/carrito_blanco-removebg-preview.png" alt="carrito"> 
+                        <a class="a_carrito" href="assets/page/Carrito.html"></a>
+                    </a>
+                    <a class="a_carrito" href="assets/page/Carrito.html">Carrito</a>
+                </div>
+            </div>
+            </div>
+        </nav>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+    </header>
+    <div class="contenedor">
+        <div class="Borde_de_titulo">
+            <div>
+                <h1>Tienda Online Huerta Hogar</h1>
+                <p>Nuestra misión es proporcionar productos frescos y de calidad directamente desde el campo hasta
+                    la puerta de nuestros clientes, garantizando la frescura y el sabor en cada entrega. Nos
+                    comprometemos a fomentar una conexión más cercana entre los consumidores y los agricultores
+                    locales, apoyando prácticas agrícolas sostenibles y promoviendo una alimentación saludable en
+                    todos los hogares chilenos. <br>
+                    Nuestra visión es ser la tienda online líder en la distribución de productos frescos y naturales en 
+                    Chile, reconocida por nuestra calidad excepcional, servicio al cliente y compromiso con la 
+                    sostenibilidad. Aspiramos a expandir nuestra presencia a nivel nacional e internacional, 
+                    estableciendo un nuevo estándar en la distribución de productos agrícolas directos del productor al 
+                    consumidor. 
+                </p>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+            </div>
+            <img src="assets/Img/Logo_Empresa.jpg" alt="logo">
+        </div> 
+    </div>
+    
+    <!--Productos: -->
+    <div class="ajuste">    
+        <div class="carta_producto">
+            <div class="product-image"> <img src="assets/Img/manzanas_fuji.jpg" alt="Manzana"></div>
+            <div class="titulo_producto">Manzanas Fuji</div>
+            <div class="detalle_producto">
+                <span>Precio</span>
+                <span class="precio">$1.200</span>
+            </div>
+        </div>
+
+        <div class="carta_producto">
+            <div class="product-image"> 
+                <img src="assets/Img/Naranjas Valencia.jpg" alt="naranja">
+            </div>
+            <div class="titulo_producto">Naranjas Valencia</div>
+            <div class="detalle_producto">
+                <span>Precio</span>
+                <span class="precio">$1000</span>
+            </div>
+        </div>
+
+        <div class="carta_producto">
+            <div class="product-image"> 
+                <img src="assets/Img/banana cavendish.jpg" alt="banana">
+            </div>
+            <div class="titulo_producto">Banana Cavendish</div>
+            <div class="detalle_producto">
+                <span>Precio</span>
+                <span class="precio">$800</span>
+            </div>
+        </div>
+
+        <div class="carta_producto">
+            <div class="product-image"> 
+                <img src="assets/Img/Zhanaoria Organica.jpg" alt="Zhanaoria">
+            </div>
+            <div class="titulo_producto">Zanaoria</div>
+            <div class="detalle_producto">
+                <span>Precio</span>
+                <span class="precio">$900</span>
+            </div>
+        </div>
+
+        <div class="carta_producto">
+            <div class="product-image"> 
+                <img src="assets/Img/espinacas Frescas.jpg" alt="espinacas">
+            </div>
+            <div class="titulo_producto">Espinacas</div>
+            <div class="detalle_producto">
+                <span>Precio</span>
+                <span class="precio">$700</span>
+            </div>
+        </div>
+
+        <div class="carta_producto">
+            <div class="product-image"> 
+                <img src="assets/Img/Pimientos_Tricolor.jpg" alt="Pimientos Tricolor">
+            </div>
+            <div class="titulo_producto">Pimientos Tricolor</div>
+            <div class="detalle_producto">
+                <span>Precio</span>
+                <span class="precio">$1500</span>
+            </div>
+        </div>
+
+        <div class="carta_producto">
+            <div class="product-image"> 
+                <img src="assets/Img/Miel Organica.jpg" alt="Miel Organica">
+            </div>
+            <div class="titulo_producto">Miel Organica</div>
+            <div class="detalle_producto">
+                <span>Precio</span>
+                <span class="precio">$5000</span>
+            </div>
+        </div>
+
+        <div class="carta_producto">
+            <div class="product-image"> 
+                <img src="assets/Img/Quinoa Organica.jpg" alt="Quinoa Organica">
+            </div>
+            <div class="titulo_producto">Quinoa Organica</div>
+            <div class="detalle_producto">
+                <span>Precio</span>
+                <span class="precio">$2000</span>
+            </div>
+        </div>
+
+        <div class="carta_producto">
+            <div class="product-image"> 
+                <img src="assets/Img/Leche Entera.jpg" alt="Leche Entera">
+            </div>
+            <div class="titulo_producto">Leche Entera</div>
+            <div class="detalle_producto">
+                <span>Precio</span>
+                <span class="precio">$3000</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+<footer>
+    <div class="footer">
+            <div class="footer-left">
+                <span class="huerta_hogar_footer">Tienda Huerta</span>
+                <div class="social-icons">
+                    <a href="#">
+                        <img class="social-icon instagram" src="assets/Img/Instagram_logo.jpg" alt="sesion">
+                    </a>
+                    <a href="#">
+                        <img class="social-icon facebook" src="assets/Img/facebook_logo.png" alt="sesion">
+                    </a>
+                    <a href="#">
+                        <img class="social-icon twitter" src="assets/Img/Twitter_logo.png" alt="sesion">
+                    </a>
+                </div>
+            </div>
+            <div class="footer-right">
+                <span class="huerta_hogar_footer">Unetenos: </span>
+                <input type="email" placeholder="Ingresa Email">
+                <button>Suscribirse</button>
+            </div>
+    </div>
+</footer>
 </html>
