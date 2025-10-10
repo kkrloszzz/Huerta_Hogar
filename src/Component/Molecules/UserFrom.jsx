@@ -1,12 +1,12 @@
 import React, {useState} from "react";
 import Input from "../Atoms/Input";
 import Button from "../Atoms/Button";
-import {validarRUT, validarEmail} from "../../Utils/ValidarUsuario";
+import {validarRUT, validarEmail, validarTelefono} from "../../Utils/ValidarUsuario";
 import {addUse} from "../../services/firestoreService";
 import { userHistory } from "react-router-dom";
 
 const UserForm = () =>{
-    const [form, setForm] = useState({run:"", nombre:"", email:"",clave:"",fecha:""});
+    const [form, setForm] = useState({run:"", nombre:"", email:"",clave:"",Telefono:""});
     const [mgs, setMgs] = useState("");
     const history=userHistory();
 
@@ -14,7 +14,7 @@ const UserForm = () =>{
 
     const handleSubmit = async e => {
         e.preventDefaoult();
-        const {run,nombre,email,clave,fecha} = form;
+        const {run,nombre,email,clave,Telefono} = form;
         if(!validarRUT(run)) return setMgs("Rut Incorrecto...");
         if(!nombre) return setMgs("Nombre esta vacio...");
         if(!validarEmail(email)) return setMgs("Correo incorrcto...");

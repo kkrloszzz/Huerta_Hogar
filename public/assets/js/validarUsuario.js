@@ -2,19 +2,6 @@
 // Escuela de Administración y Negocios
 
 // Datos de regiones y comunas de Chile
-const regionesComunas = {
-    metropolitana: [
-        "Santiago", "Las Condes", "Providencia", "Ñuñoa", "La Reina", "Vitacura", 
-        "Lo Barnechea", "Macul", "San Miguel", "La Florida", "Puente Alto"
-    ],
-    araucania: [
-        "Temuco", "Padre Las Casas", "Villarrica", "Pucón", "Angol"
-        
-    ],
-    nuble: [
-        "Chillán", "Chillán Viejo", "Bulnes", "Quillón", "San Ignacio"
-    ]
-};
 
 // Validador de RUT chileno
 function validarRUT(rut) {
@@ -52,6 +39,13 @@ function validarRUT(rut) {
 }
 
 // Validador de correo electrónico
+function validarTelefono(telefono){
+    if(telefono >0 && telefono<10){
+        return telefono;
+    }else{
+        return console.log("Error, el Numero telefonico debe estar entre 0 y 10 digitos, y deben ser numeros...")
+    }
+}
 function validarEmail(email) {
     const dominiosPermitidos = ['@duocuc.cl', '@profesor.duocuc.cl', '@gmail.com'];
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -107,27 +101,7 @@ function limpiarError(input) {
     mostrarError(input, '');
 }
 
-// Función para poblar comunas según región seleccionada
-function actualizarComunas() {
-    const regionSelect = document.getElementById('region');
-    const comunaSelect = document.getElementById('comuna');
-    const regionSeleccionada = regionSelect.value;
-    
-    // Limpiar opciones de comuna
-    comunaSelect.innerHTML = '<option value="">Seleccione una comuna</option>';
-    
-    if (regionSeleccionada && regionesComunas[regionSeleccionada]) {
-        regionesComunas[regionSeleccionada].forEach(comuna => {
-            const option = document.createElement('option');
-            option.value = comuna.toLowerCase().replace(/\s+/g, '-');
-            option.textContent = comuna;
-            comunaSelect.appendChild(option);
-        });
-        comunaSelect.disabled = false;
-    } else {
-        comunaSelect.disabled = true;
-    }
-}
+
 
 // Función de inicialización cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', function() {
@@ -169,21 +143,6 @@ function actualizarFormulario() {
             <option value="vendedor">Vendedor</option>
         </select>
         
-        <label class="required">Región</label>
-        <select id="region" name="region">
-            <option value="">Seleccione una región</option>
-            <option value="metropolitana">Región Metropolitana</option>
-            <option value="araucania">Araucanía</option>
-            <option value="nuble">Ñuble</option>
-        </select>
-        
-        <label class="required">Comuna</label>
-        <select id="comuna" name="comuna" disabled>
-            <option value="">Seleccione una comuna</option>
-        </select>
-        
-        <label class="required">Dirección</label>
-        <textarea id="direccion" name="direccion" placeholder="Ingrese dirección completa" maxlength="300" rows="3"></textarea>
         
         <button type="submit">Registrar Usuario</button>
     `;
@@ -322,59 +281,6 @@ function configurarEventos() {
         }
     });
     
-    // Región - Validación y actualización de comunas
-    const regionSelect = document.getElementById('region');
-    regionSelect.addEventListener('change', function() {
-        if (this.value === '') {
-            mostrarError(this, 'Debe seleccionar una región');
-            this.classList.add('invalid');
-            this.classList.remove('valid');
-        } else {
-            limpiarError(this);
-            this.classList.add('valid');
-            this.classList.remove('invalid');
-        }
-        actualizarComunas();
-        
-        // Limpiar selección de comuna
-        const comunaSelect = document.getElementById('comuna');
-        comunaSelect.value = '';
-        limpiarError(comunaSelect);
-        comunaSelect.classList.remove('valid', 'invalid');
-    });
-    
-    // Comuna - Validación
-    const comunaSelect = document.getElementById('comuna');
-    comunaSelect.addEventListener('change', function() {
-        if (this.value === '') {
-            mostrarError(this, 'Debe seleccionar una comuna');
-            this.classList.add('invalid');
-            this.classList.remove('valid');
-        } else {
-            limpiarError(this);
-            this.classList.add('valid');
-            this.classList.remove('invalid');
-        }
-    });
-    
-    // Dirección - Validación
-    const direccionInput = document.getElementById('direccion');
-    direccionInput.addEventListener('input', function() {
-        const valor = this.value.trim();
-        if (valor.length === 0) {
-            mostrarError(this, 'La dirección es requerida');
-            this.classList.add('invalid');
-            this.classList.remove('valid');
-        } else if (valor.length > 300) {
-            mostrarError(this, 'La dirección no puede exceder 300 caracteres');
-            this.classList.add('invalid');
-            this.classList.remove('valid');
-        } else {
-            limpiarError(this);
-            this.classList.add('valid');
-            this.classList.remove('invalid');
-        }
-    });
     
     // Envío del formulario
     form.addEventListener('submit', function(e) {
@@ -387,9 +293,7 @@ function configurarEventos() {
             { input: apellidosInput, nombre: 'Apellidos' },
             { input: correoInput, nombre: 'Correo' },
             { input: tipoUsuarioSelect, nombre: 'Tipo de Usuario' },
-            { input: regionSelect, nombre: 'Región' },
-            { input: comunaSelect, nombre: 'Comuna' },
-            { input: direccionInput, nombre: 'Dirección' }
+            
         ];
         
         let formularioValido = true;
@@ -451,7 +355,7 @@ function configurarEventos() {
         }
     });
 }
-
+//----------------------------------------------------------------//
 // Función para enviar datos al servidor (placeholder)
 function enviarDatosServidor(datos) {
     // Implementar llamada AJAX o fetch API según sea necesario
@@ -498,7 +402,7 @@ window.huertaHogar = {
     limpiarFormulario,
     actualizarComunas
 };
-
+//------------------------------------------------------//
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("formLogin");
     const correoInput = document.getElementById("correoLogin");
