@@ -34,7 +34,7 @@ const UserForm = () =>{
             <Input id="nombre"  label="Nombre" value={form.nombre} onChange={handleChange} ></Input>
             <Input id="Correo"  label="Correo" type="email"  value={form.email} onChange={handleChange} ></Input>
             <Input id="clave"  label="Contraseña" type="password"  value={form.clave} onChange={handleChange} ></Input>
-            <Input id="fecha"  label="Fecha" type="date"  value={form.fecha} onChange={handleChange} ></Input>
+            <Input id="Telefono"  label="Telefono" type="tel"  value={form.fecha} onChange={handleChange} ></Input>
             <Button type="submit"> Enviar</Button>
             <p style={{color:"crimson"}}>{mgs}</p>
         </form>
