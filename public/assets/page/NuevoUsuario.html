@@ -1,68 +1,76 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Huerta Hogar - Nuevo Usuario</title>
-  <link rel="stylesheet" href="../css/NuevoUsuario.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Huerto Hogar</title>
 </head>
+
 <body>
-  <div class="container">
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <div class="company-header">
-        <div class="company-logo">
-          <img src="../Img/Logo.png" alt="Logo" class="logo-icon" style="width:32px; height:32px;">
-          Huerta Hogar
-        </div>
+  <header>
+      <div class="logo">Huerta Hogar</div>
+      <nav>
+          <a href="#">Home</a>
+          <a href="#">Productos</a>
+          <a href="#">Nosotros</a>
+          <a href="#">Blogs</a>
+          <a href="#">Contacto</a>
+          <span class="carrito">🛒 Carrito</span>
+      </nav>
+  </header>
+
+  <div class="main-content">
+      <div class="logo-container">
+          <div class="logo-image">🌱</div>
+          <h1>Huerto Hogar</h1>
+          <h2>Registro de Usuario</h2>
       </div>
 
-      <ul class="nav-menu">
-        <li class="nav-item"><a href="InterAdmin.html" class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="Productos.html" class="nav-link">Productos</a></li>
-      </ul>
-    </div>
+      <div class="form-container">
+          <h3 class="form-title">Crear nueva cuenta</h3>
+          <form id="registroForm">
+              <div class="form-group">
+                  <label for="rut">RUT *</label>
+                  <input type="text" id="rut" name="rut" placeholder="12.345.678-9" required>
+              </div>
 
-    <!-- Contenido -->
-    <div class="main-content">
-      <h1>Nuevo Usuario</h1>
-      <br>
-      <form class="user-form">
-        <label>Nombre Completo</label>
-        <input type="text" placeholder="Ingrese Nombre Completo">
+              <div class="form-row">
+                  <div class="form-group">
+                      <label for="nombre">Nombre *</label>
+                      <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+                  </div>
 
-        <label>Correo</label>
-        <input type="email" placeholder="Ingrese Correo">
+                  <div class="form-group">
+                      <label for="apellido">Apellido *</label>
+                      <input type="text" id="apellido" name="apellido" placeholder="Apellido" required>
+                  </div>
+              </div>
 
-        <label>Usuario</label>
-        <input type="text" placeholder="Ingrese Usuario">
+              <div class="form-group">
+                  <label for="correo">Correo Electrónico *</label>
+                  <input type="email" id="correo" name="correo" placeholder="correo@ejemplo.com" required>
+              </div>
 
-        <label>Contraseña</label>
-        <input type="password" placeholder="Ingrese contraseña">
+              <div class="form-group">
+                  <label for="fechaNacimiento">Fecha de Nacimiento *</label>
+                  <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+              </div>
 
-        <label>Confirmar Contraseña</label>
-        <input type="password" placeholder="Confirme la Contraseña">
+              <div class="form-group">
+                  <label for="contrasena">Contraseña *</label>
+                  <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required>
+              </div>
 
-        <label>Teléfono (opcional)</label>
-        <input type="text" placeholder="Ej: +56 9 1234 5678">
+              <div class="form-group">
+                  <label for="confirmarContrasena">Confirmar Contraseña *</label>
+                  <input type="password" id="confirmarContrasena" name="confirmarContrasena" placeholder="Confirmar contraseña" required>
+              </div>
 
-        <label>Seleccione la región</label>
-        <select id="region">
-          <option value="">Seleccione una región</option>
-          <option value="metropolitana">Región Metropolitana</option>
-          <option value="araucania">Araucanía</option>
-          <option value="nuble">Ñuble</option>
-        </select>
+              <button type="submit" class="submit-btn">Registrarse</button>
 
-        <label>Seleccione la comuna</label>
-        <select id="comuna">
-          <option value="">Seleccione una comuna</option>
-        </select>
-
-        <button type="submit">Registrar</button>
-      </form>
-    </div>
+              <div class="login-link">
+                  ¿Ya tienes cuenta? <a href="#">Inicia sesión</a>
+              </div>
+          </form>
+      </div>
   </div>
-  <script src="../js/validarUsuario.js"></script>
-</body>
-</html>
