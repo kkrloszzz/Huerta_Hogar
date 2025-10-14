@@ -188,3 +188,57 @@ img {
         color: #F7F7F7;
         font-size: 15px;
     }
+
+.btn-outline-success {
+    color: #2E8B57;
+    border-color: #2E8B57;
+    font-size: 13px;
+    padding: 5px 15px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-success:hover {
+    background-color: #2E8B57;
+    color: white;
+    border-color: #2E8B57;
+}
+
+.btn-success {
+    background-color: #2E8B57;
+    border-color: #2E8B57;
+    font-size: 13px;
+    padding: 5px 15px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    background-color: #236b43;
+    border-color: #236b43;
+}
+
+/* Ajuste del gap para los botones */
+.gap-2 {
+    gap: 0.5rem !important;
+}
+
+/* Responsive: en móvil los botones se apilan */
+@media (max-width: 768px) {
+    .d-flex.align-items-center.gap-2 {
+        flex-direction: column;
+        align-items: stretch !important;
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    .btn-outline-success,
+    .btn-success {
+        width: 100%;
+        margin: 5px 0;
+    }
+    
+    .d-flex.align-items-center {
+        justify-content: center;
+    }
+}

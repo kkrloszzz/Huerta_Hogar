@@ -3,13 +3,29 @@
     padding: 0;
     box-sizing: border-box;
 }
+.a_carrito{
+    color: #2E8B57;
+    text-decoration: none;
 
+}
+.profile-icon, .carrito_logo {
+    height: 35px;
+    width: auto;
+}
+.l_empresa{
+    height: 100px;
+    width: auto;
+    border-radius: 50%;
+    object-fit: cover;
+}
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f5f5f5;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
+
 }
 
 /* Header */
@@ -64,15 +80,15 @@ nav a:hover {
 }
 
 .logo-image {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     background-color: #4a7c59;
     border-radius: 50%;
     margin: 0 auto 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 36px;
+    font-size: 56px;
 }
 
 h1 {
@@ -203,3 +219,4 @@ input:focus {
     h2 {
         font-size: 22px;
     }
+}
