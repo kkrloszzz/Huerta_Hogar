@@ -83,4 +83,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     renderCart();
-});
+}); 
