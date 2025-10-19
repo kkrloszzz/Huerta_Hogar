@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo - Mi Tienda</title>
+  <link rel="stylesheet" href="../css/catalogo.css">
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <!-- Línea Superior -->
+    <div class="header-top">
+      <div class="search-container">
+        <input type="text" id="buscador" placeholder="Buscar productos..." class="search-input">
+        <button id="btnBuscar" class="btn-buscar">Buscar</button>
+      </div>
+      <div class="auth-buttons">
+        <button class="btn-login">Iniciar Sesión</button>
+        <button class="btn-signup">Crear Cuenta</button>
+      </div>
+    </div>
+
+    <!-- Línea Inferior - Nav -->
+    <nav class="nav-main">
+      <div class="nav-center">
+        <a href="#" class="nav-link">Home</a>
+        <div class="dropdown">
+          <a href="#" class="nav-link">Categoría ⌄</a>
+          <div class="dropdown-content" id="dropdownCategorias"></div>
+        </div>
+        <a href="#" class="nav-link">Ofertas</a>
+        <a href="#" class="nav-link">Nosotros</a>
+        <a href="#" class="nav-link">Blog</a>
+        <a href="#" class="nav-link">Contacto</a>
+      </div>
+      
+      <div class="nav-right">
+        <button class="btn-carrito">
+          <span class="carrito-icon">🛒</span>
+          Total: $<span class="carrito-total">0</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+    <!-- CARDS DE CATEGORÍAS -->
+    <section class="categorias-section">
+      <h2 class="section-title">Categorías</h2>
+       <button id="btnVerTodos" class="btn-ver-todos">Todos los productos</button>
+      <div id="cardsCategorias" class="categorias-grid"></div>
+    </section>
+
+    <!-- PRODUCTOS -->
+    <section class="productos-section">
+      <h2 id="tituloProductos" class="section-title">Todos los Productos</h2>
+      <div id="productosGrid" class="productos-grid"></div>
+    </section>
+  </main>
+
+  <script src="../js/catalogo.js"></script>
+</body>
+</html>
