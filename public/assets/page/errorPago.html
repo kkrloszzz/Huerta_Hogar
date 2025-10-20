@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error en Pago - Mi Tienda</title>
+  <link rel="stylesheet" href="../css/catalogo.css">
+  <link rel="stylesheet" href="../css/carrito.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-top">
+      <div class="search-container">
+        <input type="text" id="buscador" placeholder="Buscar productos..." class="search-input">
+        <button id="btnBuscar" class="btn-buscar">Buscar</button>
+      </div>
+      <div class="auth-buttons">
+        <button class="btn-login">Iniciar Sesión</button>
+        <button class="btn-signup">Crear Cuenta</button>
+      </div>
+    </div>
+
+    <nav class="nav-main">
+      <div class="nav-center">
+        <a href="catalogo.html" class="nav-link">Home</a>
+        <div class="dropdown">
+          <a href="#" class="nav-link">Categoría ⌄</a>
+          <div class="dropdown-content" id="dropdownCategorias"></div>
+        </div>
+        <a href="#" class="nav-link">Ofertas</a>
+        <a href="#" class="nav-link">Nosotros</a>
+        <a href="#" class="nav-link">Blog</a>
+        <a href="#" class="nav-link">Contacto</a>
+      </div>
+      
+      <div class="nav-right">
+        <button class="btn-carrito" onclick="window.location.href='carrito.html'">
+          <span class="carrito-icon">🛒</span>
+          Total: $<span class="carrito-total">0</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+    <div class="error-container">
+      <!-- Encabezado -->
+      <div class="error-header">
+        <div class="error-titulo">
+          <span class="icono-error">❌</span>
+          <h1>No se pudo realizar el pago <span id="numeroError">#000001</span></h1>
+        </div>
+        <h2 class="error-subtitulo">Detalle de compra</h2>
+        <button id="btnReintentarPago" class="btn-reintentar-pago">Volver a realizar el pago</button>
+      </div>
+
+      <!-- Información del Cliente -->
+      <section class="info-cliente">
+        <h2 class="section-title">Información del Cliente</h2>
+        
+        <form class="form-cliente readonly">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nombre</label>
+              <input type="text" id="errorNombre" readonly>
+            </div>
+            <div class="form-group">
+              <label>Apellidos</label>
+              <input type="text" id="errorApellidos" readonly>
+            </div>
+            <div class="form-group">
+              <label>Correo</label>
+              <input type="email" id="errorCorreo" readonly>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <!-- Dirección de Entrega -->
+      <section class="direccion-entrega">
+        <h2 class="section-title">Dirección de entrega de los productos</h2>
+        
+        <form class="form-direccion readonly">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Calle</label>
+              <input type="text" id="errorCalle" readonly>
+            </div>
+            <div class="form-group">
+              <label>Departamento</label>
+              <input type="text" id="errorDepartamento" readonly>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Región</label>
+              <input type="text" id="errorRegion" readonly>
+            </div>
+            <div class="form-group">
+              <label>Comuna</label>
+              <input type="text" id="errorComuna" readonly>
+            </div>
+          </div>
+          <div class="form-group full-width">
+            <label>Indicaciones</label>
+            <textarea id="errorIndicaciones" readonly></textarea>
+          </div>
+        </form>
+      </section>
+
+      <!-- Tabla de Productos -->
+      <div class="tabla-checkout-container">
+        <table class="tabla-checkout">
+          <thead>
+            <tr>
+              <th>Imagen</th>
+              <th>Nombre</th>
+              <th>Precio $</th>
+              <th>Cantidad</th>
+              <th>Subtotal $</th>
+            </tr>
+          </thead>
+          <tbody id="tablaErrorBody">
+            <!-- Productos del error de pago -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Total -->
+      <div class="total-pagado-container">
+        <div class="total-pagado">
+          <span class="total-text">Total: $</span>
+          <span id="totalError" class="total-precio">0</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/errorPago.js"></script>
+</body>
+</html>

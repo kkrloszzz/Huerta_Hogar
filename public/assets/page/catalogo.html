@@ -26,9 +26,9 @@
     <!-- Línea Inferior - Nav -->
     <nav class="nav-main">
       <div class="nav-center">
-        <a href="#" class="nav-link">Home</a>
+        <a href="/" class="nav-link">Home</a> <!--Cambiar a "/" para React Router-->
         <div class="dropdown">
-          <a href="#" class="nav-link">Categoría ⌄</a>
+          <a href="#" class="nav-link">Categorías ⌄</a>
           <div class="dropdown-content" id="dropdownCategorias"></div>
         </div>
         <a href="#" class="nav-link">Ofertas</a>
@@ -38,7 +38,7 @@
       </div>
       
       <div class="nav-right">
-        <button class="btn-carrito">
+        <button class="btn-carrito" onclick="window.location.href='carrito.html'"> <!--Cambiar a "carrito" para React Router-->
           <span class="carrito-icon">🛒</span>
           Total: $<span class="carrito-total">0</span>
         </button>

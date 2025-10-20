@@ -1,65 +1,97 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito de Compras</title>
-    <link rel="icon" href="../Img/Logo.png" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/carrito.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito de Compras - Mi Tienda</title>
+  <link rel="stylesheet" href="../css/catalogo.css">
+  <link rel="stylesheet" href="../css/carrito.css">
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="../../Index.html">Huerta Hogar</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav ms-auto mb-2 mb-md-0">
-                        <li class="nav-item"><a class="nav-link" href="../../Index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./Productos.html">Productos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../page/Nosostros.html">Nosotros</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./blogs.html">Blogs</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./RegistroContactos.html">Contacto</a></li>
-                    </ul>
-                    <div class="d-flex align-items-center">
-                        <a class="nav-link text-white active" href="./Carrito.html">
-                            <img src="../Img/carrito_blanco-removebg-preview.png" alt="carrito" style="width: 32px; height: auto; vertical-align: middle; margin-right: 5px;">
-                            Carrito
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-top">
+      <div class="search-container">
+        <input type="text" id="buscador" placeholder="Buscar productos..." class="search-input">
+        <button id="btnBuscar" class="btn-buscar">Buscar</button>
+      </div>
+      <div class="auth-buttons">
+        <button class="btn-login">Iniciar Sesión</button>
+        <button class="btn-signup">Crear Cuenta</button>
+      </div>
+    </div>
 
-    <main>
-        <div class="cart-container">
-            <h1>Mi carrito de compras</h1>
-            <div class="cart-layout">
-                <div class="product-list"></div>
-
-                <div class="order-summary">
-                    <div class="total-section">
-                        <span>TOTAL:</span>
-                        <span>$ 24.000</span>
-                    </div>
-                    <div class="coupon-section">
-                        <label for="coupon">Ingrese el cupón de descuento</label>
-                        <div class="coupon-input-group">
-                            <input type="text" id="coupon">
-                            <button>APLICAR</button>
-                        </div>
-                    </div>
-                    <button class="pay-button">PAGAR</button>
-                </div>
-            </div>
+    <nav class="nav-main">
+      <div class="nav-center">
+        <a href="catalogo.html" class="nav-link">Home</a>
+        <div class="dropdown">
+          <a href="#" class="nav-link">Categoría ⌄</a>
+          <div class="dropdown-content" id="dropdownCategorias"></div>
         </div>
-    </main>
+        <a href="#" class="nav-link">Ofertas</a>
+        <a href="#" class="nav-link">Nosotros</a>
+        <a href="#" class="nav-link">Blog</a>
+        <a href="#" class="nav-link">Contacto</a>
+      </div>
+      
+      <div class="nav-right">
+        <button class="btn-carrito" onclick="window.location.href='carrito.html'">
+          <span class="carrito-icon">🛒</span>
+          Total: $<span class="carrito-total">0</span>
+        </button>
+      </div>
+    </nav>
+  </header>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="../js/carrito.js"></script>
+  <!-- MAIN CONTENT -->
+  <main class="main">
+    <div class="carrito-container">
+      <!-- Lista de Productos con Ofertas -->
+      <section class="ofertas-section">
+        <h2 class="section-title">Productos en Oferta</h2>
+        <div id="productosOferta" class="productos-grid"></div>
+      </section>
+
+      <!-- Resumen del Carrito -->
+      <section class="resumen-carrito">
+        <h2 class="section-title">Resumen del Carrito</h2>
+        
+        <!-- Tabla de productos en carrito -->
+        <div class="tabla-carrito-container">
+          <table class="tabla-carrito">
+            <thead>
+              <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tablaCarritoBody">
+              <!-- Los productos del carrito se insertarán aquí -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Total y Botones -->
+        <div class="carrito-footer">
+          <div class="total-container">
+            <span class="total-text">Total: $</span>
+            <span id="totalCarrito" class="total-precio">0</span>
+          </div>
+          <div class="botones-carrito">
+            <button id="btnLimpiarCarrito" class="btn-limpiar">Limpiar Carrito</button>
+            <button id="btnComprarAhora" class="btn-comprar-ahora">Comprar Ahora</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="../js/carrito.js"></script>
 </body>
 </html>
