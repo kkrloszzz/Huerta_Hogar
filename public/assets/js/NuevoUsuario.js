@@ -3,22 +3,22 @@
 
 // Datos de regiones y comunas de Chile
 
-// Validador de RUT chileno
-function validarRUT(rut) {
+// Validador de RUN chileno
+function validarRUN(run) {
     // Eliminar puntos y guiones, convertir a mayúscula
-    rut = rut.replace(/\./g, '').replace(/-/g, '').toUpperCase();
+    run = run.replace(/\./g, '').replace(/-/g, '').toUpperCase();
     
     // Validar longitud
-    if (rut.length < 7 || rut.length > 9) {
+    if (run.length < 7 || run.length > 9) {
         return false;
     }
     
     // Separar número y dígito verificador
-    const rutNumero = rut.slice(0, -1);
-    const digitoVerificador = rut.slice(-1);
+    const runNumero = run.slice(0, -1);
+    const digitoVerificador = run.slice(-1);
     
     // Validar que el número sea numérico
-    if (!/^\d+$/.test(rutNumero)) {
+    if (!/^\d+$/.test(runNumero)) {
         return false;
     }
     
@@ -26,8 +26,8 @@ function validarRUT(rut) {
     let suma = 0;
     let multiplicador = 2;
     
-    for (let i = rutNumero.length - 1; i >= 0; i--) {
-        suma += parseInt(rutNumero[i]) * multiplicador;
+    for (let i = runNumero.length - 1; i >= 0; i--) {
+        suma += parseInt(runNumero[i]) * multiplicador;
         multiplicador = multiplicador === 7 ? 2 : multiplicador + 1;
     }
     
@@ -58,8 +58,8 @@ function validarEmail(email) {
         return { valido: false, mensaje: 'Formato de correo inválido' };
     }
     
-    const tieneRut = dominiosPermitidos.some(dominio => email.endsWith(dominio));
-    if (!tieneRut) {
+    const tieneRun = dominiosPermitidos.some(dominio => email.endsWith(dominio));
+    if (!tieneRun) {
         return { 
             valido: false, 
             mensaje: 'Solo se permiten correos de @duoc.cl, @profesor.duoc.cl y @gmail.com' 
@@ -124,8 +124,8 @@ function actualizarFormulario() {
     
     // Actualizar el HTML del formulario
     form.innerHTML = `
-        <label class="required">RUT</label>
-        <input type="text" id="rut" name="rut" placeholder="Ej: 19011022K" maxlength="9">
+        <label class="required">RUn</label>
+        <input type="text" id="run" name="run" placeholder="Ej: 19011022K" maxlength="9">
         
         <label class="required">Nombre</label>
         <input type="text" id="nombre" name="nombre" placeholder="Ingrese nombre" maxlength="50">
@@ -181,24 +181,24 @@ function actualizarFormulario() {
 function configurarEventos() {
     const form = document.querySelector('.user-form');
     
-    // RUT - Validación en tiempo real
-    const rutInput = document.getElementById('rut');
-    rutInput.addEventListener('input', function() {
+    // RUN - Validación en tiempo real
+    const runInput = document.getElementById('run');
+    runInput.addEventListener('input', function() {
         let valor = this.value.replace(/[^0-9kK]/g, '').toUpperCase();
         this.value = valor;
         
         if (valor.length >= 7) {
-            if (validarRUT(valor)) {
+            if (validarRUN(valor)) {
                 limpiarError(this);
                 this.classList.add('valid');
                 this.classList.remove('invalid');
             } else {
-                mostrarError(this, 'RUT inválido');
+                mostrarError(this, 'RUN inválido');
                 this.classList.add('invalid');
                 this.classList.remove('valid');
             }
         } else if (valor.length > 0) {
-            mostrarError(this, 'RUT debe tener entre 7 y 9 caracteres');
+            mostrarError(this, 'RUN debe tener entre 7 y 9 caracteres');
             this.classList.add('invalid');
             this.classList.remove('valid');
         } else {
@@ -292,7 +292,7 @@ function configurarEventos() {
         
         // Validar todos los campos requeridos
         const campos = [
-            { input: rutInput, nombre: 'RUT' },
+            { input: runInput, nombre: 'RUN' },
             { input: nombreInput, nombre: 'Nombre' },
             { input: apellidosInput, nombre: 'Apellidos' },
             { input: correoInput, nombre: 'Correo' },
@@ -316,9 +316,9 @@ function configurarEventos() {
         });
         
         // Validaciones específicas
-        if (rutInput.value && !validarRUT(rutInput.value)) {
+        if (runInput.value && !validarRUN(runInput.value)) {
             formularioValido = false;
-            errores.push('RUT inválido');
+            errores.push('RUN inválido');
         }
         
         if (correoInput.value && !validarEmail(correoInput.value).valido) {
@@ -329,7 +329,7 @@ function configurarEventos() {
         if (formularioValido) {
             // Recopilar datos del formulario
             const datosUsuario = {
-                rut: rutInput.value,
+                run: runInput.value,
                 nombre: nombreInput.value.trim(),
                 apellidos: apellidosInput.value.trim(),
                 correo: correoInput.value.trim(),
@@ -345,7 +345,7 @@ function configurarEventos() {
             // Mostrar mensaje de éxito
             alert('Usuario registrado exitosamente!\n\n' +
                   'Datos registrados:\n' +
-                  `RUT: ${datosUsuario.rut}\n` +
+                  `RUN: ${datosUsuario.run}\n` +
                   `Nombre: ${datosUsuario.nombre} ${datosUsuario.apellidos}\n` +
                   `Correo: ${datosUsuario.correo}\n` +
                   `Tipo: ${datosUsuario.tipoUsuario}\n` +
@@ -401,7 +401,7 @@ function limpiarFormulario() {
 
 // Exportar funciones para uso externo si es necesario
 window.huertaHogar = {
-    validarRUT,
+    validarRUN,
     validarEmail,
     limpiarFormulario,
     actualizarComunas

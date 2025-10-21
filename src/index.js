@@ -1,5 +1,5 @@
 import { addUser } from "./services/firestoreService";
-import {validarEmail, validarRUT} from "./Utils/ValidarUsuario";
+import {validarEmail, validarRUN} from "./Utils/ValidarUsuario";
 
 //Esperar a que el DOm este listo
 document.addEventListener("DOMContentLoaded", () => {
@@ -15,19 +15,19 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async(e) => {
     e.preventDefault();
     mensajeInput="";
-    const rut=runInput.value.trim().toUpperCase()
+    const run =runInput.value.trim().toUpperCase()
     const nombre = nombreInput.value.trim();
     const correo = correoInput.value.trim();
     const clave = claveInput.value;
     const fecha = fehaInput.value;
     //validar ingreso correcto de los datos.
-    if (!validarRUT(run)) return mensajeInput.innerText="Run Incorrecto...";
+    if (!validarRUN(run)) return mensajeInput.innerText="Run Incorrecto...";
     if (!nombre) return mensajeInput.innerText="Nombre invalido...";
     if (!validarEmail(correo)) return mensajeInput.innerText="Correo Incorrecto...";
     //if (!validarEdad(fecha)) return mensajeInput.innerText= "Edad invalida...";
 
     try {
-        await addUser({rut, nombre, correo, clave, fecha});
+        await addUser({run, nombre, correo, clave, fecha});
         mensajeInput.innerText="Usuario Agregado correctamente";
 
         setTimeout(() =>{

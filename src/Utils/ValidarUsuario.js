@@ -1,18 +1,18 @@
-export function validarRUT(rut) {
+export function validarRUN(run) {
     // Eliminar puntos y guiones, convertir a mayúscula
-    rut = rut.replace(/\./g, '').replace(/-/g, '').toUpperCase();
+    run = run.replace(/\./g, '').replace(/-/g, '').toUpperCase();
     
     // Validar longitud
-    if (rut.length < 7 || rut.length > 9) {
+    if (run.length < 7 || run.length > 9) {
         return false;
     }
     
     // Separar número y dígito verificador
-    const rutNumero = rut.slice(0, -1);
-    const digitoVerificador = rut.slice(-1);
+    const runNumero = run.slice(0, -1);
+    const digitoVerificador = run.slice(-1);
     
     // Validar que el número sea numérico
-    if (!/^\d+$/.test(rutNumero)) {
+    if (!/^\d+$/.test(runNumero)) {
         return false;
     }
     
@@ -20,8 +20,8 @@ export function validarRUT(rut) {
     let suma = 0;
     let multiplicador = 2;
     
-    for (let i = rutNumero.length - 1; i >= 0; i--) {
-        suma += parseInt(rutNumero[i]) * multiplicador;
+    for (let i = runNumero.length - 1; i >= 0; i--) {
+        suma += parseInt(runNumero[i]) * multiplicador;
         multiplicador = multiplicador === 7 ? 2 : multiplicador + 1;
     }
     
@@ -40,8 +40,8 @@ export function validarEmail(email) {
         return { valido: false, mensaje: 'Formato de correo inválido' };
     }
     
-    const tieneRut = dominiosPermitidos.some(dominio => email.endsWith(dominio));
-    if (!tieneRut) {
+    const tieneRun = dominiosPermitidos.some(dominio => email.endsWith(dominio));
+    if (!tieneRun) {
         return { 
             valido: false, 
             mensaje: 'Solo se permiten correos de @duocuc.cl, @profesor.duocuc.cl y @gmail.com' 
