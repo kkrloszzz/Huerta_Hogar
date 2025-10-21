@@ -3,62 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrador</title>
-    <link rel="icon"href="../Img/Logo.png" type="image/x-icon">
+    <title>Admin Dashboard</title> 
+    <link rel="icon" href="../Img/Logo.png" type="image/x-icon">
     
     <link rel="stylesheet" href="../css/InterAdmin.css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
+    
     <header class="header">
-        <div class="logo-section">
-            <img class="logo" src="../Img/Logo.png" alt="Logo Tienda Hogar">
-            <span class="company-name">Tienda Hogar</span>
-        </div>
         
-        <div class="welcome-text">¡HOLA Administrador!</div>
-        
-        <div class="header-actions">
-            <button class="notification-btn" title="Notificaciones">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
-                </svg>
+        <div class="header-brand">
+            <button class="menu-toggle-btn" id="menuToggle" aria-label="Abrir menú">
+                <i class="bi bi-list"></i>
             </button>
-            <div class="user-avatar"></div>
+            <img src="../Img/Logo.png" alt="Logo Huerto Hogar" class="header-logo">
+            <span class="header-brand-name">Huerto Hogar</span>
         </div>
+        
+        <div class="welcome-text">
+            ¡HOLA Administrador!
+        </div>
+        
+        <div class="header-icons">
+            <i class="bi bi-search"></i>
+            <i class="bi bi-star"></i>
+            <i class="bi bi-bookmark"></i>
+            <i class="bi bi-download"></i>
+        </div>
+
     </header>
 
     <div class="main-container">
+        
         <nav class="sidebar">
-            <div class="nav-section">
-                <a href="../../Index.html" class="nav-item active">
-                    <div class="nav-icon"></div>
-                    <span>Inicio</span>
-                </a>
-                <a href="../page/Usuario.html" class="nav-item">
-                    <div class="nav-icon"></div>
-                    <span>Usuarios</span>
-                </a>
-                <a href="../page/Productos.html" class="nav-item">
-                    <div class="nav-icon"></div>
-                    <span>Productos</span>
-                </a>
-                
-            </div>
             
-            <div class="nav-section">
-                <a href="../page/InicioSesionempresa.html" class="nav-item">
-                    <div class="nav-icon"></div>
-                    <span>Salir</span>
-                </a>
+            <div class="sidebar-nav-main">
+                <ul>
+                    <li>
+                        <a href="#" class="nav-item active">
+                            <i class="bi bi-grid-fill"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-item">
+                            <i class="bi bi-box-seam"></i>
+                            <span>Órdenes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-item">
+                            <i class="bi bi-bag"></i>
+                            <span>Productos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-item">
+                            <i class="bi bi-tag"></i>
+                            <span>Categorías</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-item">
+                            <i class="bi bi-people"></i>
+                            <span>Usuarios</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-item">
+                            <i class="bi bi-bar-chart-line"></i>
+                            <span>Reportes</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-nav-bottom">
+                <ul>
+                    <li>
+                        <a href="#" class="nav-item">
+                            <i class="bi bi-person-circle"></i>
+                            <span>Perfil</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-item link-tienda">
+                            <i class="bi bi-shop"></i>
+                            <span>Tienda</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-item link-logout">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span>Cerrar Sesión</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </nav>
 
         <main class="content">
-            <div class="content-placeholder">
-                
-            </div>
+            <h1>Dashboard</h1>
+            <p>Aquí va el contenido de tu panel de administración.</p>
         </main>
     </div>
+    
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    
     <script src="../js/saludo.js"></script>
 </body>
 </html>
