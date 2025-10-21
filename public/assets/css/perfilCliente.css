@@ -1,0 +1,233 @@
+/*
+ * =================================================================
+ * CSS PARA LA PÁGINA DE PERFIL DE CLIENTE
+ * =================================================================
+ * Inspirado en la paleta de colores y tipografía del CSS de ejemplo.
+ */
+
+/* 1. Importación de Fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap');
+
+/* 2. Reset y Configuraciones Generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    /* Color de fondo principal: Blanco Suave */
+    background-color: #F7F7F7;
+    /* Textura de papel sutil del ejemplo */
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 50 L10 100 L0 100 L0 50 Z M90 0 L90 50 L100 50 L100 0 Z M10 0 L10 50 L0 50 L0 0 Z M90 50 L90 100 L100 100 L100 50 Z' fill='%23e6e6e6' opacity='0.1' /%3E%3C/svg%3E");
+    background-size: 5px 5px;
+    /* Padding para la navbar fija */
+    padding-top: 56px; 
+    color: #333333; /* Gris Oscuro (Texto principal) */
+}
+
+/* 3. Estilos de Tipografía Global */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif; /* Fuente de Encabezado */
+    color: #8B4513; /* Marrón Claro (Color de título) */
+    font-weight: 700;
+}
+
+/* 4. Barra de Navegación (Header) */
+/* Bootstrap 'bg-dark' ya lo maneja, pero podemos asegurar la fuente */
+.navbar {
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar .carrito_logo {
+    height: 24px; /* Ajustado para la navbar */
+    width: auto;
+    margin-right: 8px;
+}
+
+/* 5. Barra Lateral del Perfil */
+#sidebarMenu {
+    position: sticky;
+    top: 56px; /* Altura de la navbar */
+    height: calc(100vh - 56px);
+    overflow-y: auto;
+    background-color: #FFFFFF; /* Fondo blanco limpio para la sidebar */
+    border-right: 1px solid #e0e0e0; /* Borde sutil */
+    padding: 0;
+}
+
+.sidebar-sticky {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-top: 1.5rem;
+}
+
+/* 5.1. Saludo de Bienvenida (Sidebar) */
+.sidebar-sticky h5 {
+    font-size: 1.25rem;
+    padding: 0 1.5rem 1rem;
+    line-height: 1.4;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 1rem;
+}
+
+.sidebar-sticky h5 strong {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #333333; /* Gris Oscuro */
+    font-size: 1.1rem;
+    display: block;
+    margin-top: 4px;
+}
+
+/* 5.2. Navegación (Sidebar) */
+.sidebar-sticky .nav-link {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: #2E8B57; /* Verde Esmeralda (Color de enlace) */
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-left: 4px solid transparent; /* Para el indicador activo */
+    transition: all 0.2s ease;
+}
+
+.sidebar-sticky .nav-link svg {
+    width: 18px;
+    height: 18px;
+    opacity: 0.8;
+}
+
+.sidebar-sticky .nav-link:hover {
+    background-color: #f7f7f7; /* Fondo suave al pasar el mouse */
+    color: #287747; /* Verde más oscuro */
+    border-left-color: #8B4513; /* Marrón */
+}
+
+.sidebar-sticky .nav-link.active {
+    background-color: #2E8B57; /* Verde Esmeralda (Fondo activo) */
+    color: #FFFFFF; /* Texto blanco */
+    border-left-color: #8B4513; /* Marrón */
+    font-weight: 700;
+}
+
+.sidebar-sticky .nav-link.active svg {
+    opacity: 1;
+}
+
+/* 5.3. Bloque de Perfil (Sidebar Footer) */
+.profile-block {
+    margin-top: auto; /* Empuja al fondo */
+    padding: 1.5rem;
+    border-top: 1px solid #212529;
+    background-color: #212529; /* Fondo de textura suave */
+}
+
+.profile-block .dropdown-toggle {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #333333;
+}
+
+.profile-block img {
+    border: 2px solid #8B4513; /* Borde marrón */
+}
+
+/* 6. Área de Contenido Principal */
+main {
+    padding: 2rem 2.5rem;
+}
+
+/* 6.1. Botón Cerrar Sesión (Superior Derecha) */
+main .btn-outline-danger {
+    /* Sobrescribimos Bootstrap para que use nuestra fuente */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    border-width: 2px;
+    border-radius: 20px; /* Más redondeado */
+}
+
+/* 6.2. Títulos de Sección (Main) */
+main .h2, main .h3 {
+    border-bottom: 2px solid #8B4513; /* Borde marrón */
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+/* 6.3. Tabla (Historial de Compras) */
+.table-responsive {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden; /* Para que el radius afecte a la tabla */
+    box-shadow: 0 2px 8px rgba(46,139,87,0.08); /* Sombra verde sutil */
+}
+
+.table {
+    margin-bottom: 0; /* El responsive wrapper ya tiene margen */
+}
+
+.table thead th {
+    font-family: 'Playfair Display', serif;
+    background-color: #8B4513; /* Marrón */
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: 400;
+    border-color: #6a360f;
+    vertical-align: middle;
+}
+
+.table tbody tr:nth-of-type(odd) {
+    background-color: #FFFFFF; /* Fondo blanco para filas impares */
+}
+.table tbody tr:nth-of-type(even) {
+    background-color: #F7F7F7; /* Fondo suave para filas pares */
+}
+
+.table-hover tbody tr:hover {
+    background-color: #e6f7ee; /* Verde muy claro al pasar el mouse */
+    color: #2E8B57;
+}
+
+.table td, .table th {
+    vertical-align: middle;
+    padding: 0.9rem;
+}
+
+/* 6.4. Lista (Historial de Contactos) */
+.list-group-item {
+    background-color: #FFFFFF;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 10px;
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 1px 4px rgba(46,139,87,0.06); /* Sombra verde sutil */
+    transition: all 0.2s ease-in-out;
+    border-left: 4px solid #8B4513; /* Borde marrón */
+}
+
+.list-group-item:hover {
+    border-left-color: #2E8B57; /* Borde verde al pasar el mouse */
+    transform: translateY(-2px); /* Pequeño efecto de elevación */
+    box-shadow: 0 4px 10px rgba(46,139,87,0.1);
+}
+
+.list-group-item h5 {
+    color: #2E8B57; /* Título del mensaje en verde */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.list-group-item p {
+    color: #333333;
+    font-size: 0.95rem;
+}
+
+.list-group-item small {
+    font-weight: 500;
+}

@@ -4,7 +4,7 @@ import {collection, addDoc} from "firebase/firestore";
 export async function addUser(usUARIO){
     try {
         const docRef = await addDoc(collection(db, "usuario"), {
-            ...user, 
+            ...usUARIO, 
             createdAt: new Date(),
 
         });
