@@ -57,3 +57,14 @@ export function validarTelefono(telefono){
         return console.log("Error, el Numero telefonico debe estar entre 0 y 10 digitos, y deben ser numeros...")
     }
 }
+
+export function validarEdad(fechaNacimiento) {
+    const hoy = new Date();
+    const fechaNac = new Date(fechaNacimiento);
+    let edad = hoy.getFullYear() - fechaNac.getFullYear();
+    const mes = hoy.getMonth() - fechaNac.getMonth();
+    if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNac.getDate())) {
+        edad--;
+    }
+    return edad >= 18;
+}

@@ -57,7 +57,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             alert('Inicio de sesión exitoso.');
-            window.location.href = '../page/InterAdmin.html';
+            if (email === 'admin@duoc.cl') {
+                window.location.href = '../page/InterAdmin.html';
+            } else {
+                window.location.href = '../page/perfilCliente.html';
+            }
 
         });
     }
