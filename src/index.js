@@ -1,8 +1,14 @@
 import { addUser } from "./services/firestoreService";
 import { validarEmail, validarRUN, validarEdad } from "./Utils/ValidarUsuario";
 
+function esPaginaEstatica() {
+  return window.location.pathname.includes('.html') || 
+         window.location.pathname.includes('/assets/');
+}
+
 // Esperar a que el DOM esté listo
 document.addEventListener("DOMContentLoaded", () => {
+  
   const form = document.getElementById("formUsuario");
   const runInput = document.getElementById("run");
   const nombreInput = document.getElementById("nombre");
@@ -12,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const mensajeInput = document.getElementById("mensaje");
 
   // Validar si el formulario existe
-  if (!form) return console.log("No se encontró #formUsuario");
+  if (!form) return;
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -32,14 +38,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       await addUser({ run, nombre, correo, clave, fecha });
-      mensajeInput.innerText = "Usuario agregado correctamente";
+      mensajeInput.innerText = "Formulario enviado correctamente";
 
       setTimeout(() => {
-        window.location.href = "/success.html"; // Redirigir a una página de éxito
-      }, 2000);
+        window.location.href = "InicioSesionempresa.html"; // Redirigir a una página de éxito
+      }, 1000);
     } catch (error) {
-      console.error("Error al agregar usuario:", error);
-      mensajeInput.innerText = "Error al agregar usuario. Inténtalo nuevamente.";
+      console.error("Error al guardar usuario:", error);
+      mensajeInput.innerText = "Error al guardar usuario en firebase.";
     }
   });
 });

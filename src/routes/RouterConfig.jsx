@@ -3,12 +3,23 @@ import Exito from "../components/pages/compraExito";
 import ErrorPago from "../components/pages/errorPago";
 import Registro from "../components/pages/Registro"; // Nuevo componente para la página de registro
 
+import Catalogo from "../components/pages/Catalogo";
+import Carrito from "../components/pages/Carrito";
+import Checkout from "../components/pages/Checkout";
+import Exito from "../components/pages/Exito";
+import ErrorPago from "../components/pages/ErrorPago";
+
 const RouterConfig = () => (
     <>  
         <Header />
         <Switch>
             <Route exact path="/" component={() => <StaticPage src="/index.html" />} />
-            <Route path="/registro" component={Registro} /> {/* Usar un componente React */}
+            <Route path="/registro" component={() => {
+                window.location.href = '/assets/page/NuevoUsuario.html';
+                return null;
+            }} />
+            
+            
             <Route path="/perfil-admin" component={PerfilAdmin} />
             <Route path="/perfil-cliente" component={PerfilCliente} />
 
