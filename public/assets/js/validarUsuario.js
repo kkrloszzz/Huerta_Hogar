@@ -267,19 +267,6 @@ function configurarEventos() {
         }
     });
     
-    // Tipo de Usuario - Validación
-    const tipoUsuarioSelect = document.getElementById('tipoUsuario');
-    tipoUsuarioSelect.addEventListener('change', function() {
-        if (this.value === '') {
-            mostrarError(this, 'Debe seleccionar un tipo de usuario');
-            this.classList.add('invalid');
-            this.classList.remove('valid');
-        } else {
-            limpiarError(this);
-            this.classList.add('valid');
-            this.classList.remove('invalid');
-        }
-    });
     
     
     // Envío del formulario

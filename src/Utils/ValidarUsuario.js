@@ -50,13 +50,6 @@ export function validarEmail(email) {
     
     return { valido: true, mensaje: '' };
 }
-export function validarTelefono(telefono){
-    if(telefono >0 && telefono<10){
-        return telefono;
-    }else{
-        return console.log("Error, el Numero telefonico debe estar entre 0 y 10 digitos, y deben ser numeros...")
-    }
-}
 
 export function validarEdad(fechaNacimiento) {
     const hoy = new Date();

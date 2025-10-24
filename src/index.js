@@ -1,5 +1,5 @@
 import { addUser } from "./services/firestoreService";
-import { validarEmail, validarRUN, validarEdad } from "./Utils/ValidarUsuario";
+import { validarRUN, validarEmail, validarEdad } from "./Utils/ValidarUsuario";
 
 function esPaginaEstatica() {
   return window.location.pathname.includes('.html') || 
@@ -31,17 +31,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const fecha = fechaInput.value;
 
     // Validar ingreso correcto de los datos
-    if (!validarRUN(run)) return (mensajeInput.innerText = "RUN incorrecto...");
-    if (!nombre) return (mensajeInput.innerText = "Nombre inválido...");
-    if (!validarEmail(correo)) return (mensajeInput.innerText = "Correo incorrecto...");
-    if (!validarEdad(fecha)) return (mensajeInput.innerText = "Edad inválida...");
+    if (!validarRUN(run)) return mensajeInput.innerText = "RUN incorrecto...";
+    if (!nombre) return mensajeInput.innerText = "Nombre inválido...";
+    if (!validarEmail(correo)) return mensajeInput.innerText = "Correo incorrecto...";
+    if (!validarEdad(fecha)) return mensajeInput.innerText = "Edad inválida...";
 
     try {
       await addUser({ run, nombre, correo, clave, fecha });
       mensajeInput.innerText = "Formulario enviado correctamente";
 
       setTimeout(() => {
-        window.location.href = "InicioSesionempresa.html"; // Redirigir a una página de éxito
+        window.location.href = 
+          correo.toLowerCase()==="admin@duoc.cl" ?
+           `assets/page/InterAdmin.html?nombre=${encodeURIComponent(nombre)}`
+          : `assets/page/PerfilUsuario.html?nombre=${encodeURIComponent(nombre)}`
+          
       }, 1000);
     } catch (error) {
       console.error("Error al guardar usuario:", error);

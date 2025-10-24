@@ -1,10 +1,10 @@
 import { db } from "../config/firebase";
 import {collection, addDoc} from "firebase/firestore";
 
-export async function addUser(usUARIO){
+export async function addUser(user){
     try {
         const docRef = await addDoc(collection(db, "usuario"), {
-            ...usUARIO, 
+            ...user, 
             createdAt: new Date(),
 
         });
