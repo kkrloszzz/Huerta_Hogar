@@ -1,105 +1,135 @@
+a_carrito{
+            color: #2E8B57;
+            text-decoration: none; 
+        }
+        .carrito_logo{
+            height: 35px; 
+            width: auto; 
+            margin-right: 10px; 
+        }
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap');
+        /* Contenido Principal (sin cambios) */
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 60px);
+            padding: 20px;
+            margin-top: 70px; /* Espacio para la navbar fija */
+        }
 
-body {
-    background-color: #F7F7F7;
-    font-family: 'Montserrat', sans-serif;
-    color: #333333;
-}
+        /* ---- Contenedor del Formulario (MODIFICADO) ---- */
+        .form-container {
+            background-color: #e8e8e8;
+            border: 2px solid #999;
+            /* CAMBIO: Padding reducido para que no se coma el espacio.
+              40px es más balanceado que 70px.
+            */
+            padding: 2.5rem; 
+            width: 100%;
+            /* CAMBIO: Ancho máximo aumentado para que el formulario 
+              sea "más grande" como pediste.
+            */
+            max-width: 650px; 
+            border-radius: 8px; /* Añadido: Suaviza los bordes */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Añadido: Sombra sutil */
+        }
 
-.a_carrito{
-    color: #2E8B57;
-    text-decoration: none; 
-}
+        /* ---- Título del Formulario (MODIFICADO) ---- */
+        .form-title {
+            font-family: 'Playfair Display', serif;
+            background-color: #8B4513;
+            color: white;
+            text-align: center;
+            /* CAMBIO: Padding y Font-size aumentados 
+              para que sean proporcionales.
+            */
+            padding: 0.75rem; 
+            font-size: 1.25rem; /* Era 14px */
+            font-weight: normal;
+            /* CAMBIO: Márgenes ajustados al nuevo padding 
+              del .form-container
+            */
+            margin: -2.5rem -2.5rem 2rem -2.5rem;
+        }
 
-.carrito_logo{
-    height: 35px; 
-    width: auto; 
-    margin-right: 10px; 
-}
-.main-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 60px);
-    padding: 20px;
-    margin-top: 70px;
-}
+        /* ---- Grupos de Inputs (MODIFICADO) ---- */
+        .form-group {
+            /* CAMBIO: Margen de 70px era demasiado. 
+              1.5rem (24px) los deja "parejos"
+            */
+            margin-bottom: 1.5rem;
+        }
 
-.form-container {
-    background-color: #e8e8e8;
-    border: 2px solid #999;
-    padding: 30px;
-    width: 100%;
-    max-width: 400px;
-}
+        .form-group label {
+            display: block;
+            /* CAMBIO: Tamaño de letra aumentado (era 12px) */
+            font-size: 0.9rem; 
+            color: #333;
+            margin-bottom: 0.5rem; /* Era 3px */
+            font-weight: 600; /* Añadido: Da más jerarquía */
+        }
 
-.form-title {
-    font-family: 'Playfair Display', serif;
-    background-color: #8B4513;
-    color: white;
-    text-align: center;
-    padding: 8px;
-    margin: -30px -30px 20px -30px;
-    font-size: 14px;
-    font-weight: normal;
-}
+        /* ---- Campos de Input y Textarea (MODIFICADOS) ---- */
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            /* CAMBIO: Se usa padding en vez de 'height' fijo
+              para que el tamaño sea flexible y proporcional.
+            */
+            padding: 0.6rem 0.75rem; 
+            border: 1px solid #999;
+            background-color: white;
+            /* CAMBIO: Tamaño de letra aumentado (era 12px) */
+            font-size: 1rem; 
+            border-radius: 4px; /* Añadido: Bordes suaves */
+        }
 
-.form-group {
-    margin-bottom: 20px;
+        /* Estilo para el <textarea> que añadí */
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical; /* Permite al usuario ajustar la altura */
+        }
 
-}
+        /* Contenedor del botón (sin cambios) */
+        .submit-container {
+            text-align: center;
+            margin-top: 2rem; /* Era 50px */
+        }
 
-.form-group label {
-    display: block;
-    font-size: 12px;
-    color: #333;
-    margin-bottom: 3px;
-}
+        /* ---- Botón de Enviar (MODIFICADO) ---- */
+        .submit-btn {
+            background-color: #2E8B57;
+            color: white;
+            border: 1px solid #999;
+            /* CAMBIO: Padding y Font-size aumentados */
+            padding: 0.75rem 2rem; 
+            font-size: 1rem; /* Era 12px */
+            cursor: pointer;
+            font-weight: 700;
+            border-radius: 4px; /* Añadido: Bordes suaves */
+            transition: background-color 0.2s ease; /* Añadido: Transición suave */
+        }
 
-.form-group input,
-.form-group select {
-    width: 100%;
-    padding: 6px 8px;
-    border: 1px solid #999;
-    background-color: white;
-    font-size: 12px;
-    height: 24px;
-}
+        .submit-btn:hover {
+            background-color: #25a25a;
+        }
 
-.form-group select {
-    height: 26px;
-}
+        .submit-btn:active {
+            background-color: #1e8a4c;
+        }
 
-.form-row {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 15px;
-}
+        /* Mensaje de Error (sin cambios) */
+        .error-message { 
+            color: red; 
+            font-size: 0.9em; 
+            padding-top: 3px; 
+        }
 
-.form-row .form-group {
-    flex: 1;
-    margin-bottom: 0;
-}
-
-.submit-container {
-    text-align: center;
-    margin-top: 25px;
-}
-
-.submit-btn {
-    background-color: #2E8B57;
-    color: white;
-    border: 1px solid #999;
-    padding: 6px 20px;
-    font-size: 12px;
-    cursor: pointer;
-}
-
-.submit-btn:hover {
-    background-color: #25a25a;
-}
-
-.submit-btn:active {
-    background-color: #1e8a4c;
-}
+        .campo-motivo {
+            padding: 0.75rem 1rem;
+            font-size: 1rem;        
+            width: 100%;
+        }
+        
+        
