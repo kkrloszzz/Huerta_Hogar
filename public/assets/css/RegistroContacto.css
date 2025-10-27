@@ -131,5 +131,73 @@ a_carrito{
             font-size: 1rem;        
             width: 100%;
         }
+
+
+        body {
+            background-color: #f8f9fa; /* Un fondo gris muy claro */
+        }
+
+        /* El cuadrito negro del logo en la navbar */
+        .navbar-logo-box {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: #333;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        /* El placeholder con la "X" */
+        .mockup-placeholder {
+            border: 2px solid #ced4da; /* Borde gris */
+            background-color: #f1f3f5; /* Fondo un poco más oscuro */
+            position: relative;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        /* Las líneas de la "X" */
+        .mockup-placeholder::before,
+        .mockup-placeholder::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background-color: #ced4da;
+        }
+        .mockup-placeholder::before {
+            transform: skewX(30deg);
+        }
+        .mockup-placeholder::after {
+            transform: skewX(-30deg);
+        }
+
+        /* Estilo para las etiquetas del formulario (pequeñas, mayúsculas) */
+        .form-label-custom {
+            font-size: 0.75rem;       /* Texto pequeño */
+            font-weight: 700;         /* Negrita */
+            text-transform: uppercase;/* MAYÚSCULAS */
+            color: #6c757d;           /* Color gris */
+            margin-bottom: 0.25rem;   /* Menos espacio */
+            display: block;           /* Asegura que esté en su propia línea */
+            text-align: left;         /* Alineado a la izquierda */
+        }
         
-        
+        /* El borde del botón de enviar */
+        .btn-enviar {
+            border: 1px solid #6c757d; /* Borde gris */
+            padding: 0.5rem 2rem;     /* Más ancho */
+        }
+
+        div.huerta-hogar-logo {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 1.5rem; 
+        }
+
+        img.huerta-hogar-logo {
+            width: 500px;
+            height: auto;
+        }
+                
