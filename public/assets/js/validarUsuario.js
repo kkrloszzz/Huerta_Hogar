@@ -109,11 +109,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const inputs = form.querySelectorAll('input, select');
     
     // Actualizar los campos del formulario según los requerimientos
-    actualizarFormulario();
+    // actualizarFormulario();
     
     // Configurar eventos
     configurarEventos();
 });
+
+function actualizarComunas() {
+    // Placeholder function to resolve error. Add implementation later.
+}
+
 
 function actualizarFormulario() {
     const form = document.querySelector('.user-form');
