@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="../css/NuevoUsuario.css">
 </head>
 <body>
-  <header>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <div class="container-fluid">
             <div class="d-flex align-items-center">
                 <a class="navbar-brand me-2" href="#">Huerta Hogar</a>
@@ -50,65 +50,65 @@
             </div>
             </div>
         </nav>
-  </header>
+    </header>
 
-  <div class="main-content">
-      <div class="logo-container">
-          <div class="logo-image"><img src="../Img/Logo_Empresa.jpg" alt="Logo" class="l_empresa"></div>
-          <h1>Huerto Hogar</h1>
-          <h2>Registro de Usuario</h2>
-      </div>
+    <div class="main-content">
+        <div class="logo-container">
+            <div class="logo-image"><img src="../Img/Logo_Empresa.jpg" alt="Logo" class="l_empresa"></div>
+            <h1>Huerto Hogar</h1>
+            <h2>Registro de Usuario</h2>
+        </div>
 
-      <div class="form-container">
-          <h3 class="form-title">Crear nueva cuenta</h3>
-          <form id="formUsuario" class="user-form">
-              <div class="form-group">
-                  <label for="run">RUT *</label>
-                  <input type="text" id="run" name="rut" placeholder="12.345.678-9" required>
-              </div>
+        <div class="form-container">
+            <h3 class="form-title">Crear nueva cuenta</h3>
+            <form id="formUsuario" class="user-form">
+                <div class="form-group">
+                    <label for="rut">RUT *</label>
+                    <input type="text" id="rut" name="rut" placeholder="12.345.678-9" required>
+                </div>
 
-              <div class="form-row">
-                  <div class="form-group">
-                      <label for="nombre">Nombre *</label>
-                      <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
-                  </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nombre">Nombre *</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+                    </div>
 
-                  <div class="form-group">
-                      <label for="apellido">Apellido *</label>
-                      <input type="text" id="apellido" name="apellido" placeholder="Apellido" required>
-                  </div>
-              </div>
+                    <div class="form-group">
+                        <label for="apellidos">Apellido *</label>
+                        <input type="text" id="apellidos" name="apellidos" placeholder="Apellido" required>
+                    </div>
+                </div>
 
-              <div class="form-group">
-                  <label for="correo">Correo Electrónico *</label>
-                  <input type="email" id="correo" name="correo" placeholder="correo@ejemplo.com" required>
-              </div>
+                <div class="form-group">
+                    <label for="correo">Correo Electrónico *</label>
+                    <input type="email" id="correo" name="correo" placeholder="correo@ejemplo.com" required>
+                </div>
 
-              <div class="form-group">
-                  <label for="fecha">Fecha de Nacimiento *</label>
-                  <input type="date" id="fecha" name="fechaNacimiento" required>
-              </div>
+                <div class="form-group">
+                    <label for="fechaNacimiento">Fecha de Nacimiento *</label>
+                    <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+                </div>
 
-              <div class="form-group">
-                  <label for="clave">Contraseña *</label>
-                  <input type="password" id="clave" name="contrasena" placeholder="Contraseña" required>
-              </div>
+                <div class="form-group">
+                    <label for="clave">Contraseña *</label>
+                    <input type="password" id="clave" name="contrasena" placeholder="Contraseña" required>
+                </div>
 
-              <div class="form-group">
-                  <label for="confirmarContrasena">Confirmar Contraseña *</label>
-                  <input type="password" id="confirmarContrasena" name="confirmarContrasena" placeholder="Confirmar contraseña" required>
-              </div>
-              
-              <p id="mensaje" style="color: red;"></p>
+                <div class="form-group">
+                    <label for="confirmarContrasena">Confirmar Contraseña *</label>
+                    <input type="password" id="confirmarContrasena" name="confirmarContrasena" placeholder="Confirmar contraseña" required>
+                </div>
+                
+                <p id="mensaje" style="color: red;"></p>
 
-              <button type="submit" class="submit-btn">Registrarse</button>
+                <button type="submit" class="submit-btn">Registrarse</button>
 
-              <div class="login-link">
-                  ¿Ya tienes cuenta? <a href="../page/InicioSesionempresa.html">Inicia sesión</a>
-              </div>
-          </form>
-      </div>
-  </div>
-  <script src="/static/js/bundle.js"></script>
+                <div class="login-link">
+                    ¿Ya tienes cuenta? <a href="../page/InicioSesionempresa.html">Inicia sesión</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="../js/validarUsuario.js"></script>
 </body>
 </html>

@@ -1,64 +1,67 @@
-// Sistema de validación para formulario de Nuevo Usuario
+// =======================================================
+// Sistema de Validación (Nuevo Usuario y Login)
 // Escuela de Administración y Negocios
+// =======================================================
 
-// Datos de regiones y comunas de Chile
+// Nota: Se requiere tener cargadas las librerías de Firebase en el HTML para la sección de Login.
 
-// Validador de RUT chileno
-function validarRUT(rut) {
+// =======================================================
+// 1. FUNCIONES UTILITARIAS GENERALES
+// =======================================================
+
+// Validador de RUN chileno
+function validarRUN(run) {
     // Eliminar puntos y guiones, convertir a mayúscula
-    rut = rut.replace(/\./g, '').replace(/-/g, '').toUpperCase();
-    
-    // Validar longitud
-    if (rut.length < 7 || rut.length > 9) {
+    run = run.replace(/\./g, '').replace(/-/g, '').toUpperCase();
+
+    // Validar longitud (7 a 9 caracteres)
+    if (run.length < 7 || run.length > 9) {
         return false;
     }
     
     // Separar número y dígito verificador
-    const rutNumero = rut.slice(0, -1);
-    const digitoVerificador = rut.slice(-1);
-    
+    const runNumero = run.slice(0, -1);
+    const digitoVerificador = run.slice(-1);
+
     // Validar que el número sea numérico
-    if (!/^\d+$/.test(rutNumero)) {
+    if (!/^\d+$/.test(runNumero)) {
         return false;
     }
     
-    // Algoritmo de validación del dígito verificador
+    // Algoritmo de validación del dígito verificador (Módulo 11)
     let suma = 0;
     let multiplicador = 2;
-    
-    for (let i = rutNumero.length - 1; i >= 0; i--) {
-        suma += parseInt(rutNumero[i]) * multiplicador;
+
+    for (let i = runNumero.length - 1; i >= 0; i--) {
+        suma += parseInt(runNumero[i]) * multiplicador;
         multiplicador = multiplicador === 7 ? 2 : multiplicador + 1;
     }
     
     const resto = suma % 11;
-    const digitoCalculado = resto < 2 ? resto.toString() : resto === 2 ? '0' : (11 - resto).toString();
-    const digitoEsperado = digitoCalculado === '10' ? 'K' : digitoCalculado;
+    const digitoCalculado = (11 - resto).toString();
+    
+    // El dígito verificador real es 10->K, 11->0, y 1-9 es el número.
+    const digitoEsperado = digitoCalculado === '10' ? 'K' : digitoCalculado === '11' ? '0' : digitoCalculado;
     
     return digitoVerificador === digitoEsperado;
 }
 
-// Validador de correo electrónico
-function validarTelefono(telefono){
-    if(telefono >0 && telefono<10){
-        return telefono;
-    }else{
-        return console.log("Error, el Numero telefonico debe estar entre 0 y 10 digitos, y deben ser numeros...")
-    }
-}
+// Validador de correo electrónico (AHORA USA SOLO LOS DOMINIOS: @duoc.cl, @profesor.duoc.cl y @gmail.com)
 function validarEmail(email) {
-    const dominiosPermitidos = ['@duocuc.cl', '@profesor.duocuc.cl', '@gmail.com'];
+    // 1. Regex de formato
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    
     if (!emailRegex.test(email)) {
-        return { valido: false, mensaje: 'Formato de correo inválido' };
+        return { valido: false, mensaje: 'Formato de correo inválido (ej: correo@dominio.cl)' };
     }
     
-    const tieneRut = dominiosPermitidos.some(dominio => email.endsWith(dominio));
-    if (!tieneRut) {
+    // 2. Validación de dominios permitidos (código implementado por el usuario)
+    const allowedDomains = ['@duoc.cl', '@profesor.duoc.cl', '@gmail.com'];
+    const domainValid = allowedDomains.some(domain => email.toLowerCase().endsWith(domain));
+    
+    if (!domainValid) {
         return { 
             valido: false, 
-            mensaje: 'Solo se permiten correos de @duocuc.cl, @profesor.duocuc.cl y @gmail.com' 
+            mensaje: 'Solo se permiten correos @duoc.cl, @profesor.duoc.cl y @gmail.com.' 
         };
     }
     
@@ -67,14 +70,14 @@ function validarEmail(email) {
 
 // Función para mostrar errores
 function mostrarError(input, mensaje) {
-    // Remover error anterior si existe
+    // Limpiar error anterior
     const errorAnterior = input.parentNode.querySelector('.error-message');
     if (errorAnterior) {
         errorAnterior.remove();
     }
     
+    // Aplicar estilos y mensaje si hay error
     if (mensaje) {
-        // Crear elemento de error
         const errorDiv = document.createElement('div');
         errorDiv.className = 'error-message';
         errorDiv.textContent = mensaje;
@@ -83,204 +86,124 @@ function mostrarError(input, mensaje) {
         errorDiv.style.marginTop = '5px';
         errorDiv.style.fontWeight = '500';
         
-        // Agregar estilo de error al input
         input.style.borderColor = '#e74c3c';
         input.style.backgroundColor = '#ffeaea';
         
-        // Insertar después del input
         input.parentNode.insertBefore(errorDiv, input.nextSibling);
     } else {
-        // Remover estilo de error
+        // Remover estilo de error si no hay mensaje (limpiar)
         input.style.borderColor = '#27ae60';
         input.style.backgroundColor = '#eafaf1';
+        input.classList.remove('invalid'); 
+        input.classList.add('valid');
     }
 }
 
 // Función para limpiar errores
 function limpiarError(input) {
     mostrarError(input, '');
+    input.classList.remove('valid', 'invalid');
+    input.style.borderColor = ''; // Restablecer a estilos CSS normales
+    input.style.backgroundColor = '';
 }
 
-
-
-// Función de inicialización cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('.user-form');
-    const inputs = form.querySelectorAll('input, select');
-    
-    // Actualizar los campos del formulario según los requerimientos
-    actualizarFormulario();
-    
-    // Configurar eventos
-    configurarEventos();
-});
-
+// Función placeholder (la dejé solo para evitar un ReferenceError si alguien la llama)
 function actualizarFormulario() {
-    const form = document.querySelector('.user-form');
-    
-    // Actualizar el HTML del formulario
-    form.innerHTML = `
-        <label class="required">RUT</label>
-        <input type="text" id="rut" name="rut" placeholder="Ej: 19011022K" maxlength="9">
-        
-        <label class="required">Nombre</label>
-        <input type="text" id="nombre" name="nombre" placeholder="Ingrese nombre" maxlength="50">
-        
-        <label class="required">Apellidos</label>
-        <input type="text" id="apellidos" name="apellidos" placeholder="Ingrese apellidos" maxlength="100">
-        
-        <label class="required">Correo</label>
-        <input type="email" id="correo" name="correo" placeholder="ejemplo@duoc.cl" maxlength="100">
-        
-        <label>Fecha de Nacimiento</label>
-        <input type="date" id="fechaNacimiento" name="fechaNacimiento">
-        
-        <label class="required">Tipo de Usuario</label>
-        <select id="tipoUsuario" name="tipoUsuario">
-            <option value="">Seleccione tipo de usuario</option>
-            <option value="administrador">Administrador</option>
-            <option value="cliente">Cliente</option>
-            <option value="vendedor">Vendedor</option>
-        </select>
-        
-        
-        <button type="submit">Registrar Usuario</button>
-    `;
-    
-    // Agregar estilos para campos requeridos
-    const style = document.createElement('style');
-    style.textContent = `
-        .required::after {
-            content: " *";
-            color: #e74c3c;
-            font-weight: bold;
-        }
-        .error-message {
-            animation: fadeIn 0.3s ease-in;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        input.valid, select.valid, textarea.valid {
-            border-color: #27ae60 !important;
-            background-color: #eafaf1 !important;
-        }
-        input.invalid, select.invalid, textarea.invalid {
-            border-color: #e74c3c !important;
-            background-color: #ffeaea !important;
-        }
-    `;
-    document.head.appendChild(style);
+    console.log("Función actualizarFormulario() ejecutada.");
 }
 
-function configurarEventos() {
+// =======================================================
+// 2. LÓGICA DE FORMULARIO: NUEVO USUARIO
+// =======================================================
+
+function configurarEventosNuevoUsuario() {
     const form = document.querySelector('.user-form');
-    
-    // RUT - Validación en tiempo real
-    const rutInput = document.getElementById('rut');
-    rutInput.addEventListener('input', function() {
+    // Si el formulario no existe en la página, se termina aquí
+    if (!form) return; 
+
+    // Obtener referencias de inputs (IDs corregidos para calzar con NuevoUsuario.html)
+    const runInput = document.getElementById('run');
+    const nombreInput = document.getElementById('nombre');
+    const apellidosInput = document.getElementById('apellidos');
+    const correoInput = document.getElementById('correo');
+    const fechaNacimientoInput = document.getElementById('fechaNacimiento'); // Corregido de 'fecha'
+
+    // RUN - Validación en tiempo real
+    if (runInput) runInput.addEventListener('input', function() {
         let valor = this.value.replace(/[^0-9kK]/g, '').toUpperCase();
         this.value = valor;
         
         if (valor.length >= 7) {
-            if (validarRUT(valor)) {
+            if (validarRUN(valor)) {
                 limpiarError(this);
-                this.classList.add('valid');
-                this.classList.remove('invalid');
             } else {
-                mostrarError(this, 'RUT inválido');
-                this.classList.add('invalid');
-                this.classList.remove('valid');
+                mostrarError(this, 'RUN inválido');
             }
         } else if (valor.length > 0) {
-            mostrarError(this, 'RUT debe tener entre 7 y 9 caracteres');
-            this.classList.add('invalid');
-            this.classList.remove('valid');
+            mostrarError(this, 'RUN debe tener entre 7 y 9 caracteres');
         } else {
             limpiarError(this);
-            this.classList.remove('valid', 'invalid');
         }
     });
     
     // Nombre - Validación
-    const nombreInput = document.getElementById('nombre');
-    nombreInput.addEventListener('input', function() {
+    if (nombreInput) nombreInput.addEventListener('input', function() {
         const valor = this.value.trim();
         if (valor.length === 0) {
             mostrarError(this, 'El nombre es requerido');
-            this.classList.add('invalid');
-            this.classList.remove('valid');
         } else if (valor.length > 50) {
             mostrarError(this, 'El nombre no puede exceder 50 caracteres');
-            this.classList.add('invalid');
-            this.classList.remove('valid');
         } else {
             limpiarError(this);
-            this.classList.add('valid');
-            this.classList.remove('invalid');
         }
     });
     
     // Apellidos - Validación
-    const apellidosInput = document.getElementById('apellidos');
-    apellidosInput.addEventListener('input', function() {
+    if (apellidosInput) apellidosInput.addEventListener('input', function() {
         const valor = this.value.trim();
         if (valor.length === 0) {
             mostrarError(this, 'Los apellidos son requeridos');
-            this.classList.add('invalid');
-            this.classList.remove('valid');
         } else if (valor.length > 100) {
             mostrarError(this, 'Los apellidos no pueden exceder 100 caracteres');
-            this.classList.add('invalid');
-            this.classList.remove('valid');
         } else {
             limpiarError(this);
-            this.classList.add('valid');
-            this.classList.remove('invalid');
         }
     });
     
-    // Correo - Validación
-    const correoInput = document.getElementById('correo');
-    correoInput.addEventListener('input', function() {
+    // Correo - Validación (Con la lógica de dominio implementada)
+    if (correoInput) correoInput.addEventListener('input', function() {
         const valor = this.value.trim();
         if (valor.length === 0) {
             mostrarError(this, 'El correo es requerido');
-            this.classList.add('invalid');
-            this.classList.remove('valid');
         } else if (valor.length > 100) {
             mostrarError(this, 'El correo no puede exceder 100 caracteres');
-            this.classList.add('invalid');
-            this.classList.remove('valid');
         } else {
             const validacion = validarEmail(valor);
             if (validacion.valido) {
                 limpiarError(this);
-                this.classList.add('valid');
-                this.classList.remove('invalid');
             } else {
-                mostrarError(this, validacion.mensaje);
-                this.classList.add('invalid');
-                this.classList.remove('valid');
+                // Muestra el mensaje de error de dominio o formato
+                mostrarError(this, validacion.mensaje); 
             }
         }
     });
-    
-    
     
     // Envío del formulario
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Validar todos los campos requeridos
+        // Se asegura que los inputs estén definidos antes de usarlos
+        if (!runInput || !nombreInput || !apellidosInput || !correoInput || !fechaNacimientoInput) {
+            console.error('Faltan elementos en el formulario de Nuevo Usuario. Revisa los IDs.');
+            return;
+        }
+
         const campos = [
-            { input: rutInput, nombre: 'RUT' },
+            { input: runInput, nombre: 'RUN' },
             { input: nombreInput, nombre: 'Nombre' },
             { input: apellidosInput, nombre: 'Apellidos' },
             { input: correoInput, nombre: 'Correo' },
-            { input: tipoUsuarioSelect, nombre: 'Tipo de Usuario' },
-            
+            { input: fechaNacimientoInput, nombre: 'Fecha de Nacimiento' },
         ];
         
         let formularioValido = true;
@@ -289,195 +212,190 @@ function configurarEventos() {
         campos.forEach(campo => {
             const valor = campo.input.value.trim();
             
+            // Forzar validación de campo requerido
             if (valor === '') {
                 mostrarError(campo.input, `${campo.nombre} es requerido`);
-                campo.input.classList.add('invalid');
-                campo.input.classList.remove('valid');
                 formularioValido = false;
                 errores.push(campo.nombre);
+            } else {
+                limpiarError(campo.input); 
             }
         });
         
-        // Validaciones específicas
-        if (rutInput.value && !validarRUT(rutInput.value)) {
+        // Re-validaciones específicas 
+        if (runInput.value && !validarRUN(runInput.value)) {
+            mostrarError(runInput, 'RUN inválido');
             formularioValido = false;
-            errores.push('RUT inválido');
+            errores.push('RUN inválido');
         }
         
-        if (correoInput.value && !validarEmail(correoInput.value).valido) {
+        const validacionCorreo = validarEmail(correoInput.value);
+        if (correoInput.value && !validacionCorreo.valido) {
+            // Muestra el error de dominio o formato al hacer submit
+            mostrarError(correoInput, validacionCorreo.mensaje); 
             formularioValido = false;
             errores.push('Correo inválido');
         }
         
+        // Lógica final del formulario
         if (formularioValido) {
             // Recopilar datos del formulario
             const datosUsuario = {
-                rut: rutInput.value,
+                run: runInput.value,
                 nombre: nombreInput.value.trim(),
                 apellidos: apellidosInput.value.trim(),
                 correo: correoInput.value.trim(),
-                fechaNacimiento: document.getElementById('fechaNacimiento').value,
-                tipoUsuario: tipoUsuarioSelect.value,
-                region: regionSelect.options[regionSelect.selectedIndex].text,
-                comuna: comunaSelect.options[comunaSelect.selectedIndex].text,
-                direccion: direccionInput.value.trim()
+                fechaNacimiento: fechaNacimientoInput.value 
             };
             
             console.log('Datos del usuario:', datosUsuario);
             
-            // Mostrar mensaje de éxito
             alert('Usuario registrado exitosamente!\n\n' +
                   'Datos registrados:\n' +
-                  `RUT: ${datosUsuario.rut}\n` +
+                  `RUN: ${datosUsuario.run}\n` +
                   `Nombre: ${datosUsuario.nombre} ${datosUsuario.apellidos}\n` +
-                  `Correo: ${datosUsuario.correo}\n` +
-                  `Tipo: ${datosUsuario.tipoUsuario}\n` +
-                  `Ubicación: ${datosUsuario.comuna}, ${datosUsuario.region}`);
+                  `Correo: ${datosUsuario.correo}`);
             
             // Aquí podrías enviar los datos a un servidor
             // enviarDatosServidor(datosUsuario);
             
         } else {
-            alert('Por favor, corrija los siguientes errores:\n- ' + errores.join('\n- '));
+            alert('Por favor, corrija los errores marcados.');
         }
     });
 }
-//----------------------------------------------------------------//
-// Función para enviar datos al servidor (placeholder)
-function enviarDatosServidor(datos) {
-    // Implementar llamada AJAX o fetch API según sea necesario
-    console.log('Enviando datos al servidor:', datos);
-    
-    /*
-    fetch('/api/usuarios', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(datos)
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Usuario creado:', data);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-    */
-}
 
-// Funciones utilitarias adicionales
-function limpiarFormulario() {
-    const form = document.querySelector('.user-form');
-    form.reset();
-    
-    // Limpiar todos los errores y estilos
-    const inputs = form.querySelectorAll('input, select, textarea');
-    inputs.forEach(input => {
-        limpiarError(input);
-        input.classList.remove('valid', 'invalid');
-    });
-    
-    // Deshabilitar select de comuna
-    document.getElementById('comuna').disabled = true;
-}
+// =======================================================
+// 3. LÓGICA DE FORMULARIO: LOGIN (FIREBASE)
+// =======================================================
 
-// Exportar funciones para uso externo si es necesario
-window.huertaHogar = {
-    validarRUT,
-    validarEmail,
-    limpiarFormulario,
-    actualizarComunas
-};
-//------------------------------------------------------//
-document.addEventListener("DOMContentLoaded", () => {
+function configurarLoginFirebase() {
     const form = document.getElementById("formLogin");
+    
+    // Si el formulario de Login NO existe, salimos
+    if (!form) return; 
+    
     const correoInput = document.getElementById("correoLogin");
     const claveInput = document.getElementById("claveLogin");
     const mensaje = document.getElementById("mensajeLogin");
 
-    if (!form) return console.error("No se encontró #formLogin");
-
-    // Inicializar Firebase
-    const firebaseConfig = {
-    apiKey: "AIzaSyAkqjjPbCFCi3CraWB3FIPSeq2fiLHBE_w",
-    authDomain: "tienda-huerta-hogar.firebaseapp.com",
-    projectId: "tienda-huerta-hogar",
-    storageBucket: "tienda-huerta-hogar.appsup.com", //actualizar linea
-    messagingSenderId: "29884421309",
-    appId: "1:29884421309:web:eb7268e124949456d8d3d4",
-    measurementId: "G-Q0GXZML5T1"
-  };
-
-    if (!firebase.apps?.length) {
-        firebase.initializeApp(firebaseConfig);
+    // Revisión de elementos clave
+    if (!correoInput || !claveInput || !mensaje) {
+        return console.error("Faltan elementos con ID para la lógica de Login (correoLogin, claveLogin o mensajeLogin).");
     }
 
-    const auth = firebase.auth(); //autentication FIrebase
-    const db = firebase.firestore(); // apunta a la coleccion usuario
+    // Inicializar Firebase (Se asume que las librerías están cargadas globalmente)
+    const firebaseConfig = {
+        apiKey: "AIzaSyAkqjjPbCFCi3CraWB3FIPSeq2fiLHBE_w",
+        authDomain: "tienda-huerta-hogar.firebaseapp.com",
+        projectId: "tienda-huerta-hogar",
+        storageBucket: "tienda-huerta-hogar.appsup.com",
+        messagingSenderId: "29884421309",
+        appId: "1:29884421309:web:eb7268e124949456d8d3d4",
+        measurementId: "G-Q0GXZML5T1"
+    };
+
+    if (typeof firebase !== 'undefined' && !firebase.apps?.length) {
+        firebase.initializeApp(firebaseConfig);
+    } else if (typeof firebase === 'undefined') {
+        console.error("Firebase no está cargado. Asegúrate de incluir las librerías de Firebase en el HTML.");
+        return;
+    }
+
+    const auth = firebase.auth(); 
+    const db = firebase.firestore(); 
 
     form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    mensaje.innerText = "";
+        e.preventDefault();
+        mensaje.innerText = "";
 
-    const correo = correoInput.value.trim().toLowerCase();
-    const clave = claveInput.value;
+        const correo = correoInput.value.trim().toLowerCase();
+        const clave = claveInput.value;
 
-    if (!correo || !clave) {
-        mensaje.style.color = "red";
-        mensaje.innerText = "Debes completar correo y clave";
-        return;
-    }
+        if (!correo || !clave) {
+            mensaje.style.color = "red";
+            mensaje.innerText = "Debes completar correo y clave";
+            return;
+        }
 
-    // Admin: autenticar con Firebase Auth
-    if (correo === "admin@duoc.cl") {
+        // Admin: autenticar con Firebase Auth
+        if (correo === "admin@duoc.cl") {
+            try {
+                await auth.signInWithEmailAndPassword(correo, clave);
+                const usuario = { nombre: "Administrador", correo, rol: "admin" };
+                localStorage.setItem("usuario", JSON.stringify(usuario));
+
+                mensaje.style.color = "green";
+                mensaje.innerText = "Bienvenido Administrador, redirigiendo...";
+                setTimeout(() => {
+                    window.location.href = `perfilAdmin.html`;
+                }, 1000);
+            } catch (error) {
+                console.error("Error login admin:", error);
+                mensaje.style.color = "red";
+                mensaje.innerText = "Credenciales incorrectas para administrador";
+            }
+            return;
+        }
+
+        // Cliente: validar desde Firestore
         try {
-            await auth.signInWithEmailAndPassword(correo, clave);
-            // Guardar usuario en localStorage
-            const usuario = { nombre: "Administrador", correo, rol: "admin" };
-            localStorage.setItem("usuario", JSON.stringify(usuario));
+            const query = await db.collection("usuario")
+                .where("correo", "==", correo)
+                .where("clave", "==", clave)
+                .get();
 
-            mensaje.style.color = "green";
-            mensaje.innerText = "Bienvenido Administrador, redirigiendo...";
-            setTimeout(() => {
-                window.location.href = `perfilAdmin.html`;
-            }, 1000);
+            if (!query.empty) {
+                const userData = query.docs[0].data();
+                const nombre = userData.nombre || correo;
+
+                const usuario = { nombre, correo, rol: "cliente" };
+                localStorage.setItem("usuario", JSON.stringify(usuario));
+
+                mensaje.style.color = "green";
+                mensaje.innerText = "Bienvenido cliente, redirigiendo...";
+                setTimeout(() => {
+                    window.location.href = `perfilCliente.html`;
+                }, 1000);
+            } else {
+                mensaje.style.color = "red";
+                mensaje.innerText = "Correo o clave incorrectos";
+            }
         } catch (error) {
-            console.error("Error login admin:", error);
+            console.error("Error login cliente:", error);
             mensaje.style.color = "red";
-            mensaje.innerText = "Credenciales incorrectas para administrador";
+            mensaje.innerText = "Error al verificar usuario";
         }
-        return;
-    }
+    });
+}
 
-    // Cliente: validar desde Firestore
-    try {
-        const query = await db.collection("usuario")
-            .where("correo", "==", correo)
-            .where("clave", "==", clave)
-            .get();
 
-        if (!query.empty) {
-            const userData = query.docs[0].data();
-            const nombre = userData.nombre || correo;
+// =======================================================
+// 4. INICIALIZACIÓN PRINCIPAL (DOMContentLoaded)
+// =======================================================
 
-            // Guardar usuario en localStorage con rol real
-            const usuario = { nombre, correo, rol: "cliente" };
-            localStorage.setItem("usuario", JSON.stringify(usuario));
-
-            mensaje.style.color = "green";
-            mensaje.innerText = "Bienvenido cliente, redirigiendo...";
-            setTimeout(() => {
-                window.location.href = `perfilCliente.html`;
-            }, 1000);
-        } else {
-            mensaje.style.color = "red";
-            mensaje.innerText = "Correo o clave incorrectos";
-        }
-    } catch (error) {
-        console.error("Error login cliente:", error);
-        mensaje.style.color = "red";
-        mensaje.innerText = "Error al verificar usuario";
+// Función que inicia el script para el formulario de Nuevo Usuario
+document.addEventListener('DOMContentLoaded', function() {
+    const formNuevoUsuario = document.querySelector('.user-form');
+    if (formNuevoUsuario) {
+        const inputs = formNuevoUsuario.querySelectorAll('input, select'); 
+        actualizarFormulario(); 
+        configurarEventosNuevoUsuario();
+        console.log("Sistema de Nuevo Usuario inicializado.");
     }
 });
+
+// Función que inicia el script para el formulario de Login (#formLogin)
+document.addEventListener("DOMContentLoaded", () => {
+    const formLogin = document.getElementById("formLogin");
+    if (formLogin) {
+        configurarLoginFirebase(); 
+        console.log("Sistema de Login inicializado.");
+    }
 });
+
+// Exportar funciones para uso externo si es necesario
+window.huertaHogar = {
+    validarRUN,
+    validarEmail,
+};
