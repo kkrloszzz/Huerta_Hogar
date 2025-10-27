@@ -1,585 +1,135 @@
-/* CARITO.CSS - Estilos para el sistema de carrito de compras */
+/*
+ * =========================================
+ * 1. REGLA PARA NAVEGACIÓN NEGRA (Ambas barras)
+ * =========================================
+ */
 
-/* Contenedor principal del carrito */
-.carrito-container {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 40px;
-    align-items: start;
-  }
-  
-  /* Sección de ofertas */
-  .ofertas-section {
-    grid-column: 1;
-  }
-  
-  /* Resumen del carrito */
-  .resumen-carrito {
-    grid-column: 2;
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 20px;
-  }
-  
-  /* Contenedor de tabla del carrito */
-  .tabla-carrito-container {
-    max-height: 400px;
-    overflow-y: auto;
-    margin-bottom: 20px;
-    border: 1px solid #e9ecef;
-    border-radius: 8px;
-  }
-  
-  /* Tabla del carrito */
-  .tabla-carrito {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
-  }
-  
-  .tabla-carrito th {
-    background: #f8f9fa;
-    padding: 15px 10px;
-    text-align: left;
-    font-weight: 600;
+/* Hacemos negra la barra superior de búsqueda (la primera marcada en rojo) */
+.header .header-top {
+    background-color: #212529 !important; /* Color 'bg-dark' de Bootstrap */
+    border-bottom: 1px solid #343a40 !important;
+}
+
+/* Hacemos negra la barra principal de navegación (la segunda marcada en rojo) */
+.header .nav-main {
+    background-color: #212529 !important;
+    box-shadow: none !important; /* Quitamos la sombra que tenía (era 'shadow-sm') */
+}
+
+/* Cambiamos el color de los enlaces principales a blanco */
+.header .nav-main .nav-link {
+    color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* Aclaramos los enlaces al pasar el mouse */
+.header .nav-main .nav-link:hover,
+.header .nav-main .nav-link.active {
+    color: #fff !important;
+}
+/* * Nota: Los botones (Iniciar Sesión, Crear Cuenta, Carrito) 
+ * ya contrastan bien con el fondo negro.
+ */
+
+
+/*
+ * =========================================
+ * 2. ESTILOS GENERALES DEL CARRITO (De tus imágenes)
+ * =========================================
+ */
+
+/* Fondo general de la página */
+body {
+    background-color: #f8f9fa; /* Un gris muy claro para el fondo */
+}
+
+/* Títulos de sección ("Productos en Oferta", "Resumen del Carrito") */
+.section-title {
+    font-weight: 300; /* Letra más fina */
+    font-size: 1.75rem;
     color: #333;
-    border-bottom: 2px solid #dee2e6;
-    font-size: 14px;
-  }
-  
-  .tabla-carrito td {
-    padding: 12px 10px;
-    border-bottom: 1px solid #e9ecef;
-    vertical-align: middle;
-  }
-  
-  /* Imagen en tabla */
-  .imagen-tabla {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-  
-  /* Controles de cantidad */
-  .controles-cantidad {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .btn-cantidad {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ddd;
-    background: white;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-  }
-  
-  .btn-cantidad:hover {
-    background: #f8f9fa;
-  }
-  
-  .cantidad-actual {
-    font-weight: 600;
-    min-width: 30px;
-    text-align: center;
-  }
-  
-  /* Botón eliminar */
-  .btn-eliminar {
-    background: #dc3545;
+}
+
+/* Estilos para la tarjeta de "Resumen del Carrito" */
+.resumen-carrito {
+    background-color: #fff;
+    /* Bootstrap (.p-4, .border, .rounded, .shadow-sm) 
+       ya se encarga del resto en el HTML. */
+}
+
+/*
+ * =========================================
+ * 3. ESTILOS DEL FOOTER (De "Huerta Hogar")
+ * =========================================
+ */
+
+footer {
+    background-color: #333;
     color: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 12px;
-  }
-  
-  .btn-eliminar:hover {
-    background: #c82333;
-  }
-  
-  /* Footer del carrito */
-  .carrito-footer {
-    border-top: 2px solid #e9ecef;
-    padding-top: 20px;
-  }
-  
-  .total-container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-bottom: 20px;
-    gap: 10px;
-  }
-  
-  .total-text {
-    font-size: 18px;
-    font-weight: 600;
-    color: #333;
-  }
-  
-  .total-precio {
-    font-size: 24px;
-    font-weight: bold;
-    color: #28a745;
-  }
-  
-  .botones-carrito {
-    display: flex;
-    gap: 15px;
-    justify-content: flex-end;
-  }
-  
-  .btn-limpiar {
-    padding: 12px 24px;
-    background: #6c757d;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-  }
-  
-  .btn-comprar-ahora {
-    padding: 12px 24px;
-    background: #28a745;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-  }
-  
-  .btn-limpiar:hover {
-    background: #5a6268;
-  }
-  
-  .btn-comprar-ahora:hover {
-    background: #218838;
-  }
-  
-  /* CHECKOUT STYLES */
-  .checkout-container {
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-  
-  .checkout-header {
+    padding: 25px 0;
+    margin-top: 3rem; /* Espacio antes del footer */
+}
+
+.footer {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 30px;
-  }
-  
-  .checkout-titulos h1 {
-    font-size: 28px;
-    color: #333;
-    margin-bottom: 5px;
-  }
-  
-  .checkout-subtitulo {
-    color: #666;
-    font-size: 16px;
-  }
-  
-  .btn-total-pagar {
-    padding: 15px 25px;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 18px;
-    font-weight: 600;
-    cursor: default;
-  }
-  
-  /* Tabla checkout */
-  .tabla-checkout-container {
-    margin-bottom: 40px;
-    border: 1px solid #e9ecef;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  
-  .tabla-checkout {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
-  }
-  
-  .tabla-checkout th {
-    background: #f8f9fa;
-    padding: 15px 10px;
-    text-align: left;
-    font-weight: 600;
-    color: #333;
-    border-bottom: 2px solid #dee2e6;
-  }
-  
-  .tabla-checkout td {
-    padding: 12px 10px;
-    border-bottom: 1px solid #e9ecef;
-  }
-  
-  /* Formularios */
-  .info-cliente, .direccion-entrega {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-  }
-  
-  .section-subtitle {
-    color: #666;
-    margin-bottom: 20px;
-    font-size: 16px;
-  }
-  
-  .form-cliente, .form-direccion {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group.full-width {
-    grid-column: 1 / -1;
-  }
-  
-  .form-group label {
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #333;
-  }
-  
-  .form-group input, .form-group textarea {
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 14px;
-    transition: border-color 0.3s;
-  }
-  
-  .form-group input:focus, .form-group textarea:focus {
-    outline: none;
-    border-color: #007bff;
-  }
-  
-  .form-group textarea {
-    resize: vertical;
-    min-height: 80px;
-  }
-  
-  /* Formularios de solo lectura */
-  .form-cliente.readonly .form-group input,
-  .form-direccion.readonly .form-group input,
-  .form-direccion.readonly .form-group textarea {
-    background: #f8f9fa;
-    color: #666;
-    cursor: not-allowed;
-  }
-  
-  /* Footer checkout */
-  .checkout-footer {
-    text-align: center;
-    margin-top: 40px;
-  }
-  
-  .btn-pagar-ahora {
-    padding: 18px 40px;
-    background: #28a745;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 20px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-  
-  .btn-pagar-ahora:hover {
-    background: #218838;
-    transform: translateY(-2px);
-  }
-  
-  /* PÁGINA DE ÉXITO */
-  .exito-container {
-    max-width: 1000px;
+    align-items: center;
+    max-width: 1200px; /* Centra el contenido */
     margin: 0 auto;
-  }
-  
-  .exito-header {
-    margin-bottom: 40px;
-  }
-  
-  .codigo-orden {
+    padding: 0 20px;
+    flex-wrap: wrap; /* Para que se vea bien en móviles */
+}
+
+.footer-left {
+    margin-bottom: 15px;
+}
+
+.footer-right {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.footer-left .huerta_hogar_footer {
+    font-size: 1.5rem;
+    font-weight: bold;
     display: block;
-    background: #f8f9fa;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-weight: 600;
-    color: #666;
-    margin-bottom: 20px;
-    text-align: right;
-    width: 100%;
-  }
-  
-  .exito-titulo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
     margin-bottom: 10px;
-    text-align: center;
-  }
-  
-  .icono-exito {
-    font-size: 40px;
-  }
-  
-  .exito-titulo h1 {
-    font-size: 32px;
-    color: #28a745;
-    margin: 0;
-  }
-  
-  .exito-subtitulo {
-    color: #666;
-    font-size: 18px;
-    text-align: left;
-  }
-  
-  /* Total pagado */
-  .total-pagado-container {
-    text-align: center;
-    margin: 30px 0;
-    padding: 20px;
-    background: #f8f9fa;
-    border-radius: 10px;
-  }
-  
-  .total-pagado {
-    font-size: 24px;
-    font-weight: 600;
-  }
-  
-  /* Footer éxito */
-  .exito-footer {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 40px;
-  }
-  
-  .btn-imprimir-pdf {
-    padding: 15px 30px;
-    background: #dc3545;
-    color: white;
+}
+
+.social-icons .social-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border-radius: 50%;
+    transition: transform 0.2s;
+}
+
+.social-icons .social-icon:hover {
+    transform: scale(1.1);
+}
+
+.footer-right .huerta_hogar_footer {
+    margin-right: 10px;
+    font-size: 1rem;
+}
+
+.footer-right input {
+    padding: 8px;
     border: none;
-    border-radius: 8px;
-    font-weight: 600;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+}
+
+.footer-right button {
+    padding: 8px 12px;
+    border: none;
+    background-color: #28a745; /* Botón verde (Bootstrap 'success') */
+    color: white;
+    border-radius: 0 4px 4px 0;
     cursor: pointer;
-  }
-  
-  .btn-enviar-email {
-    padding: 15px 30px;
-    background: #28a745;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-  }
-  
-  /* PÁGINA DE ERROR */
-  .error-container {
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-  
-  .error-header {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  
-  .error-titulo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 20px;
-  }
-  
-  .icono-error {
-    font-size: 40px;
-    color: #dc3545;
-  }
-  
-  .error-titulo h1 {
-    font-size: 32px;
-    color: #dc3545;
-    margin: 0;
-  }
-  
-  .error-subtitulo {
-    color: #333;
-    font-size: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .btn-reintentar-pago {
-    padding: 15px 30px;
-    background: #28a745;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-  }
-  
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    .carrito-container {
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-    
-    .resumen-carrito {
-      position: static;
-    }
-    
-    .checkout-header {
-      flex-direction: column;
-      gap: 20px;
-      text-align: center;
-    }
-    
-    .form-row {
-      grid-template-columns: 1fr;
-    }
-    
-    .exito-footer, .botones-carrito {
-      flex-direction: column;
-    }
-    
-    .tabla-carrito-container, .tabla-checkout-container {
-      overflow-x: auto;
-    }
-    
-    .tabla-carrito, .tabla-checkout {
-      min-width: 600px;
-    }
-  }
-  
-  /* Mensaje carrito vacío */
-  .carrito-vacio {
-    text-align: center;
-    padding: 60px 20px;
-    color: #666;
-  }
-  
-  .carrito-vacio .icono {
-    font-size: 60px;
-    margin-bottom: 20px;
-    opacity: 0.5;
-  }
-  
-  .carrito-vacio h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #333;
-  }
-  
-  .carrito-vacio p {
-    font-size: 16px;
-    margin-bottom: 30px;
-  }
-  
-  .btn-ir-catalogo {
-    padding: 12px 24px;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    display: inline-block;
-  }
-  
-  /* Estilos para los selects de región y comuna */
-  select {
-      width: 100%;
-      padding: 12px 15px;
-      border: 2px solid #e9ecef;
-      border-radius: 8px;
-      font-size: 14px;
-      background-color: white;
-      transition: all 0.3s ease;
-      cursor: pointer;
-  }
-  
-  select:focus {
-      outline: none;
-      border-color: #007bff;
-      box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
-  }
-  
-  select:disabled {
-      background-color: #f8f9fa;
-      color: #6c757d;
-      cursor: not-allowed;
-  }
-  
-  select option {
-      padding: 10px;
-  }
-  
-  /* Mejorar la apariencia de los formularios */
-  .form-group {
-      margin-bottom: 20px;
-  }
-  
-  .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-      color: #333;
-  }
-  
-  .form-row {
-      display: flex;
-      gap: 20px;
-      margin-bottom: 20px;
-  }
-  
-  .form-row .form-group {
-      flex: 1;
-      margin-bottom: 0;
-  }
-  
-  .full-width {
-      width: 100%;
-  }
+    transition: background-color 0.2s;
+}
+
+.footer-right button:hover {
+    background-color: #218838; /* Verde más oscuro al pasar el mouse */
+}
