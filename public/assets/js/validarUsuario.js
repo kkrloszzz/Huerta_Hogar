@@ -1,13 +1,3 @@
-// =======================================================
-// Sistema de Validación (Nuevo Usuario y Login)
-// Escuela de Administración y Negocios
-// =======================================================
-
-// Nota: Se requiere tener cargadas las librerías de Firebase en el HTML para la sección de Login.
-
-// =======================================================
-// 1. FUNCIONES UTILITARIAS GENERALES
-// =======================================================
 
 // Validador de RUN chileno
 function validarRUN(run) {
@@ -67,7 +57,16 @@ function validarEmail(email) {
     
     return { valido: true, mensaje: '' };
 }
-
+function validarEdad(fechaNacimiento) {
+    const hoy = new Date();
+    const fechaNac = new Date(fechaNacimiento);
+    let edad = hoy.getFullYear() - fechaNac.getFullYear();
+    const mes = hoy.getMonth() - fechaNac.getMonth();
+    if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNac.getDate())) {
+        edad--;
+    }
+    return edad >= 18;
+}
 // Función para mostrar errores
 function mostrarError(input, mensaje) {
     // Limpiar error anterior

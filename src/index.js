@@ -9,7 +9,7 @@ function esPaginaEstatica() {
 // Esperar a que el DOM esté listo
 document.addEventListener("DOMContentLoaded", () => {
   
-  const form = document.getElementById("formUsuario");
+  const form = document.getElementById("FormUsuario");
   const runInput = document.getElementById("run");
   const nombreInput = document.getElementById("nombre");
   const correoInput = document.getElementById("correo");
