@@ -242,3 +242,95 @@ img {
         justify-content: center;
     }
 }
+
+
+body {
+            padding-top: 56px; /* Altura estándar de la navbar de Bootstrap */
+        }
+
+        /* 2. SECCIÓN DE MISIÓN/VISIÓN (Borde_de_titulo) */
+        
+        /* Hacemos que la sección de Misión/Visión sea un contenedor flex */
+        .Borde_de_titulo {
+            display: flex;
+            flex-wrap: wrap; /* Permite que los elementos se apilen en pantallas pequeñas */
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem; /* Espacio entre el texto y la imagen */
+            padding: 1rem; /* Espaciado interno */
+        }
+        
+        /* Damos tamaños flexibles al texto y a la imagen */
+        .Borde_de_titulo > div {
+            flex: 1 1 500px; /* El texto intenta ocupar 500px, pero puede crecer/encogerse */
+        }
+
+        .Borde_de_titulo > img {
+            flex: 1 1 300px; /* La imagen intenta ocupar 300px */
+            max-width: 100%; /* Asegura que la imagen no se desborde */
+            height: auto;
+            border-radius: 8px; /* Estética */
+        }
+
+        /* 3. GRID DE PRODUCTOS (ajuste) */
+        
+        /* ¡Aquí está la magia! 
+           Convertimos 'ajuste' en una cuadrícula (Grid) responsiva. */
+        .ajuste {
+            display: grid;
+            /* 'auto-fit': Crea tantas columnas como quepan.
+              'minmax(280px, 1fr)': Cada columna tendrá un mínimo de 280px
+              y un máximo de 1 fracción (se reparten el espacio sobrante).
+              
+              En un móvil (ej. 360px) -> solo cabe 1 columna.
+              En una tablet (ej. 768px) -> caben 2 columnas.
+              En un desktop (ej. 1200px) -> caben 4 columnas.
+              Todo esto sin media queries, ¡automáticamente!
+            */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem; /* Espacio entre las tarjetas */
+            padding: 1.5rem; /* Espaciado alrededor de la cuadrícula */
+        }
+
+        /* 4. IMÁGENES DE PRODUCTO (carta_producto) */
+        
+        /* Para que todas las imágenes se vean uniformes */
+        .product-image img {
+            width: 100%;
+            height: 200px; /* Damos una altura fija a todas las imágenes */
+            object-fit: cover; /* Recorta la imagen para que quepa sin distorsionarse */
+            display: block;
+        }
+
+        /* 5. FOOTER RESPONSIVO */
+
+        /* Hacemos el footer flexible */
+        .footer {
+            display: flex;
+            flex-wrap: wrap; /* Permite que se apilen */
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+            gap: 1.5rem; /* Espacio entre la parte izq y der */
+        }
+
+        /* En pantallas pequeñas (móviles) */
+        @media (max-width: 768px) {
+            .footer {
+                /* Apilamos las secciones verticalmente */
+                flex-direction: column; 
+                justify-content: center;
+                text-align: center;
+            }
+
+            /* Hacemos que el formulario de suscripción se vea bien en móvil */
+            .footer-right input[type="email"] {
+                display: block;
+                width: 100%;
+                margin-bottom: 0.5rem; /* Espacio entre input y botón */
+            }
+            .footer-right button {
+                display: block;
+                width: 100%;
+            }
+    }
