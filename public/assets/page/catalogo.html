@@ -4,49 +4,59 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catálogo - Mi Tienda</title>
+  
+  <!-- Bootstrap CSS (Añadido para el nuevo header) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  
   <link rel="stylesheet" href="../css/catalogo.css">
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 </head>
 <body>
-  <!-- HEADER -->
+  
+  <!-- HEADER (Reemplazado por el header negro de dos barras) -->
   <header class="header">
-    <!-- Línea Superior -->
-    <div class="header-top">
-      <div class="search-container">
-        <input type="text" id="buscador" placeholder="Buscar productos..." class="search-input">
-        <button id="btnBuscar" class="btn-buscar">Buscar</button>
-      </div>
-      <div class="auth-buttons">
-        <button class="btn-login">Iniciar Sesión</button>
-        <button class="btn-signup">Crear Cuenta</button>
-      </div>
+    <!-- Barra Superior Negra -->
+    <div class="header-top container-fluid d-flex justify-content-between align-items-center py-2 px-4 bg-dark border-bottom" data-bs-theme="dark">
+        <div class="search-container d-flex">
+            <input type="text" id="buscador" placeholder="Buscar productos..." class="form-control form-control-sm me-2">
+            <button id="btnBuscar" class="btn btn-secondary btn-sm">Buscar</button>
+        </div>
+        <div class="auth-buttons">
+            <button class="btn btn-outline-success btn-sm me-2">Iniciar Sesión</button>
+            <button class="btn btn-success btn-sm">Registrarse</button>
+        </div>
     </div>
 
-    <!-- Línea Inferior - Nav -->
-    <nav class="nav-main">
-      <div class="nav-center">
-        <a href="../../index.html class="nav-link">Home</a> <!--Cambiar a "/" para React Router-->
-        <div class="dropdown">
-          <a href="#" class="nav-link">Categorías ⌄</a>
-          <div class="dropdown-content" id="dropdownCategorias"></div>
+    <!-- Barra Principal Negra -->
+    <nav class="nav-main container-fluid d-flex justify-content-between align-items-center py-2 px-4 bg-dark">
+        <div class="nav-center d-flex">
+            <!-- Enlaces con 'text-light' y las rutas originales de tu archivo -->
+            <a href="../../index.html" class="nav-link text-light me-3">Home</a>
+            <div class="dropdown me-3">
+                <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdownCategorias" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Categorías
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownCategorias" id="dropdownCategorias">
+                    <!-- Las categorías se cargarán aquí por JS -->
+                </ul>
+            </div>
+            <a href="#" class="nav-link text-light me-3">Ofertas</a>
+            <a href="../page/Nosostros.html" class="nav-link text-light me-3">Nosotros</a>
+            <a href="../../assets/page/blogs.html" class="nav-link text-light me-3">Blog</a>
+            <a href="../../assets/page/RegistroContactos.html" class="nav-link text-light">Contacto</a>
         </div>
-        <a href="#" class="nav-link">Ofertas</a>
-        <a href="../page/Nosostros.html" class="nav-link">Nosotros</a>
-        <a href="../../assets/page/blogs.html" class="nav-link">Blog</a>
-        <a href="../../assets/page/RegistroContactos.html" class="nav-link">Contacto</a>
-      </div>
-      
-      <div class="nav-right">
-        <button class="btn-carrito" onclick="window.location.href='carrito.html'"> <!--Cambiar a "carrito" para React Router-->
-          <span class="carrito-icon">🛒</span>
-          Total: $<span class="carrito-total">0</span>
-        </button>
-      </div>
+        
+        <div class="nav-right">
+            <!-- Botón del carrito con el total en 0, como en la imagen del catálogo -->
+            <button class="btn btn-success" onclick="window.location.href='carrito.html'">
+              <span class="carrito-icon">🛒</span> Total: $<span class="carrito-total">0</span>
+            </button>
+        </div>
     </nav>
   </header>
 
-  <!-- MAIN CONTENT -->
+  <!-- MAIN CONTENT (Esta parte está idéntica a tu código original) -->
   <main class="main">
     <!-- CARDS DE CATEGORÍAS -->
     <section class="categorias-section">
@@ -62,6 +72,10 @@
     </section>
   </main>
 
+  <!-- Bootstrap JS (Añadido para que el dropdown del header funcione) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  
   <script src="../js/catalogo.js"></script>
 </body>
 </html>
+
