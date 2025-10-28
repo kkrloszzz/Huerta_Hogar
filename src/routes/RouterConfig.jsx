@@ -19,32 +19,24 @@ import ErrorPago from '../Component/Pages/errorPago';
 const RouterConfig = () => {
     return (
         <Router>
-            {/* <Header />  Puedes colocar tu Header aquí si es global */}
             
             <Routes>
-                {/* --- Rutas Principales --- */}
-                {/* La ruta raíz ahora renderiza el componente Home de React */}
                 <Route path="/" element={<Home />} />
-                
-                {/* --- La forma CORRECTA de manejar el registro --- */}
-                {/* Redirige a un componente de React, no a un archivo HTML */}
                 <Route path="/registro" element={<Registro />} />
                 
                 <Route path="/login" element={<LoginWrapper />} />
                 
-                {/* --- Rutas del Carrito --- */}
+                
                 <Route path="/catalogo" element={<Catalogo />} />
                 <Route path="/carrito" element={<Carrito />} />
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/exito" element={<Exito />} />
                 <Route path="/error" element={<ErrorPago />} />
 
-                {/* --- Rutas de Perfil (Ejemplo) --- */}
-                {/* <Route path="/perfil-admin" element={<PerfilAdmin />} /> */}
-                {/* <Route path="/perfil-cliente" element={<PerfilCliente />} /> */}
+            
             </Routes>
             
-            {/* <Footer /> Puedes colocar tu Footer aquí si es global */}
+            
         </Router>
     );
 };
