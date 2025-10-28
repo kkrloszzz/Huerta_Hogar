@@ -1,4 +1,5 @@
 import React from "react";
+import UserFrom from "../molecules/UserFrom";
 
 const Registro = () => (
     <main>
