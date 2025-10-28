@@ -1,9 +1,8 @@
 import { addUser } from "./services/firestoreService";
-import { validarRUN, validarEmail, validarEdad } from "./Utils/ValidarUsuario";
+import { validarEdad, validarEmail, validarRUN } from "./Utils/ValidarUsuario";
 
 function esPaginaEstatica() {
-  return window.location.pathname.includes('.html') || 
-         window.location.pathname.includes('/assets/');
+  return window.location.pathname.includes('.html') || window.location.pathname.includes('/assets/');
 }
 
 // Esperar a que el DOM esté listo
@@ -43,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
         window.location.href = 
           correo.toLowerCase()==="admin@duoc.cl" ?
-           `assets/page/InterAdmin.html?nombre=${encodeURIComponent(nombre)}`
+            `assets/page/InterAdmin.html?nombre=${encodeURIComponent(nombre)}`
           : `assets/page/PerfilUsuario.html?nombre=${encodeURIComponent(nombre)}`
           
       }, 1000);

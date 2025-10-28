@@ -1,37 +1,52 @@
-import Checkout from "../components/pages/Ccheckout";
-import Exito from "../components/pages/compraExito";
-import ErrorPago from "../components/pages/errorPago";
-import Registro from "../components/pages/Registro"; // Nuevo componente para la página de registro
+import React from 'react';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
-import Catalogo from "../components/pages/Catalogo";
-import Carrito from "../components/pages/Carrito";
-import Checkout from "../components/pages/Checkout";
-import Exito from "../components/pages/Exito";
-import ErrorPago from "../components/pages/ErrorPago";
+// Importa tus componentes de layout (suponiendo que existen)
+// import Header from './Layout/Header'; 
+// import Footer from './Layout/Footer';
 
-const RouterConfig = () => (
-    <>  
-        <Header />
-        <Switch>
-            <Route exact path="/" component={() => <StaticPage src="/index.html" />} />
-            <Route path="/registro" component={() => {
-                window.location.href = '/assets/page/NuevoUsuario.html';
-                return null;
-            }} />
+// Importa los componentes de las páginas desde su ubicación correcta
+import Carrito from '../Component/Pages/Carrito';
+import Catalogo from '../Component/Pages/Catalogo';
+import Home from '../Component/Pages/Home';
+import LoginWrapper from '../Component/Pages/LoginWrapper'; // Para el inicio de sesión
+import Registro from '../Component/Pages/Registro'; // Asumiendo que crearás este componente
+import Checkout from '../Component/Pages/checkout';
+import Exito from '../Component/Pages/compraExitosa';
+import ErrorPago from '../Component/Pages/errorPago';
+// ... importa los demás componentes que necesites (PerfilCliente, etc.)
+
+const RouterConfig = () => {
+    return (
+        <Router>
+            {/* <Header />  Puedes colocar tu Header aquí si es global */}
             
-            
-            <Route path="/perfil-admin" component={PerfilAdmin} />
-            <Route path="/perfil-cliente" component={PerfilCliente} />
+            <Routes>
+                {/* --- Rutas Principales --- */}
+                {/* La ruta raíz ahora renderiza el componente Home de React */}
+                <Route path="/" element={<Home />} />
+                
+                {/* --- La forma CORRECTA de manejar el registro --- */}
+                {/* Redirige a un componente de React, no a un archivo HTML */}
+                <Route path="/registro" element={<Registro />} />
+                
+                <Route path="/login" element={<LoginWrapper />} />
+                
+                {/* --- Rutas del Carrito --- */}
+                <Route path="/catalogo" element={<Catalogo />} />
+                <Route path="/carrito" element={<Carrito />} />
+                <Route path="/checkout" element={<Checkout />} />
+                <Route path="/exito" element={<Exito />} />
+                <Route path="/error" element={<ErrorPago />} />
 
-            {/* Nuevas rutas del sistema de carrito */}
-            <Route path="/catalogo" component={Catalogo} />
-            <Route path="/carrito" component={Carrito} />
-            <Route path="/checkout" component={Checkout} />
-            <Route path="/exito" component={Exito} />
-            <Route path="/error" component={ErrorPago} />
-        </Switch>
-        <footer />
-    </>
-);
+                {/* --- Rutas de Perfil (Ejemplo) --- */}
+                {/* <Route path="/perfil-admin" element={<PerfilAdmin />} /> */}
+                {/* <Route path="/perfil-cliente" element={<PerfilCliente />} /> */}
+            </Routes>
+            
+            {/* <Footer /> Puedes colocar tu Footer aquí si es global */}
+        </Router>
+    );
+};
 
 export default RouterConfig;
