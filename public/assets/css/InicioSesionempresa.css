@@ -106,3 +106,24 @@ main.login-page-wrapper {
 .submit-btn:active {
     transform: scale(0.98);
 }
+
+body {
+    padding-top: 70px; 
+}
+.login-container {
+    max-width: 500px;
+    margin: auto;
+}
+.submit-btn {
+    background-color: #2E8B57;
+    color: white;
+    border: 1px solid #999;
+    padding: 6px 20px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.profile-icon {
+    height: 35px;
+    width: auto;
+}
