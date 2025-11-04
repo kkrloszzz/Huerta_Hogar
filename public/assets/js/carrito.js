@@ -1,3 +1,7 @@
+const auth = firebase.auth(); 
+
+
+
 // Configuración de Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyAkqjjPbCFCi3CraWB3FIPSeq2fiLHBE_w",
@@ -325,13 +329,31 @@ function limpiarCarrito() {
 /**
  * Redirige al checkout
  */
+/**
+ * Redirige al checkout SÓLO SI el usuario está logueado
+ */
 function irAlCheckout() {
     if (carrito.length === 0) {
         alert('Agrega productos al carrito antes de continuar');
         return;
     }
-    
-    window.location.href = 'checkout.html';
+
+    // --- ¡AQUÍ ESTÁ LA VERIFICACIÓN! ---
+    const user = auth.currentUser; // Obtenemos el usuario actual
+
+    if (user) {
+        // 1. Si hay un usuario logueado, lo llevamos al checkout
+        console.log('Usuario logueado:', user.email);
+        window.location.href = 'checkout.html';
+
+    } else {
+        // 2. Si NO hay usuario (user es null), lo mandamos al login
+        console.log('Usuario no logueado. Redirigiendo a login...');
+        alert('Debes iniciar sesión para poder comprar.');
+        
+        // Asegúrate de que tu página de login se llame 'login.html'
+        window.location.href = 'login.html'; 
+    }
 }
 
 /**
