@@ -708,7 +708,7 @@ function irAlCheckout() {
 
         setTimeout(() => {
 
-            window.location.href = 'login.html';
+            window.location.href = '../page/InicioSesionempresa.html';
 
         }, 2000);
 
