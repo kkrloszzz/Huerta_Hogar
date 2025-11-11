@@ -197,6 +197,7 @@ function configurarEventosNuevoUsuario() {
         }
 
         // --- CAMBIO: ESTA ES LA LÓGICA DE FIREBASE QUE FALTABA ---
+        // Lógica final del formulario  
         if (formularioValido) {
             const datosUsuario = {
                 run: runInput.value.trim(),
