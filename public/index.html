@@ -5,60 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Huerta Hogar - Home</title>
     <link rel="icon" href="assets/Img/Logo.png" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/css/index.css">
-
-    </head>
-<body>
-
-    <header>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <div class="container-fluid">
-            <div class="d-flex align-items-center">
-                <a class="navbar-brand me-2" href="#">Huerta Hogar</a>
-                <a href="../page/InicioSesionempresa.html">
-                    <img class="profile-icon" src="assets/Img/perfil-removebg-preview.png" alt="sesion">
-                </a>
-            </div>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav ms-auto mb-2 mb-md-0"> 
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="assets/page/catalogo.html">Productos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="assets/page/Nosostros.html" >Nosotros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="assets/page/blogs.html" >Blogs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="assets/page/RegistroContactos.html" >Contacto</a>
-                    </li> 
-                </ul>
-                <div class="d-flex align-items-center">
-                        <img class="carrito_logo" src="assets/Img/carrito_blanco-removebg-preview.png" alt="carrito"> 
-                        <a class="a_carrito" href="assets/page/Carrito.html"></a>
-                    </a>
-                    <a class="a_carrito" href="assets/page/Carrito.html">Carrito</a>
-                    <a href="assets/page/InicioSesionempresa.html" class="btn btn-outline-success btn-sm ms-2">Iniciar Sesión</a>
-                    <a href="assets/page/NuevoUsuario.html" class="btn btn-success btn-sm">Registrarse</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     
-</header>
-<div class="contenedor">
+</head>
+<body>
+    <!-- HEADER (Reemplazado por el header negro de dos barras) -->
+  <header class="header">
+    <!-- Barra Superior Negra -->
+    <div class="header-top container-fluid d-flex justify-content-between align-items-center py-2 px-4 bg-dark border-bottom" data-bs-theme="dark">
+        <div class="search-container d-flex">
+            <input type="text" id="buscador" placeholder="Buscar productos..." class="form-control form-control-sm me-2">
+            <button id="btnBuscar" class="btn btn-secondary btn-sm">Buscar</button>
+        </div>
+        <div class="auth-buttons">
+            <a href="assets/page/InicioSesionempresa.html" class="btn btn-outline-success btn-sm ms-2">Iniciar Sesión</a>
+            <a href="assets/page/NuevoUsuario.html" class="btn btn-success btn-sm">Registrarse</a>
+        </div>
+    </div>
+
+    <!-- Barra Principal Negra -->
+    <nav class="nav-main container-fluid d-flex justify-content-between align-items-center py-2 px-4 bg-dark">
+        <div class="nav-center d-flex">
+            <!-- Enlaces con 'text-light' y las rutas originales de tu archivo -->
+            <a href="../../index.html" class="nav-link text-light me-3">Home</a>
+            <div class="dropdown me-3">
+                <a class="nav-link text-light dropdown-toggle" href="assets/page/catalogo.html" id="navbarDropdownCategorias" role="button">Catalogo</a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownCategorias" id="dropdownCategorias">
+                    <!-- Las categorías se cargarán aquí por JS -->
+                </ul>
+            </div>
+            <a href="assets/page/ofertas.html" class="nav-link text-light me-3">Ofertas</a>
+            <a href="assets/page/Nosostros.html" class="nav-link text-light me-3">Nosotros</a>
+            <a href="assets/page/blogs.html" class="nav-link text-light me-3">Blog</a>
+            <a href="assets/page/RegistroContactos.html" class="nav-link text-light">Contacto</a>
+        </div>
         
+        <div class="nav-right">
+          <button class="btn btn-success btn-carrito" onclick="window.location.href='carrito.html'">
+              <span class="carrito-icon">🛒</span> Total: $<span class="carrito-total">0</span>
+          </button>
+      </div>
+    </nav>
+  </header>
+
+    
+
+    <div class="contenedor">
         <div class="Borde_de_titulo">
             <div>
                 <h1>Tienda Online Huerta Hogar</h1>
@@ -66,14 +59,13 @@
                     la puerta de nuestros clientes, garantizando la frescura y el sabor en cada entrega. Nos
                     comprometemos a fomentar una conexión más cercana entre los consumidores y los agricultores
                     locales, apoyando prácticas agrícolas sostenibles y promoviendo una alimentación saludable en
-                    todos los hogares chilenos. <br>
+                    todos los hogares chilenos. <br><br>
                     Nuestra visión es ser la tienda online líder en la distribución de productos frescos y naturales en 
                     Chile, reconocida por nuestra calidad excepcional, servicio al cliente y compromiso con la 
                     sostenibilidad. Aspiramos a expandir nuestra presencia a nivel nacional e internacional, 
                     estableciendo un nuevo estándar en la distribución de productos agrícolas directos del productor al 
                     consumidor. 
                 </p>
-
             </div>
             <img src="assets/Img/Logo_Empresa.jpg" alt="logo">
         </div> 
@@ -81,7 +73,7 @@
     
     <div class="ajuste"> 
         <div class="carta_producto">
-            <div class="product-image"> <img src="assets/Img/manzanas_fuji.jpg" alt="Manzana"></div>
+            <div class="product-image"><img src="assets/Img/manzanas_fuji.jpg" alt="Manzana"></div>
             <div class="titulo_producto">Manzanas Fuji</div>
             <div class="detalle_producto">
                 <span>Precio</span>
@@ -90,20 +82,16 @@
         </div>
 
         <div class="carta_producto">
-            <div class="product-image"> 
-                <img class="product-image" src="assets/Img/Naranja.jpg" alt="naranja">
-            </div>
+            <div class="product-image"><img src="assets/Img/Naranja.jpg" alt="naranja"></div>
             <div class="titulo_producto">Naranjas Valencia</div>
             <div class="detalle_producto">
                 <span>Precio</span>
-                <span class="precio">$1000</span>
+                <span class="precio">$1.000</span>
             </div>
         </div>
 
         <div class="carta_producto">
-            <div class="product-image"> 
-                <img src="assets/Img/Banana.jpg" alt="banana">
-            </div>
+            <div class="product-image"><img src="assets/Img/Banana.jpg" alt="banana"></div>
             <div class="titulo_producto">Banana Cavendish</div>
             <div class="detalle_producto">
                 <span>Precio</span>
@@ -112,9 +100,7 @@
         </div>
 
         <div class="carta_producto">
-            <div class="product-image"> 
-                <img src="assets/Img/Zhanaoria Organica.jpg" alt="Zhanaoria">
-            </div>
+            <div class="product-image"><img src="assets/Img/Zhanaoria Organica.jpg" alt="Zanahoria"></div>
             <div class="titulo_producto">Zanahoria</div>
             <div class="detalle_producto">
                 <span>Precio</span>
@@ -123,9 +109,7 @@
         </div>
 
         <div class="carta_producto">
-            <div class="product-image"> 
-                <img src="assets/Img/espinacas_Frescas.jpg" alt="Espinacas">
-            </div>
+            <div class="product-image"><img src="assets/Img/espinacas_Frescas.jpg" alt="Espinacas"></div>
             <div class="titulo_producto">Espinacas</div>
             <div class="detalle_producto">
                 <span>Precio</span>
@@ -134,77 +118,64 @@
         </div>
 
         <div class="carta_producto">
-            <div class="product-image"> 
-                <img src="assets/Img/Pimientos_Tricolor.jpg" alt="Pimientos Tricolor">
-            </div>
+            <div class="product-image"><img src="assets/Img/Pimientos_Tricolor.jpg" alt="Pimientos"></div>
             <div class="titulo_producto">Pimientos Tricolor</div>
             <div class="detalle_producto">
                 <span>Precio</span>
-                <span class="precio">$1500</span>
+                <span class="precio">$1.500</span>
             </div>
         </div>
 
         <div class="carta_producto">
-            <div class="product-image"> 
-                <img src="assets/Img/Miel.jpg" alt="Miel Organica">
-            </div>
-            <div class="titulo_producto">Miel Organica</div>
+            <div class="product-image"><img src="assets/Img/Miel.jpg" alt="Miel"></div>
+            <div class="titulo_producto">Miel Orgánica</div>
             <div class="detalle_producto">
                 <span>Precio</span>
-                <span class="precio">$5000</span>
+                <span class="precio">$5.000</span>
             </div>
         </div>
 
         <div class="carta_producto">
-            <div class="product-image"> 
-                <img src="assets/Img/Quinoa_Organica.jpg" alt="Quinoa Organica">
-            </div>
-            <div class="titulo_producto">Quinoa Organica</div>
+            <div class="product-image"><img src="assets/Img/Quinoa_Organica.jpg" alt="Quinoa"></div>
+            <div class="titulo_producto">Quinoa Orgánica</div>
             <div class="detalle_producto">
                 <span>Precio</span>
-                <span class="precio">$2000</span>
+                <span class="precio">$2.000</span>
             </div>
         </div>
 
         <div class="carta_producto">
-            <div class="product-image"> 
-                <img src="assets/Img/Leche_Entera.jpg" alt="Leche Entera">
-            </div>
+            <div class="product-image"><img src="assets/Img/Leche_Entera.jpg" alt="Leche"></div>
             <div class="titulo_producto">Leche Entera</div>
             <div class="detalle_producto">
                 <span>Precio</span>
-                <span class="precio">$3000</span>
+                <span class="precio">$3.000</span>
             </div>
         </div>
     </div>
 
     <footer>
         <div class="footer">
-                <div class="footer-left">
-                    <span class="huerta_hogar_footer">Tienda Huerta</span>
-                    <div class="social-icons">
-                        <a href="#">
-                            <img class="social-icon instagram" src="assets/Img/Instagram_logo.jpg" alt="sesion">
-                        </a>
-                        <a href="#">
-                            <img class="social-icon facebook" src="assets/Img/facebook_logo.png" alt="sesion">
-                        </a>
-                        <a href="#">
-                            <img class="social-icon twitter" src="assets/Img/Twitter_logo.png" alt="sesion">
-                        </a>
-                    </div>
+            <div class="footer-left">
+                <span class="huerta_hogar_footer">Tienda Huerta</span>
+                <div class="social-icons">
+                    <a href="#"><img class="social-icon" src="assets/Img/Instagram_logo.jpg" alt="Instagram"></a>
+                    <a href="#"><img class="social-icon" src="assets/Img/facebook_logo.png" alt="Facebook"></a>
+                    <a href="#"><img class="social-icon" src="assets/Img/Twitter_logo.png" alt="Twitter"></a>
                 </div>
-                <div class="footer-right">
-                    <span class="huerta_hogar_footer">Únetenos: </span>
-                    <input type="email" placeholder="Ingresa Email">
-                    <button>Suscribirse</button>
-                </div>
+            </div>
+            <div class="footer-right">
+                <span class="huerta_hogar_footer">Únetenos: </span>
+                <input type="email" placeholder="Ingresa Email">
+                <button>Suscribirse</button>
+            </div>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/catalogo.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-    
-    </body>
+</body>
 </html>

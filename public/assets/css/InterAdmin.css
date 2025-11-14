@@ -118,8 +118,8 @@ body {
 
 /* Header */
 .admin-header {
-    background: white;
-    border-bottom: 1px solid #e2e8f0;
+    background: #1e293b; /* MODIFICADO: Color de fondo oscuro (casi negro) */
+    border-bottom: 1px solid #334155; /* MODIFICADO: Borde más oscuro para que combine */
     padding: 1rem 2rem;
     position: fixed;
     top: 0;
@@ -134,9 +134,21 @@ body {
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #1e293b;
+    color: #f8fafc; /* MODIFICADO: Color de texto blanco para contraste */
     text-decoration: none;
+    display: flex; /* AÑADIDO: Para alinear imagen y texto */
+    align-items: center; /* AÑADIDO: Para centrar verticalmente */
+    gap: 0.75rem; /* AÑADIDO: Espacio entre imagen y texto */
 }
+
+/* AÑADIDO: Estilos para la imagen del logo */
+.logo-img {
+    height: 40px; /* Altura de la imagen */
+    width: auto; /* Ancho automático para mantener proporción */
+    border-radius: 4px; /* Esquinas redondeadas (opcional) */
+    background-color: #f8fafc; /* Fondo claro por si la imagen es transparente */
+}
+
 
 /* Sidebar */
 .admin-sidebar {
@@ -964,6 +976,10 @@ body {
     .form-actions {
         flex-direction: column;
     }
+}
+.profile-icon, .carrito_logo {
+    height: 35px;
+    width: auto;
 }
 
 @media (max-width: 480px) {
