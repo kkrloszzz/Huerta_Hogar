@@ -3,115 +3,617 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title> 
-    <link rel="icon" href="../Img/Logo.png" type="image/x-icon">
-    
+    <title>Panel de Administración</title>
     <link rel="stylesheet" href="../css/InterAdmin.css">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 </head>
 <body>
-    
-    <header class="header">
-        
-        <div class="header-brand">
-            <button class="menu-toggle-btn" id="menuToggle" aria-label="Abrir menú">
-                <i class="bi bi-list"></i>
-            </button>
-            <img src="../Img/Logo.png" alt="Logo Huerto Hogar" class="header-logo">
-            <span class="header-brand-name">Huerto Hogar</span>
-        </div>
-        
-        <div class="welcome-text">
-            ¡HOLA Administrador!
-        </div>
-        
-        <div class="header-icons">
-            <i class="bi bi-search"></i>
-            <i class="bi bi-star"></i>
-            <i class="bi bi-bookmark"></i>
-            <i class="bi bi-download"></i>
-        </div>
+    <div class="admin-container">
+        <!-- Header -->
+        <header class="admin-header">
+            <a href="#" class="logo">Tienda Online</a>
+        </header>
 
-    </header>
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <!-- Sección de Bienvenida -->
+            <div class="sidebar-section">
+                <!-- Sección de Bienvenida -->
+                <section class="welcome-section">
+                    <h1 class="welcome-title" id="bienvenidoPrincipal">Bienvenido al Panel de Administración</h1>
+                    <p class="welcome-subtitle" id="userEmail">admin@mitienda.com</p>
+                </section>
+            </div>
 
-    <div class="main-container">
-        
-        <nav class="sidebar">
-            
-            <div class="sidebar-nav-main">
-                <ul>
-                    <li>
-                        <a href="#" class="nav-item active">
-                            <i class="bi bi-grid-fill"></i>
-                            <span>Dashboard</span>
+            <!-- Menú Principal -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Administración</h3>
+                <ul class="sidebar-menu">
+                    <li class="menu-item">
+                        <a href="#dashboard" class="menu-link">
+                            <i class="bi bi-speedometer2 menu-icon"></i>
+                            Dashboard
                         </a>
                     </li>
-                    <li>
-                        <a href="#" class="nav-item">
-                            <i class="bi bi-box-seam"></i>
-                            <span>Órdenes</span>
+                    <li class="menu-item">
+                        <a href="#ordenes" class="menu-link">
+                            <i class="bi bi-clipboard-check menu-icon"></i>
+                            Órdenes
                         </a>
                     </li>
-                    <li>
-                        <a href="#" class="nav-item">
-                            <i class="bi bi-bag"></i>
-                            <span>Productos</span>
+                    <li class="menu-item">
+                        <a href="#productos" class="menu-link">
+                            <i class="bi bi-box-seam menu-icon"></i>
+                            Productos
                         </a>
                     </li>
-                    <li>
-                        <a href="#" class="nav-item">
-                            <i class="bi bi-tag"></i>
-                            <span>Categorías</span>
+                    <li class="menu-item">
+                        <a href="#categorias" class="menu-link">
+                            <i class="bi bi-tags menu-icon"></i>
+                            Categorías
                         </a>
                     </li>
-                    <li>
-                        <a href="#" class="nav-item">
-                            <i class="bi bi-people"></i>
-                            <span>Usuarios</span>
+                    <li class="menu-item">
+                        <a href="#usuarios" class="menu-link">
+                            <i class="bi bi-people menu-icon"></i>
+                            Usuarios
                         </a>
                     </li>
-                    <li>
-                        <a href="#" class="nav-item">
-                            <i class="bi bi-bar-chart-line"></i>
-                            <span>Reportes</span>
+                    <li class="menu-item">
+                        <a href="#reportes" class="menu-link">
+                            <i class="bi bi-graph-up menu-icon"></i>
+                            Reportes
                         </a>
                     </li>
                 </ul>
             </div>
 
-            <div class="sidebar-nav-bottom">
-                <ul>
-                    <li>
-                        <a href="#" class="nav-item">
-                            <i class="bi bi-person-circle"></i>
-                            <span>Perfil</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-item link-tienda">
-                            <i class="bi bi-shop"></i>
-                            <span>Tienda</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-item link-logout">
-                            <i class="bi bi-box-arrow-right"></i>
-                            <span>Cerrar Sesión</span>
+            <!-- Sección de Perfil y Acciones -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Cuenta</h3>
+                <ul class="sidebar-menu">
+                    <li class="menu-item">
+                        <a href="#perfil" class="menu-link">
+                            <i class="bi bi-person menu-icon"></i>
+                            Perfil
                         </a>
                     </li>
                 </ul>
             </div>
-        </nav>
 
-        <main class="content">
-            <h1>Dashboard</h1>
-            <p>Aquí va el contenido de tu panel de administración.</p>
+            <!-- Botones de Acción -->
+            <div class="sidebar-section sidebar-actions">
+                <button class="action-btn btn-store" onclick="irATienda()">
+                    <i class="bi bi-shop menu-icon"></i>
+                    Tienda
+                </button>
+                <button class="action-btn btn-logout" onclick="cerrarSesion()">
+                    <i class="bi bi-box-arrow-right menu-icon"></i>
+                    Cerrar Sesión
+                </button>
+            </div>
+        </aside>
+
+        <!-- Contenido Principal -->
+        <main class="admin-main">
+            <!-- Dashboard -->
+            <section id="dashboard">
+                <h2 class="sidebar-title">Resumen General</h2>
+                
+                <!-- Cards de Resumen con API -->
+                <div class="dashboard-cards-row">
+                    <div class="summary-card blue-card">
+                        <div class="card-content">
+                            <div class="card-icon">
+                                <i class="bi bi-cart"></i>
+                            </div>
+                            <div class="card-info">
+                                <h3 class="card-title">Compras</h3>
+                                <p class="card-value" id="totalCompras">0</p>
+                                <p class="card-subtitle">
+                                    Probabilidad de aumento: <span id="proyeccionCompras">0</span>%
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="summary-card green-card">
+                        <div class="card-content">
+                            <div class="card-icon">
+                                <i class="bi bi-box"></i>
+                            </div>
+                            <div class="card-info">
+                                <h3 class="card-title">Productos</h3>
+                                <p class="card-value" id="totalProductos">0</p>
+                                <p class="card-subtitle">
+                                    Inventario Actual: <span id="inventarioTotal">0</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="summary-card yellow-card">
+                        <div class="card-content">
+                            <div class="card-icon">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <div class="card-info">
+                                <h3 class="card-title">Usuarios</h3>
+                                <p class="card-value" id="totalUsuarios">0</p>
+                                <p class="card-subtitle">
+                                    Nuevos usuarios este mes: <span id="nuevosUsuariosMes">0</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botones de Navegación -->
+                <div class="navigation-grid">
+                    <!-- Primera Fila -->
+                    <div class="navigation-row">
+                        <div class="nav-button" onclick="navegarA('dashboard')">
+                            <div class="nav-icon">
+                                <i class="bi bi-speedometer2"></i>
+                            </div>
+                            <h1 class="nav-title">Dashboard</h1>
+                            <p class="nav-description">
+                                Visión general de todas las métricas y estadísticas clave del sistema.
+                            </p>
+                        </div>
+
+                        <div class="nav-button" onclick="navegarA('ordenes')">
+                            <div class="nav-icon">
+                                <i class="bi bi-cart-check"></i>
+                            </div>
+                            <h1 class="nav-title">Ordenes</h1>
+                            <p class="nav-description">
+                                Gestión y seguimiento de todas las ordenes de compras realizadas.
+                            </p>
+                        </div>
+
+                        <div class="nav-button" onclick="navegarA('productos')">
+                            <div class="nav-icon">
+                                <i class="bi bi-box"></i>
+                            </div>
+                            <h1 class="nav-title">Productos</h1>
+                            <p class="nav-description">
+                                Administrar inventario y detalles de los productos disponibles.
+                            </p>
+                        </div>
+
+                        <div class="nav-button" onclick="navegarA('categorias')">
+                            <div class="nav-icon">
+                                <i class="bi bi-tags"></i>
+                            </div>
+                            <h1 class="nav-title">Categorias</h1>
+                            <p class="nav-description">
+                                Organizar productos en categorias para facilitar su navegación.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Segunda Fila -->
+                    <div class="navigation-row">
+                        <div class="nav-button" onclick="navegarA('usuarios')">
+                            <div class="nav-icon">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <h1 class="nav-title">Usuarios</h1>
+                            <p class="nav-description">
+                                Gestión de cuentas de usuarios y sus roles dentro del sistema.
+                            </p>
+                        </div>
+
+                        <div class="nav-button" onclick="navegarA('reportes')">
+                            <div class="nav-icon">
+                                <i class="bi bi-bar-chart"></i>
+                            </div>
+                            <h1 class="nav-title">Reportes</h1>
+                            <p class="nav-description">
+                                Generación de informes detallados sobre las operaciones del sistema.
+                            </p>
+                        </div>
+
+                        <div class="nav-button" onclick="navegarA('perfil')">
+                            <div class="nav-icon">
+                                <i class="bi bi-person"></i>
+                            </div>
+                            <h1 class="nav-title">Perfil</h1>
+                            <p class="nav-description">
+                                Administración de la información personal y configuración de cuenta.
+                            </p>
+                        </div>
+
+                        <div class="nav-button" onclick="navegarA('tienda')">
+                            <div class="nav-icon">
+                                <i class="bi bi-shop"></i>
+                            </div>
+                            <h1 class="nav-title">Tienda</h1>
+                            <p class="nav-description">
+                                Visualiza tu tienda en tiempo real, visualiza los reportes de usuarios.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== SECCIONES CRUD ==================== -->
+
+            <!-- Sección de Órdenes -->
+            <section id="ordenes" style="display: none;">
+                <div class="welcome-section">
+                    <h2 class="welcome-title">Gestión de Órdenes</h2>
+                    <p class="welcome-subtitle">Administra y realiza seguimiento de todas las órdenes de compra</p>
+                </div>
+                <div class="crud-container">
+                    <div class="crud-header">
+                        <h3>Lista de Órdenes</h3>
+                        <div class="crud-actions">
+                            <select id="filtroEstado" onchange="filtrarOrdenes()">
+                                <option value="">Todos los estados</option>
+                                <option value="pendiente">Pendiente</option>
+                                <option value="procesando">Procesando</option>
+                                <option value="completado">Completado</option>
+                                <option value="cancelado">Cancelado</option>
+                            </select>
+                            <button class="btn btn-primary" onclick="cargarOrdenes()">
+                                <i class="bi bi-arrow-repeat"></i> Actualizar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="crud-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Cliente</th>
+                                    <th>Total</th>
+                                    <th>Estado</th>
+                                    <th>Fecha</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordenes-tbody">
+                                <tr>
+                                    <td colspan="6" class="no-data">Haz clic en Actualizar para cargar las órdenes</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección de Productos -->
+            <section id="productos" style="display: none;">
+                <div class="welcome-section">
+                    <h2 class="welcome-title">Gestión de Productos</h2>
+                    <p class="welcome-subtitle">Administra el inventario y detalles de productos</p>
+                </div>
+                <div class="crud-container">
+                    <div class="crud-header">
+                        <h3>Lista de Productos</h3>
+                        <div class="crud-actions">
+                            <button class="btn btn-primary" onclick="mostrarModalProducto()">
+                                <i class="bi bi-plus-circle"></i> Nuevo Producto
+                            </button>
+                            <button class="btn btn-secondary" onclick="cargarProductos()">
+                                <i class="bi bi-arrow-repeat"></i> Actualizar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="crud-table">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Precio</th>
+                                    <th>Stock</th>
+                                    <th>Categoría</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productos-tbody">
+                                <tr>
+                                    <td colspan="6" class="no-data">Haz clic en Actualizar para cargar los productos</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección de Categorías -->
+            <section id="categorias" style="display: none;">
+                <div class="welcome-section">
+                    <h2 class="welcome-title">Gestión de Categorías</h2>
+                    <p class="welcome-subtitle">Categorías extraídas del campo "categoria" de los productos</p>
+                </div>
+                <div class="crud-container">
+                    <div class="crud-header">
+                        <h3>Categorías de Productos</h3>
+                        <div class="crud-actions">
+                            <button class="btn btn-primary" onclick="crearCategoria()">
+                                <i class="bi bi-plus-circle"></i> Nueva Categoría
+                            </button>
+                            <button class="btn btn-secondary" onclick="cargarCategorias()">
+                                <i class="bi bi-arrow-repeat"></i> Actualizar
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="crud-info">
+                        <i class="bi bi-info-circle"></i>
+                        <span>Las categorías se extraen automáticamente del campo "categoria" de los productos en Firestore</span>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="crud-table">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Descripción</th>
+                                    <th>Estado</th>
+                                    <th>Productos</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="categorias-tbody">
+                                <tr>
+                                    <td colspan="5" class="no-data">
+                                        <i class="bi bi-inbox"></i>
+                                        <p>Haz clic en Actualizar para cargar las categorías</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección de Usuarios -->
+            <section id="usuarios" style="display: none;">
+                <div class="welcome-section">
+                    <h2 class="welcome-title">Gestión de Usuarios</h2>
+                    <p class="welcome-subtitle">Administra cuentas de usuarios y sus roles dentro del sistema</p>
+                </div>
+                <div class="crud-container">
+                    <div class="crud-header">
+                        <h3>Lista de Usuarios</h3>
+                        <div class="crud-actions">
+                            <button class="btn btn-primary" onclick="mostrarModalUsuario()">
+                                <i class="bi bi-person-plus"></i> Nuevo Usuario
+                            </button>
+                            <button class="btn btn-secondary" onclick="cargarUsuarios()">
+                                <i class="bi bi-arrow-repeat"></i> Actualizar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="crud-table">
+                            <thead>
+                                <tr>
+                                    <th>RUN</th>
+                                    <th>Nombre</th>
+                                    <th>Email</th>
+                                    <th>Clave</th>
+                                    <th>Fecha</th>
+                                    <th>Teléfono</th>
+                                    <th>Dirección</th>
+                                    <th>Rol</th>
+                                    <th>Estado</th>
+                                    <th>Fecha Registro</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usuarios-tbody">
+                                <tr>
+                                    <td colspan="11" class="no-data">Haz clic en Actualizar para cargar los usuarios</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            <!-- Sección de Reportes -->
+            <section id="reportes" style="display: none;">
+                <div class="welcome-section">
+                    <h2 class="welcome-title">Reportes y Análisis</h2>
+                    <p class="welcome-subtitle">Genera informes detallados del sistema</p>
+                </div>
+                <div class="crud-container">
+                    <div class="crud-header">
+                        <h3>Reportes del Sistema</h3>
+                        <div class="filtros">
+                            <input type="date" id="fechaInicio" value="">
+                            <input type="date" id="fechaFin" value="">
+                            <button class="btn btn-primary" onclick="generarReporte()">
+                                <i class="bi bi-graph-up"></i> Generar Reporte
+                            </button>
+                        </div>
+                    </div>
+                    <div class="reportes-grid">
+                        <div class="reporte-card">
+                            <h4>Ventas del Período</h4>
+                            <div class="reporte-contenido" id="reporte-ventas">
+                                <p>Selecciona un período y genera el reporte</p>
+                            </div>
+                        </div>
+                        <div class="reporte-card">
+                            <h4>Productos Más Vendidos</h4>
+                            <div class="reporte-contenido" id="reporte-productos">
+                                <p>Selecciona un período y genera el reporte</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección de Perfil -->
+            <section id="perfil" style="display: none;">
+                <div class="welcome-section">
+                    <h2 class="welcome-title">Perfil de Usuario</h2>
+                    <p class="welcome-subtitle">Administra tu información personal</p>
+                </div>
+                <div class="crud-container">
+                    <div class="profile-form">
+                        <form onsubmit="actualizarPerfil(event)">
+                            <div class="form-group">
+                                <label for="profileNombre">Nombre Completo</label>
+                                <input type="text" id="profileNombre" value="" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="profileCorreo">Email</label>
+                                <input type="email" id="profileCorreo" value="" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="profileTelefono">Teléfono</label>
+                                <input type="tel" id="profileTelefono" value="">
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Actualizar Perfil</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
         </main>
     </div>
-    
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
-    
+
+    <!-- ==================== MODALES ==================== -->
+
+    <!-- Modal para Productos -->
+    <div id="modalProducto" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('modalProducto')">&times;</span>
+            <h3 id="modalProductoTitulo">Nuevo Producto</h3>
+            <form id="formProducto" onsubmit="guardarProducto(event)">
+                <input type="hidden" id="productoId">
+                <div class="form-group">
+                    <label for="productoNombre">Nombre</label>
+                    <input type="text" id="productoNombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="productoPrecio">Precio</label>
+                    <input type="number" id="productoPrecio" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="productoStock">Stock</label>
+                    <input type="number" id="productoStock" required>
+                </div>
+                <div class="form-group">
+                    <label for="productoCategoria">Categoría</label>
+                    <input type="text" id="productoCategoria">
+                </div>
+                <div class="form-group">
+                    <label for="productoImagen">URL de Imagen</label>
+                    <input type="url" id="productoImagen" placeholder="https://ejemplo.com/imagen.jpg">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="cerrarModal('modalProducto')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para Categorías -->
+    <div id="modalCategoria" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('modalCategoria')">&times;</span>
+            <h3 id="modalCategoriaTitulo">Nueva Categoría</h3>
+            <form id="formCategoria" onsubmit="guardarCategoria(event)">
+                <input type="hidden" id="categoriaId">
+                <div class="form-group">
+                    <label for="categoriaNombre">Nombre</label>
+                    <input type="text" id="categoriaNombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="categoriaDescripcion">Descripción</label>
+                    <textarea id="categoriaDescripcion"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="cerrarModal('modalCategoria')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Modal para Usuarios -->
+    <div id="modalUsuario" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('modalUsuario')">&times;</span>
+            <h3 id="modalUsuarioTitulo">Nuevo Usuario</h3>
+            <form id="formUsuario" onsubmit="guardarUsuario(event)">
+                <input type="hidden" id="usuarioId">
+                
+                <div class="form-group">
+                    <label for="usuarioRun">RUN *</label>
+                    <input type="text" id="usuarioRun" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="usuarioNombre">Nombre Completo *</label>
+                    <input type="text" id="usuarioNombre" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="usuarioEmail">Email *</label>
+                    <input type="email" id="usuarioEmail" required>
+                </div>
+                
+                <div class="form-group" id="passwordField">
+                    <label for="usuarioClave">Clave *</label>
+                    <input type="password" id="usuarioClave" required>
+                    <small class="text-muted">La clave solo se puede establecer al crear un nuevo usuario</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="usuarioFecha">Fecha</label>
+                    <input type="date" id="usuarioFecha">
+                </div>
+                
+                <div class="form-group">
+                    <label for="usuarioTelefono">Teléfono</label>
+                    <input type="tel" id="usuarioTelefono">
+                </div>
+                
+                <div class="form-group">
+                    <label for="usuarioDireccion">Dirección</label>
+                    <textarea id="usuarioDireccion" rows="2"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="usuarioRol">Rol *</label>
+                    <select id="usuarioRol" required>
+                        <option value="cliente">Cliente</option>
+                        <option value="admin">Administrador</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="usuarioActivo" checked>
+                        <span class="checkmark"></span>
+                        Usuario activo
+                    </label>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="cerrarModal('modalUsuario')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar Usuario</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="../js/saludo.js"></script>
+    <script src="../js/logout.js"></script>
+    <!---<script src="../js/dashboard.js"></script> Nosotros no tenemos este js...--->
+    <script src="../js/crud-functions.js"></script>
 </body>
 </html>
