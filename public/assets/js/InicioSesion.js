@@ -60,6 +60,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // Si todas las validaciones pasan:
             alert('Inicio de sesión exitoso.');
 
+            // Verificamos si hay una URL de redirección guardada
+            const redirectUrl = localStorage.getItem('redirectAfterLogin');
+
             if (email === 'admin@duoc.cl') {
                 // --- Lógica para el Admin ---
                 const adminData = {
@@ -71,8 +74,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Guardamos sus datos antes de redirigir
                 localStorage.setItem("usuario", JSON.stringify(adminData));
                 
-                // Redirigimos a la página de admin
-                window.location.href = '../page/InterAdmin.html';
+                // Si hay URL de redirección, la usamos. Si no, a la página de admin.
+                if (redirectUrl) {
+                    localStorage.removeItem('redirectAfterLogin');
+                    window.location.href = redirectUrl;
+                } else {
+                    window.location.href = '../page/InterAdmin.html';
+                }
 
             } else {
                 // --- Lógica para el Cliente ---
@@ -90,8 +98,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 3. ¡Guardamos el objeto en localStorage! (Esta es la parte clave)
                 localStorage.setItem("usuario", JSON.stringify(datosUsuario));
 
-                // 4. Ahora sí, redirigimos al perfil
-                window.location.href = '../page/perfilCliente.html';
+                // 4. Si hay URL de redirección, la usamos. Si no, al perfil.
+                if (redirectUrl) {
+                    localStorage.removeItem('redirectAfterLogin');
+                    window.location.href = redirectUrl;
+                } else {
+                    window.location.href = '../page/perfilCliente.html';
+                }
             }
             // --- FIN DE LA LÓGICA MODIFICADA ---
 

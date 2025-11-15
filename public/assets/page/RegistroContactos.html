@@ -1,92 +1,115 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Contacto - Huerta Hogar</title>
-    
-    <link rel="icon" href="../Img/Logo.png" type="image/x-icon">
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Contacto - Huerta Hogar</title>
+    
+    <link rel="icon" href="../Img/Logo.jpg" type="image/x-icon">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <link rel="stylesheet" href="../css/RegistroContacto.css">
+    <link rel="stylesheet" href="../css/RegistroContacto.css">
 
-    <style>
-        /* Estilos adicionales que tenías, es buena práctica mantenerlos aquí o moverlos a tu CSS */
-        .error-message { color: red; font-size: 0.9em; padding-top: 3px; }
-        /* Puedes añadir más estilos aquí si lo necesitas */
-    </style>
+    <style>
+        .error-message { color: red; font-size: 0.9em; padding-top: 3px; }
+    </style>
 </head>
 <body>
 
-    <header>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="../../index.html">Huerta Hogar</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav ms-auto mb-2 mb-md-0"> 
-                        <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../page/catalogo.html">Productos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./Nosostros.html">Nosotros</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./blogs.html">Blogs</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="./RegistroContactos.html">Contacto</a></li>
-                    </ul>
-                    <div class="d-flex align-items-center">
-                        <a href="./Carrito.html"><img class="carrito_logo" src="../Img/carrito_blanco-removebg-preview.png" alt="carrito" style="width: 32px; height: auto; margin-right: 5px;"></a>
-                        <a class="nav-link" style="color: white;" href="./Carrito.html">Carrito</a>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <header>
+                <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../../index.html">Huerta Hogar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ms-auto mb-2 mb-md-0"> 
+                        <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../page/catalogo.html">Productos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./Nosostros.html">Nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./blogs.html">Blogs</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="./RegistroContactos.html">Contacto</a></li>
+                    </ul>
+                    <div class="d-flex align-items-center">
+                        <a href="./Carrito.html"><img class="carrito_logo" src="../Img/carrito_blanco-removebg-preview.png" alt="carrito" style="width: 32px; height: auto; margin-right: 5px;"></a>
+                        <a class="nav-link" style="color: white;" href="./Carrito.html">Carrito</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-    <main class="container" style="margin-top: 80px;"> <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-7">
-                
-                <div class="text-center mb-4">
-                    <img src="../Img/Logo.png" class="img-fluid" alt="Logo Huerta Hogar" style="max-width: 200px;">
-                </div>
+    <main class="container" style="margin-top: 80px;"> 
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-7">
+                
+                <div class="text-center mb-4">
+                    <img src="../Img/Logo.jpg" class="img-fluid" alt="Logo Huerta Hogar" style="max-width: 200px;">
+                </div>
 
-                <div class="card shadow-sm border-light-subtle">
-                    <div class="card-header bg-light border-bottom py-3">
-                        <h5 class="mb-0 text-secondary fw-bold text-center">FORMULARIO DE CONTACTO</h5>
-                    </div>
-                    
-                    <div class="card-body p-4 p-md-5">
-                        <form id="formulario-contacto">
-                            <div class="mb-4">
-                                <label for="nombre" class="form-label">NOMBRE COMPLETO</label>
-                                <input type="text" class="form-control form-control-lg" id="nombre" required>
-                            </div>
-                            
-                            <div class="mb-4">
-                                <label for="correo" class="form-label">CORREO</label>
-                                <input type="email" class="form-control form-control-lg" id="correo" required>
-                            </div>
+                <div class="card shadow-sm border-light-subtle">
+                    <div class="card-header bg-light border-bottom py-3">
+                        <h5 class="mb-0 text-secondary fw-bold text-center">FORMULARIO DE CONTACTO</h5>
+                    </div>
+                    
+                    <div class="card-body p-4 p-md-5">
+                        <form id="formulario-contacto">
+                            <div class="mb-4">
+                                <label for="nombre" class="form-label">NOMBRE COMPLETO</label>
+                                <input type="text" class="form-control form-control-lg" id="nombre" required>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="correo" class="form-label">CORREO</label>
+                                <input type="email" class="form-control form-control-lg" id="correo" required>
+                            </div>
 
-                            <div class="mb-4">
-                                <label for="contenido" class="form-label">CONTENIDO</label>
-                                <textarea class="form-control form-control-lg" id="contenido" rows="5" required></textarea>
-                            </div>
+                            <div class="mb-4">
+                                <label for="contenido" class="form-label">CONTENIDO</label>
+                                <textarea class="form-control form-control-lg" id="contenido" rows="5" required></textarea>
+                            </div>
 
-                            <div class="mt-4 text-center">
-                                <button type="submit" class="btn btn-success btn-lg text-uppercase fw-bold">
-                                    Enviar Mensaje
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+                            <div class="mt-4 text-center">
+                                <button type="submit" class="btn btn-success btn-lg text-uppercase fw-bold">
+                                    Enviar Mensaje
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>     
-    <script src="../js/contacto.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> 
+    
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAkqjjPbCFCi3CraWB3FIPSeq2fiLHBE_w",
+            authDomain: "tienda-huerta-hogar.firebaseapp.com",
+            projectId: "tienda-huerta-hogar",
+            storageBucket: "tienda-huerta-hogar.appspot.com",
+            messagingSenderId: "29884421309",
+            appId: "1:29884421309:web:eb7268e124949456d8d3d4",
+            measurementId: "G-Q0GXZML5T1"
+        };
+        
+        // Inicializa la app de Firebase (v8)
+        firebase.initializeApp(firebaseConfig);
+        
+        // Opcional: Si tienes un archivo que contiene solo la configuración, 
+        // puedes reemplazar este bloque con la carga de ese archivo. 
+        // Si tienes otro archivo como 'validarUsuario.js' que también lo inicializa, 
+        // debes asegurarte que ese archivo se cargue ANTES de contacto.js
+    </script>
+
+        <script src="../js/contacto.js"></script>
 </body>
 </html>

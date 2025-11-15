@@ -92,7 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
             // Asumimos que la colección se llama "compras" y tiene un campo "correoUsuario"
             const query = await db.collection("compras")
                                 .where("correoUsuario", "==", correoUsuario)
-                                .orderBy("fecha", "desc") // Ordena por fecha, más nuevas primero
                                 .get();
             
             if (query.empty) {
@@ -100,8 +99,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
             
+            // Ordenar los documentos por fecha en el lado del cliente
+            const docsOrdenados = query.docs.sort((a, b) => {
+                const fechaA = a.data().fecha?.toDate() || 0;
+                const fechaB = b.data().fecha?.toDate() || 0;
+                return fechaB - fechaA; // Descendente
+            });
+
             let html = "";
-            query.docs.forEach(doc => {
+            docsOrdenados.forEach(doc => {
                 const compra = doc.data();
                 // Convierte el Timestamp de Firebase a una fecha legible
                 const fecha = compra.fecha.toDate ? compra.fecha.toDate().toLocaleDateString('es-CL') : 'N/A';
@@ -136,7 +142,6 @@ document.addEventListener("DOMContentLoaded", () => {
             // Asumimos que la colección se llama "contactos" y tiene "correoUsuario"
             const query = await db.collection("contactos")
                                 .where("correoUsuario", "==", correoUsuario)
-                                .orderBy("fecha", "desc")
                                 .get();
             
             if (query.empty) {
@@ -144,8 +149,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
+            // Ordenar los documentos por fecha en el lado del cliente
+            const docsOrdenados = query.docs.sort((a, b) => {
+                const fechaA = a.data().fecha?.toDate() || 0;
+                const fechaB = b.data().fecha?.toDate() || 0;
+                return fechaB - fechaA; // Descendente
+            });
+
             let html = "";
-            query.docs.forEach(doc => {
+            docsOrdenados.forEach(doc => {
                 const msg = doc.data();
                 const fecha = msg.fecha.toDate ? msg.fecha.toDate().toLocaleDateString('es-CL') : 'N/A';
                 const estado = msg.estado === 'Resuelto' 
@@ -176,4 +188,64 @@ document.addEventListener("DOMContentLoaded", () => {
     cargarHistorialCompras(usuario.correo);
     cargarHistorialContactos(usuario.correo);
 
+    // --- 7. FUNCIONALIDAD PARA ACTUALIZAR PERFIL ---
+    const updateProfileForm = document.querySelector("#update-profile-form");
+    const nombreUsuarioInput = document.querySelector("#nombreUsuario");
+    const updateMessageEl = document.querySelector("#update-message");
+
+    if (updateProfileForm) {
+        // Rellenar el campo con el nombre actual
+        nombreUsuarioInput.value = usuario.nombre || "";
+
+        updateProfileForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const nuevoNombre = nombreUsuarioInput.value.trim();
+
+            if (!nuevoNombre) {
+                updateMessageEl.textContent = "El nombre no puede estar vacío.";
+                updateMessageEl.className = "alert alert-danger";
+                return;
+            }
+
+            updateMessageEl.textContent = "Actualizando...";
+            updateMessageEl.className = "alert alert-info";
+
+            try {
+                // Buscar el documento del usuario por su correo
+                const userQuery = await db.collection("usuario")
+                                          .where("correo", "==", usuario.correo)
+                                          .limit(1)
+                                          .get();
+
+                if (userQuery.empty) {
+                    throw new Error("No se encontró el perfil de usuario para actualizar.");
+                }
+
+                // Obtener la referencia del documento
+                const userDocRef = userQuery.docs[0].ref;
+
+                // Actualizar solo el nombre
+                await userDocRef.update({
+                    nombre: nuevoNombre
+                });
+
+                // Actualizar el objeto en localStorage
+                usuario.nombre = nuevoNombre;
+                localStorage.setItem("usuario", JSON.stringify(usuario));
+
+                // Actualizar la UI
+                if (nombreClienteEl) {
+                    nombreClienteEl.textContent = nuevoNombre;
+                }
+
+                updateMessageEl.textContent = "¡Nombre actualizado con éxito!";
+                updateMessageEl.className = "alert alert-success";
+
+            } catch (error) {
+                console.error("Error al actualizar el perfil:", error);
+                updateMessageEl.textContent = "Error al actualizar. Inténtalo de nuevo más tarde.";
+                updateMessageEl.className = "alert alert-danger";
+            }
+        });
+    }
 });

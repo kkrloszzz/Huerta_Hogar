@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración</title>
-    <link rel="icon" href="assets/Img/Logo.png" type="image/x-icon">
+    <link rel="icon" href="assets/Img/Logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="../css/InterAdmin.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
@@ -16,7 +16,7 @@
         <header class="admin-header">
             
             <a href="#" class="logo">
-                <img class="profile-icon"  src="../Img/Logo.png" alt="Logo">
+                <img class="profile-icon"  src="../Img/Logo.jpg" alt="Logo">
                 <span>Huerto Hogar</span>
             </a>
         </header>
@@ -70,6 +70,12 @@
                         <a href="#reportes" class="menu-link">
                             <i class="bi bi-graph-up menu-icon"></i>
                             Reportes
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#contactos" class="menu-link">
+                            <i class="bi bi-chat-dots menu-icon"></i>
+                            Mensajes
                         </a>
                     </li>
                 </ul>
@@ -472,16 +478,53 @@
                             </div>
                             <div class="form-group">
                                 <label for="profileCorreo">Email</label>
-                                <input type="email" id="profileCorreo" value="" required>
+                                <input type="email" id="profileCorreo" value="" required readonly>
                             </div>
                             <div class="form-group">
                                 <label for="profileTelefono">Teléfono</label>
-                                <input type="tel" id="profileTelefono" value="">
+                                <input type="tel" id="profileTelefono" value="" readonly>
                             </div>
                             <div class="form-actions">
                                 <button type="submit" class="btn btn-primary">Actualizar Perfil</button>
                             </div>
                         </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección de Mensajes de Contacto -->
+            <section id="contactos" style="display: none;">
+                <div class="welcome-section">
+                    <h2 class="welcome-title">Gestión de Mensajes de Contacto</h2>
+                    <p class="welcome-subtitle">Revisa y administra los mensajes enviados por los usuarios</p>
+                </div>
+                <div class="crud-container">
+                    <div class="crud-header">
+                        <h3>Bandeja de Entrada</h3>
+                        <div class="crud-actions">
+                            <button class="btn btn-secondary" onclick="cargarContactos()">
+                                <i class="bi bi-arrow-repeat"></i> Actualizar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="crud-table">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Nombre</th>
+                                    <th>Email</th>
+                                    <th>Asunto</th>
+                                    <th>Mensaje</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="contactos-tbody">
+                                <tr>
+                                    <td colspan="6" class="no-data">Haz clic en Actualizar para cargar los mensajes</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </section>

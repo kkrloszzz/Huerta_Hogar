@@ -1029,34 +1029,38 @@ class CRUDFunctions {
     async actualizarPerfil(perfilData) {
         try {
             const usuarioStr = localStorage.getItem("usuario");
-            const usuario = usuarioStr ? JSON.parse(usuarioStr) : null;
+            let usuario = usuarioStr ? JSON.parse(usuarioStr) : null;
 
-            if (!usuario || !usuario.id) {
+            if (!usuario || !usuario.correo) {
                 alert('No se pudo obtener la informacion del usuario');
                 return false;
             }
 
-            await this.db.collection("usuario").doc(usuario.id).update({
-                run: perfilData.run,
-                nombre: perfilData.nombre,
-                correo: perfilData.correo,
-                clave: perfilData.clave,
-                fecha: perfilData.fecha,
-                telefono: perfilData.telefono,
-                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-            });
+            // Find user by email to get the document ID
+            const userQuery = await this.db.collection("usuario")
+                                      .where("correo", "==", usuario.correo)
+                                      .limit(1)
+                                      .get();
 
-            usuario.run = perfilData.run;
+            if (!userQuery.empty) {
+                const userDocRef = userQuery.docs[0].ref;
+                await userDocRef.update({
+                    nombre: perfilData.nombre,
+                    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+            }
+
             usuario.nombre = perfilData.nombre;
-            usuario.correo = perfilData.correo;
-            usuario.clave = perfilData.clave;
-            usuario.fecha = perfilData.fecha;
-            usuario.telefono = perfilData.telefono;
             localStorage.setItem("usuario", JSON.stringify(usuario));
 
             const bienvenidoPrincipal = document.getElementById('bienvenidoPrincipal');
             if (bienvenidoPrincipal) {
                 bienvenidoPrincipal.textContent = `Bienvenido, ${usuario.nombre}`;
+            }
+            
+            const profileNombre = document.getElementById('profileNombre');
+            if (profileNombre) {
+                profileNombre.value = usuario.nombre;
             }
 
             return true;
@@ -1359,19 +1363,17 @@ function actualizarPerfil(event) {
     event.preventDefault();
     
     const perfilData = {
-        nombre: document.getElementById('profileNombre').value,
-        email: document.getElementById('profileEmail').value,
-        clave: document.getElementById('profileClave').value,
-        telefono: document.getElementById('profileTelefono').value
+        nombre: document.getElementById('profileNombre').value
     };
 
     if (crudFunctions) {
-        const success = crudFunctions.actualizarPerfil(perfilData);
-        if (success) {
-            alert('Perfil actualizado correctamente');
-        } else {
-            alert('Error al actualizar el perfil');
-        }
+        crudFunctions.actualizarPerfil(perfilData).then(success => {
+            if (success) {
+                alert('Perfil actualizado correctamente');
+            } else {
+                alert('Error al actualizar el perfil');
+            }
+        });
     }
 }
 

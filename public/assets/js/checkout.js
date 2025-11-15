@@ -34,6 +34,19 @@ const regionesComunas = {
 
 // Inicializar checkout cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', function() {
+    // --- INICIO: VERIFICACIÓN DE LOGIN ---
+    const usuarioStorage = localStorage.getItem("usuario");
+    
+    if (!usuarioStorage) {
+        alert("Debes iniciar sesión para poder comprar.");
+        // Guardamos la página actual para poder redirigir de vuelta después del login
+        localStorage.setItem('redirectAfterLogin', window.location.href);
+        // Redirigimos a la página de inicio de sesión
+        window.location.href = "InicioSesionempresa.html";
+        return; // Detenemos la ejecución del resto del script
+    }
+    // --- FIN: VERIFICACIÓN DE LOGIN ---
+
     inicializarCheckout();
     configurarEventosCheckout();
     cargarRegiones(); // Cargar las regiones al iniciar

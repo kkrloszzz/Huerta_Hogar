@@ -223,10 +223,15 @@ export class CrudService {
   static async updateUsuario(id, datos) {
     try {
       const usuarioRef = doc(db, "usuario", id);
-      await updateDoc(usuarioRef, {
-        ...datos,
+      const updateData = {
         updatedAt: Timestamp.now()
-      });
+      };
+
+      if (datos.nombre) {
+        updateData.nombre = datos.nombre;
+      }
+      
+      await updateDoc(usuarioRef, updateData);
       return true;
     } catch (error) {
       console.error("Error actualizando usuario:", error);
