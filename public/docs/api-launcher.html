@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lanzador API Docs</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            background: #f5f5f5; 
+        }
+        .container { 
+            max-width: 600px; 
+            margin: 50px auto; 
+            background: white; 
+            padding: 30px; 
+            border-radius: 10px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+            text-align: center; 
+        }
+        .btn { 
+            background: #17a2b8; 
+            color: white; 
+            padding: 12px 24px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-size: 16px; 
+            text-decoration: none; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+        }
+        .btn:hover { background: #138496; }
+        .loading { display: none; color: #6c757d; }
+        .instructions { 
+            background: #e9ecef; 
+            padding: 15px; 
+            border-radius: 5px; 
+            margin: 20px 0; 
+            text-align: left; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Documentación API</h1>
+        <p>Este lanzador abrirá Swagger Editor con la documentación de tu API Firebase.</p>
+        
+        <div class="instructions">
+            <h3>Instrucciones:</h3>
+            <ol>
+                <li>Haz clic en "Abrir Swagger Editor"</li>
+                <li>Se abrirá <strong>https://editor.swagger.io/</strong></li>
+                <li><strong>PASO IMPORTANTE:</strong> Pega el contenido YAML manualmente</li>
+                <li>¡Listo! Tendrás tu documentación interactiva</li>
+            </ol>
+        </div>
+        
+        <button id="launchBtn" class="btn" onclick="launchSwaggerEditor()">
+            <i>📋</i>
+            Abrir Swagger Editor
+        </button>
+
+        <button id="copyBtn" class="btn" onclick="copyYAMLContent()" style="background: #28a745; margin-left: 10px;">
+            <i>📄</i>
+            Copiar YAML
+        </button>
+        
+        <div id="loading" class="loading">
+            <p>Abriendo Swagger Editor...</p>
+        </div>
+
+        <div id="status" style="margin-top: 20px; font-weight: bold;"></div>
+
+        <div style="margin-top: 30px; border-top: 1px solid #ddd; padding-top: 20px;">
+            <h4>¿Problemas?</h4>
+            <p>Si el método automático no funciona:</p>
+            <ol style="text-align: left;">
+                <li>Haz clic en "Copiar YAML"</li>
+                <li>Ve manualmente a <a href="https://editor.swagger.io/" target="_blank">https://editor.swagger.io/</a></li>
+                <li>Borra todo el contenido existente</li>
+                <li>Pega el YAML copiado (Ctrl+V)</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        // Contenido YAML simplificado y compatible
+        const openapiContent = `openapi: 3.0.0
+info:
+  title: API Panel de Administración - Tienda Online
+  description: Documentación de servicios Firebase Firestore - Los ejemplos son estáticos
+  version: 1.0.0
+  contact:
+    name: Soporte Técnico
+    email: soporte@tiendaonline.com
+
+servers:
+  - url: https://firestore.googleapis.com/v1
+    description: Firebase Firestore API
+
+tags:
+  - name: Dashboard
+    description: Operaciones del panel de control
+  - name: Productos
+    description: Gestión de productos
+  - name: Órdenes
+    description: Gestión de órdenes de compra
+  - name: Usuarios
+    description: Gestión de usuarios
+  - name: Categorías
+    description: Gestión de categorías
+
+paths:
+  /api/dashboard/estadisticas:
+    get:
+      tags:
+        - Dashboard
+      summary: Obtener estadísticas del dashboard
+      description: Servicio Firebase - DashboardService.getEstadisticasCompletas()
+      responses:
+        '200':
+          description: Estadísticas obtenidas correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EstadisticasDashboard'
+              example:
+                totalCompras: 24
+                proyeccionCompras: 15
+                totalProductos: 156
+                inventarioTotal: 1248
+                totalUsuarios: 89
+                nuevosUsuariosMes: 12
+
+  /api/productos:
+    get:
+      tags:
+        - Productos
+      summary: Obtener lista de productos
+      description: Servicio Firebase - CrudService.getProductos()
+      responses:
+        '200':
+          description: Lista de productos obtenida correctamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Producto'
+              example:
+                - id: "prod123"
+                  nombre: "Laptop Gaming"
+                  precio: 1299.99
+                  stock: 15
+                  categoria: "Tecnología"
+                  imagen: "https://ejemplo.com/laptop.jpg"
+                  activo: true
+                - id: "prod456"
+                  nombre: "Mouse Inalámbrico"
+                  precio: 49.99
+                  stock: 30
+                  categoria: "Accesorios"
+                  imagen: "https://ejemplo.com/mouse.jpg"
+                  activo: true
+                - id: "prod789"
+                  nombre: "Teclado Mecánico"
+                  precio: 89.99
+                  stock: 25
+                  categoria: "Accesorios"
+                  activo: true
+
+    post:
+      tags:
+        - Productos
+      summary: Crear un nuevo producto
+      description: Servicio Firebase - CrudService.createProducto()
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductoInput'
+            example:
+              nombre: "Tablet Android 10''"
+              precio: 299.99
+              stock: 25
+              categoria: "Tecnología"
+              imagen: "https://ejemplo.com/tablet.jpg"
+      responses:
+        '201':
+          description: Producto creado correctamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+              example:
+                id: "nuevoIdGeneradoPorFirestore123"
+
+  /api/productos/{id}:
+    get:
+      tags:
+        - Productos
+      summary: Obtener producto por ID
+      description: Servicio Firebase - CrudService.getProductoById()
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: "prod123"
+      responses:
+        '200':
+          description: Producto encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Producto'
+              example:
+                id: "prod123"
+                nombre: "Laptop Gaming"
+                precio: 1299.99
+                stock: 15
+                categoria: "Tecnología"
+                imagen: "https://ejemplo.com/laptop.jpg"
+                activo: true
+        '404':
+          description: Producto no encontrado
+          content:
+            application/json:
+              example:
+                error: "Producto no encontrado"
+                message: "El producto con ID prod123 no existe"
+
+    put:
+      tags:
+        - Productos
+      summary: Actualizar producto existente
+      description: Servicio Firebase - CrudService.updateProducto()
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: "prod123"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductoInput'
+            example:
+              nombre: "Laptop Gaming Pro"
+              precio: 1399.99
+              stock: 10
+              categoria: "Tecnología Premium"
+      responses:
+        '200':
+          description: Producto actualizado correctamente
+          content:
+            application/json:
+              example:
+                success: true
+                message: "Producto actualizado correctamente"
+        '404':
+          description: Producto no encontrado
+
+    delete:
+      tags:
+        - Productos
+      summary: Eliminar producto del sistema
+      description: Servicio Firebase - CrudService.deleteProducto()
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: "prod123"
+      responses:
+        '200':
+          description: Producto eliminado correctamente
+          content:
+            application/json:
+              example:
+                success: true
+                message: "Producto eliminado correctamente"
+        '404':
+          description: Producto no encontrado
+
+  /api/ordenes:
+    get:
+      tags:
+        - Órdenes
+      summary: Obtener lista de órdenes
+      description: Servicio Firebase - CrudService.getOrdenes()
+      responses:
+        '200':
+          description: Lista de órdenes obtenida correctamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Orden'
+              example:
+                - id: "orden123"
+                  clienteNombre: "Juan Pérez"
+                  total: 199.99
+                  estado: "completado"
+                  fecha: "2024-01-15T10:30:00Z"
+                  productos:
+                    - id: "prod123"
+                      nombre: "Laptop Gaming"
+                      cantidad: 1
+                      precio: 1299.99
+                    - id: "prod456"
+                      nombre: "Mouse Inalámbrico"
+                      cantidad: 1
+                      precio: 49.99
+                - id: "orden124"
+                  clienteNombre: "María García"
+                  total: 299.99
+                  estado: "procesando"
+                  fecha: "2024-01-14T15:45:00Z"
+                  productos:
+                    - id: "prod789"
+                      nombre: "Teclado Mecánico"
+                      cantidad: 2
+                      precio: 89.99
+
+  /api/ordenes/{id}:
+    get:
+      tags:
+        - Órdenes
+      summary: Obtener orden por ID
+      description: Servicio Firebase - CrudService.getOrdenById()
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: "orden123"
+      responses:
+        '200':
+          description: Orden encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Orden'
+              example:
+                id: "orden123"
+                clienteNombre: "Juan Pérez"
+                total: 199.99
+                estado: "completado"
+                fecha: "2024-01-15T10:30:00Z"
+                productos:
+                  - id: "prod123"
+                    nombre: "Laptop Gaming"
+                    cantidad: 1
+                    precio: 1299.99
+                  - id: "prod456"
+                    nombre: "Mouse Inalámbrico"
+                    cantidad: 1
+                    precio: 49.99
+        '404':
+          description: Orden no encontrada
+
+  /api/ordenes/{id}/estado:
+    put:
+      tags:
+        - Órdenes
+      summary: Actualizar estado de orden
+      description: Servicio Firebase - CrudService.updateOrdenEstado()
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: "orden123"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                estado:
+                  type: string
+                  enum: [pendiente, procesando, completado, cancelado]
+            example:
+              estado: "completado"
+      responses:
+        '200':
+          description: Estado actualizado correctamente
+          content:
+            application/json:
+              example:
+                success: true
+                message: "Estado actualizado a completado"
+        '404':
+          description: Orden no encontrada
+
+  /api/usuarios:
+    get:
+      tags:
+        - Usuarios
+      summary: Obtener lista de usuarios
+      description: Servicio Firebase - CrudService.getUsuarios()
+      responses:
+        '200':
+          description: Lista de usuarios obtenida correctamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Usuario'
+              example:
+                - id: "user123"
+                  nombre: "Ana López"
+                  email: "ana@ejemplo.com"
+                  rol: "admin"
+                  activo: true
+                  telefono: "+56912345678"
+                  direccion: "Av. Principal 123"
+                - id: "user124"
+                  nombre: "Carlos Ruiz"
+                  email: "carlos@ejemplo.com"
+                  rol: "cliente"
+                  activo: true
+                  telefono: "+56987654321"
+                - id: "user125"
+                  nombre: "María González"
+                  email: "maria@ejemplo.com"
+                  rol: "cliente"
+                  activo: false
+
+  /api/usuarios/{id}:
+    get:
+      tags:
+        - Usuarios
+      summary: Obtener usuario por ID
+      description: Servicio Firebase - CrudService.getUsuarioById()
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: "user123"
+      responses:
+        '200':
+          description: Usuario encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Usuario'
+              example:
+                id: "user123"
+                nombre: "Ana López"
+                email: "ana@ejemplo.com"
+                rol: "admin"
+                activo: true
+                telefono: "+56912345678"
+                direccion: "Av. Principal 123"
+                createdAt: "2024-01-01T00:00:00Z"
+        '404':
+          description: Usuario no encontrado
+
+  /api/categorias:
+    get:
+      tags:
+        - Categorías
+      summary: Obtener lista de categorías
+      description: Servicio Firebase - CrudService.getCategorias()
+      responses:
+        '200':
+          description: Lista de categorías obtenida correctamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Categoria'
+              example:
+                - id: "cat123"
+                  nombre: "Electrónicos"
+                  descripcion: "Dispositivos electrónicos y tecnológicos"
+                  productosCount: 45
+                  activa: true
+                - id: "cat124"
+                  nombre: "Hogar"
+                  descripcion: "Productos para el hogar"
+                  productosCount: 32
+                  activa: true
+                - id: "cat125"
+                  nombre: "Ropa"
+                  descripcion: "Ropa y accesorios"
+                  productosCount: 28
+                  activa: false
+
+components:
+  schemas:
+    EstadisticasDashboard:
+      type: object
+      properties:
+        totalCompras:
+          type: integer
+          example: 24
+        proyeccionCompras:
+          type: integer
+          example: 15
+        totalProductos:
+          type: integer
+          example: 156
+        inventarioTotal:
+          type: integer
+          example: 1248
+        totalUsuarios:
+          type: integer
+          example: 89
+        nuevosUsuariosMes:
+          type: integer
+          example: 12
+
+    Producto:
+      type: object
+      properties:
+        id:
+          type: string
+        nombre:
+          type: string
+          example: "Laptop Gaming"
+        precio:
+          type: number
+          example: 1299.99
+        stock:
+          type: integer
+          example: 15
+        categoria:
+          type: string
+          example: "Tecnología"
+        imagen:
+          type: string
+        activo:
+          type: boolean
+          example: true
+
+    ProductoInput:
+      type: object
+      required:
+        - nombre
+        - precio
+        - stock
+      properties:
+        nombre:
+          type: string
+        precio:
+          type: number
+        stock:
+          type: integer
+        categoria:
+          type: string
+        imagen:
+          type: string
+
+    Orden:
+      type: object
+      properties:
+        id:
+          type: string
+        clienteNombre:
+          type: string
+        total:
+          type: number
+        estado:
+          type: string
+        fecha:
+          type: string
+          format: date-time
+        productos:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              nombre:
+                type: string
+              cantidad:
+                type: integer
+              precio:
+                type: number
+
+    Usuario:
+      type: object
+      properties:
+        id:
+          type: string
+        nombre:
+          type: string
+        email:
+          type: string
+        rol:
+          type: string
+        activo:
+          type: boolean
+        telefono:
+          type: string
+        direccion:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+
+    Categoria:
+      type: object
+      properties:
+        id:
+          type: string
+        nombre:
+          type: string
+        descripcion:
+          type: string
+        productosCount:
+          type: integer
+        activa:
+          type: boolean`;
+
+        function launchSwaggerEditor() {
+            const btn = document.getElementById('launchBtn');
+            const loading = document.getElementById('loading');
+            const status = document.getElementById('status');
+            
+            btn.disabled = true;
+            loading.style.display = 'block';
+            status.innerHTML = 'Abriendo Swagger Editor...';
+            
+            try {
+                // Método simple: abrir Swagger Editor y preparar para pegar manualmente
+                const swaggerUrl = `https://editor.swagger.io/`;
+                window.open(swaggerUrl, '_blank');
+                
+                status.innerHTML = 'Swagger Editor abierto. <strong>Pega el contenido YAML manualmente.</strong>';
+                
+                // Mostrar instrucciones adicionales
+                setTimeout(() => {
+                    status.innerHTML += '<br><br> <strong>Instrucción:</strong> Ve a la pestaña recién abierta, borra el contenido existente y pega el YAML.';
+                }, 1000);
+                
+            } catch (error) {
+                status.innerHTML = 'Error: ' + error.message;
+            } finally {
+                loading.style.display = 'none';
+                setTimeout(() => {
+                    btn.disabled = false;
+                }, 2000);
+            }
+        }
+
+        function copyYAMLContent() {
+            const status = document.getElementById('status');
+            
+            try {
+                // Crear un elemento temporal para copiar
+                const tempTextArea = document.createElement('textarea');
+                tempTextArea.value = openapiContent;
+                document.body.appendChild(tempTextArea);
+                tempTextArea.select();
+                tempTextArea.setSelectionRange(0, 99999); // Para móviles
+                
+                // Ejecutar comando de copia
+                const successful = document.execCommand('copy');
+                document.body.removeChild(tempTextArea);
+                
+                if (successful) {
+                    status.innerHTML = '<strong>YAML copiado al portapapeles!</strong><br>Ahora ve a <a href="https://editor.swagger.io/" target="_blank">Swagger Editor</a> y pega el contenido.';
+                    status.style.color = 'green';
+                } else {
+                    status.innerHTML = 'No se pudo copiar. Intenta manualmente.';
+                    status.style.color = 'red';
+                }
+                
+            } catch (error) {
+                status.innerHTML = 'Error al copiar: ' + error.message;
+                status.style.color = 'red';
+                
+                // Fallback: mostrar el contenido para copiar manualmente
+                setTimeout(() => {
+                    alert('Como falló la copia automática, aquí está el contenido para copiar manualmente:\n\n' + openapiContent.substring(0, 1000) + '...');
+                }, 500);
+            }
+        }
+
+        // Versión alternativa que intenta codificar de forma más segura
+        function encodeToBase64(str) {
+            try {
+                // Primero convertir a bytes UTF-8
+                const bytes = new TextEncoder().encode(str);
+                const binary = String.fromCharCode(...bytes);
+                return btoa(binary);
+            } catch (e) {
+                return null;
+            }
+        }
+    </script>
+</body>
+</html>
