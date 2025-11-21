@@ -91,7 +91,7 @@
         // Contenido YAML simplificado y compatible
         const openapiContent = `openapi: 3.0.0
 info:
-  title: API Panel de Administración - Tienda Online
+  title: API Panel de Administración - Huerta Hogar
   description: Documentación de servicios Firebase Firestore - Los ejemplos son estáticos
   version: 1.0.0
   contact:
@@ -129,12 +129,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/EstadisticasDashboard'
               example:
-                totalCompras: 24
-                proyeccionCompras: 15
-                totalProductos: 156
-                inventarioTotal: 1248
-                totalUsuarios: 89
-                nuevosUsuariosMes: 12
+                totalCompras: 19
+                proyeccionCompras: 0
+                totalProductos: 9
+                inventarioTotal: 710
+                totalUsuarios: 4
+                nuevosUsuariosMes: 1
 
   /api/productos:
     get:
@@ -152,27 +152,42 @@ paths:
                 items:
                   $ref: '#/components/schemas/Producto'
               example:
-                - id: "prod123"
-                  nombre: "Laptop Gaming"
-                  precio: 1299.99
-                  stock: 15
-                  categoria: "Tecnología"
-                  imagen: "https://ejemplo.com/laptop.jpg"
+                - id: "1"
+                  nombre: "Manzanas Fuji"
+                  precio: 1200
+                  stock: 100
+                  categoria: "Fruta"
+                  imagen: "https://tienda-huerta-hogar.web.app/assets/Img/manzanas_fuji.jpg"
                   activo: true
-                - id: "prod456"
-                  nombre: "Mouse Inalámbrico"
-                  precio: 49.99
-                  stock: 30
-                  categoria: "Accesorios"
-                  imagen: "https://ejemplo.com/mouse.jpg"
+                - id: "2"
+                  nombre: "Naranjas Valencia"
+                  precio: 1000
+                  stock: 100
+                  categoria: "Fruta"
+                  imagen: "https://tienda-huerta-hogar.web.app/assets/Img/Naranja.jpg"
                   activo: true
-                - id: "prod789"
-                  nombre: "Teclado Mecánico"
-                  precio: 89.99
-                  stock: 25
-                  categoria: "Accesorios"
+                - id: "3"
+                  nombre: "Banana Cavendish"
+                  precio: 800
+                  stock: 100
+                  categoria: "Fruta"
+                  imagen: "https://tienda-huerta-hogar.web.app/assets/Img/Banana.jpg"
                   activo: true
-
+                - id: "4"
+                  nombre: "Zanahoria Organica"
+                  precio: 900
+                  stock: 100
+                  categoria: "Verdura"
+                  imagen: "https://tienda-huerta-hogar.web.app/assets/Img/Zhanaoria Organica.jpg"
+                  activo: true
+                - id: "5"
+                  nombre: "Espinacas Frescas"
+                  precio: 700
+                  stock: 100
+                  categoria: "Verdura"
+                  imagen: "https://tienda-huerta-hogar.web.app/assets/Img/espinacas_Frescas.jpg"
+                  activo: true
+                  
     post:
       tags:
         - Productos
@@ -185,11 +200,11 @@ paths:
             schema:
               $ref: '#/components/schemas/ProductoInput'
             example:
-              nombre: "Tablet Android 10''"
-              precio: 299.99
+              nombre: "Pimientos Tricolor"
+              precio: 1500
               stock: 25
-              categoria: "Tecnología"
-              imagen: "https://ejemplo.com/tablet.jpg"
+              categoria: "Verdura"
+              imagen: "https://tienda-huerta-hogar.web.app/assets/Img/Pimientos_Tricolor.jpg"
       responses:
         '201':
           description: Producto creado correctamente
@@ -224,12 +239,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Producto'
               example:
-                id: "prod123"
-                nombre: "Laptop Gaming"
-                precio: 1299.99
+                id: "1"
+                nombre: "Manzanas Fuji"
+                precio: 1200
                 stock: 15
-                categoria: "Tecnología"
-                imagen: "https://ejemplo.com/laptop.jpg"
+                categoria: "Fruta"
+                imagen: "https://tienda-huerta-hogar.web.app/assets/Img/manzanas_fuji.jpg"
                 activo: true
         '404':
           description: Producto no encontrado
@@ -258,10 +273,10 @@ paths:
             schema:
               $ref: '#/components/schemas/ProductoInput'
             example:
-              nombre: "Laptop Gaming Pro"
-              precio: 1399.99
-              stock: 10
-              categoria: "Tecnología Premium"
+              nombre: "Naranjas Valencia"
+              precio: 1100
+              stock: 90
+              categoria: "Fruta"
       responses:
         '200':
           description: Producto actualizado correctamente
@@ -319,13 +334,13 @@ paths:
                   fecha: "2024-01-15T10:30:00Z"
                   productos:
                     - id: "prod123"
-                      nombre: "Laptop Gaming"
+                      nombre: "Manzanas Fuji"
                       cantidad: 1
-                      precio: 1299.99
+                      precio: 1200
                     - id: "prod456"
-                      nombre: "Mouse Inalámbrico"
+                      nombre: "Naranjas Valencia"
                       cantidad: 1
-                      precio: 49.99
+                      precio: 1000
                 - id: "orden124"
                   clienteNombre: "María García"
                   total: 299.99
@@ -333,9 +348,9 @@ paths:
                   fecha: "2024-01-14T15:45:00Z"
                   productos:
                     - id: "prod789"
-                      nombre: "Teclado Mecánico"
+                      nombre: "Banana Cavendish"
                       cantidad: 2
-                      precio: 89.99
+                      precio: 800
 
   /api/ordenes/{id}:
     get:
@@ -365,13 +380,13 @@ paths:
                 fecha: "2024-01-15T10:30:00Z"
                 productos:
                   - id: "prod123"
-                    nombre: "Laptop Gaming"
+                    nombre: "Manzanas Fuji"
                     cantidad: 1
-                    precio: 1299.99
+                    precio: 1200
                   - id: "prod456"
-                    nombre: "Mouse Inalámbrico"
+                    nombre: "Naranjas Valencia"
                     cantidad: 1
-                    precio: 49.99
+                    precio: 1000
         '404':
           description: Orden no encontrada
 
@@ -495,19 +510,19 @@ paths:
                   $ref: '#/components/schemas/Categoria'
               example:
                 - id: "cat123"
-                  nombre: "Electrónicos"
-                  descripcion: "Dispositivos electrónicos y tecnológicos"
-                  productosCount: 45
+                  nombre: "Frutas"
+                  descripcion: "Frutas frescas de temporada"
+                  productosCount: 15
                   activa: true
                 - id: "cat124"
-                  nombre: "Hogar"
-                  descripcion: "Productos para el hogar"
-                  productosCount: 32
+                  nombre: "Vegetales"
+                  descripcion: "Vegetales orgánicos y frescos"
+                  productosCount: 10
                   activa: true
                 - id: "cat125"
-                  nombre: "Ropa"
-                  descripcion: "Ropa y accesorios"
-                  productosCount: 28
+                  nombre: "Abarrotes"
+                  descripcion: "Productos secos y envasados"
+                  productosCount: 20
                   activa: false
 
 components:
@@ -541,16 +556,16 @@ components:
           type: string
         nombre:
           type: string
-          example: "Laptop Gaming"
+          example: "Manzanas Fuji"
         precio:
           type: number
-          example: 1299.99
+          example: 1200
         stock:
           type: integer
           example: 15
         categoria:
           type: string
-          example: "Tecnología"
+          example: "Frutas"
         imagen:
           type: string
         activo:
