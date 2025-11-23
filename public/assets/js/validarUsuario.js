@@ -310,6 +310,7 @@ function configurarLoginFirebase() {
                 if (userDoc.exists) {
                     const userData = userDoc.data();
                     const usuario = { 
+                        uid: user.uid, // <-- AÑADIDO
                         nombre: userData.nombre || "Cliente", 
                         correo: userData.correo, 
                         rol: "cliente" 
