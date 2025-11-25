@@ -1,4 +1,5 @@
 // Espera a que todo el HTML se cargue antes de ejecutar el script.
+firebase.initializeApp(firebaseConfig);
 document.addEventListener('DOMContentLoaded', () => {
     
     // Asegúrate de que las librerías de Firebase estén cargadas

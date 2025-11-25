@@ -7,7 +7,7 @@ body {
     font-family: 'Poppins', sans-serif;
     color: #333;
     /* Espacio para la barra de navegación fija */
-    padding-top: 70px; 
+    padding-top: 1200px; 
 }
 
 /* --- ESTA ES LA REGLA CLAVE PARA CENTRAR TODO --- */
@@ -17,7 +17,7 @@ main.login-page-wrapper {
     justify-content: center; /* Centra verticalmente */
     align-items: center;   /* Centra horizontalmente */
     min-height: calc(100vh - 70px); /* Ocupa la altura de la pantalla */
-    padding: 20px;
+    padding: 100px;
     box-sizing: border-box; /* Asegura que el padding no cause problemas */
 }
 

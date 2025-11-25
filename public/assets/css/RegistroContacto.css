@@ -1,203 +1,309 @@
-a_carrito{
-            color: #2E8B57;
-            text-decoration: none; 
-        }
-        .carrito_logo{
-            height: 35px; 
-            width: auto; 
-            margin-right: 10px; 
-        }
-
-        /* Contenido Principal (sin cambios) */
-        .main-content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: calc(100vh - 60px);
-            padding: 20px;
-            margin-top: 70px; /* Espacio para la navbar fija */
-        }
-
-        /* ---- Contenedor del Formulario (MODIFICADO) ---- */
-        .form-container {
-            background-color: #e8e8e8;
-            border: 2px solid #999;
-            /* CAMBIO: Padding reducido para que no se coma el espacio.
-              40px es más balanceado que 70px.
-            */
-            padding: 2.5rem; 
-            width: 100%;
-            /* CAMBIO: Ancho máximo aumentado para que el formulario 
-              sea "más grande" como pediste.
-            */
-            max-width: 650px; 
-            border-radius: 8px; /* Añadido: Suaviza los bordes */
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Añadido: Sombra sutil */
-        }
-
-        /* ---- Título del Formulario (MODIFICADO) ---- */
-        .form-title {
-            font-family: 'Playfair Display', serif;
-            background-color: #8B4513;
-            color: white;
-            text-align: center;
-            /* CAMBIO: Padding y Font-size aumentados 
-              para que sean proporcionales.
-            */
-            padding: 0.75rem; 
-            font-size: 1.25rem; /* Era 14px */
-            font-weight: normal;
-            /* CAMBIO: Márgenes ajustados al nuevo padding 
-              del .form-container
-            */
-            margin: -2.5rem -2.5rem 2rem -2.5rem;
-        }
-
-        /* ---- Grupos de Inputs (MODIFICADO) ---- */
-        .form-group {
-            /* CAMBIO: Margen de 70px era demasiado. 
-              1.5rem (24px) los deja "parejos"
-            */
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            /* CAMBIO: Tamaño de letra aumentado (era 12px) */
-            font-size: 0.9rem; 
-            color: #333;
-            margin-bottom: 0.5rem; /* Era 3px */
-            font-weight: 600; /* Añadido: Da más jerarquía */
-        }
-
-        /* ---- Campos de Input y Textarea (MODIFICADOS) ---- */
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            /* CAMBIO: Se usa padding en vez de 'height' fijo
-              para que el tamaño sea flexible y proporcional.
-            */
-            padding: 0.6rem 0.75rem; 
-            border: 1px solid #999;
-            background-color: white;
-            /* CAMBIO: Tamaño de letra aumentado (era 12px) */
-            font-size: 1rem; 
-            border-radius: 4px; /* Añadido: Bordes suaves */
-        }
-
-        /* Estilo para el <textarea> que añadí */
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical; /* Permite al usuario ajustar la altura */
-        }
-
-        /* Contenedor del botón (sin cambios) */
-        .submit-container {
-            text-align: center;
-            margin-top: 2rem; /* Era 50px */
-        }
-
-        /* ---- Botón de Enviar (MODIFICADO) ---- */
-        .submit-btn {
-            background-color: #2E8B57;
-            color: white;
-            border: 1px solid #999;
-            /* CAMBIO: Padding y Font-size aumentados */
-            padding: 0.75rem 2rem; 
-            font-size: 1rem; /* Era 12px */
-            cursor: pointer;
-            font-weight: 700;
-            border-radius: 4px; /* Añadido: Bordes suaves */
-            transition: background-color 0.2s ease; /* Añadido: Transición suave */
-        }
-
-        .submit-btn:hover {
-            background-color: #25a25a;
-        }
-
-        .submit-btn:active {
-            background-color: #1e8a4c;
-        }
-
-        /* Mensaje de Error (sin cambios) */
-        .error-message { 
-            color: red; 
-            font-size: 0.9em; 
-            padding-top: 3px; 
-        }
-
-        .campo-motivo {
-            padding: 0.75rem 1rem;
-            font-size: 1rem;        
-            width: 100%;
-        }
-
-
-        body {
-            background-color: #f8f9fa; /* Un fondo gris muy claro */
-        }
-
-        /* El cuadrito negro del logo en la navbar */
-        .navbar-logo-box {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            background-color: #333;
-            margin-right: 8px;
-            vertical-align: middle;
-        }
-
-        /* El placeholder con la "X" */
-        .mockup-placeholder {
-            border: 2px solid #ced4da; /* Borde gris */
-            background-color: #f1f3f5; /* Fondo un poco más oscuro */
-            position: relative;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-        /* Las líneas de la "X" */
-        .mockup-placeholder::before,
-        .mockup-placeholder::after {
-            content: '';
-            position: absolute;
+               /*HEADER */
+        .header {
+            background: white;
+box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
             top: 0;
+            z-index: 1000;
+}
+          
+          /* Línea Superior del Header */
+          .header-top {
+            display: flex;
+justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            border-bottom: 1px solid #e9ecef;
+}
+          /* Buscador */
+          .search-container {
+            display: flex;
+gap: 10px;
+            flex: 1;
+            max-width: 500px;
+            margin: 0 auto;
+          }
+          /* Input de búsqueda */
+          .search-input {
+            flex: 1;
+padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-size: 14px;
+}
+          /* Botón de búsqueda */
+          .btn-buscar {
+            padding: 10px 20px;
+background: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+}
+          /* Efecto hover en botón */
+          .btn-buscar:hover {
+            background: #5a6268;
+}
+          /* Botones de autenticación */
+          .auth-buttons {
+            display: flex;
+gap: 10px;
+          }
+          /* Estilos para botones de login y signup */
+          .btn-login {
+            padding: 8px 20px;
+background: white;
+            color: #007bff;
+            border: 1px solid #007bff;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+}
+          /* Estilos para botón de registro */
+          .btn-signup {
+            padding: 8px 20px;
+background: #007bff;
+            color: white;
+            border: 1px solid #007bff;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+}
+          /* Efecto hover en botones */
+          .btn-login:hover {
+            background: #f8f9fa;
+}
+          /* Efecto hover en botón de registro */
+          .btn-signup:hover {
+            background: #0056b3;
+}
+          /* Línea Inferior - Nav */
+          .nav-main {
+            display: flex;
+justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background: white;
+            position: relative;
+}
+          /* Centrar enlaces de navegación */
+          .nav-center {
+            display: flex;
+gap: 30px;
+            align-items: center;
+            position: absolute;
             left: 50%;
-            width: 2px;
-            height: 100%;
-            background-color: #ced4da;
-        }
-        .mockup-placeholder::before {
-            transform: skewX(30deg);
-        }
-        .mockup-placeholder::after {
-            transform: skewX(-30deg);
-        }
+            transform: translateX(-50%);
+}
+          /* Alinear carrito a la derecha */
+          .nav-right {
+            margin-left: auto;
+}
+          /* Botón del carrito */
+          .btn-carrito {
+            padding: 10px 20px;
+background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+transition: all 0.3s ease;
+          }
+          /* Efecto hover en botón del carrito */
+          .btn-carrito:hover {
+            background: #218838;
+transform: translateY(-2px);
+          }
+          /* Ícono del carrito */
+          .carrito-icon {
+            font-size: 16px;
+}
+          /* Total del carrito */
+          .nav-link {
+            text-decoration: none;
+color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+            white-space: nowrap;
+}
+          /* Efecto hover en enlaces de navegación */
+          .nav-link:hover {
+            color: #007bff;
+}
 
-        /* Estilo para las etiquetas del formulario (pequeñas, mayúsculas) */
-        .form-label-custom {
-            font-size: 0.75rem;       /* Texto pequeño */
-            font-weight: 700;         /* Negrita */
-            text-transform: uppercase;/* MAYÚSCULAS */
-            color: #6c757d;           /* Color gris */
-            margin-bottom: 0.25rem;   /* Menos espacio */
-            display: block;           /* Asegura que esté en su propia línea */
-            text-align: left;         /* Alineado a la izquierda */
-        }
-        
-        /* El borde del botón de enviar */
-        .btn-enviar {
-            border: 1px solid #6c757d; /* Borde gris */
-            padding: 0.5rem 2rem;     /* Más ancho */
-        }
 
-        div.huerta-hogar-logo {
-            width: 100%;
-            text-align: center;
-            margin-bottom: 1.5rem; 
-        }
 
-        img.huerta-hogar-logo {
-            width: 500px;
-            height: auto;
-        }
-                
+* {
+    box-sizing: border-box;
+}
+
+/* Contenido Principal (sin cambios) */
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 60px);
+    padding: 0px;
+    margin-top: 70px; /* Espacio para la navbar fija */
+}
+
+/* ---- Contenedor del Formulario (MODIFICADO) ---- */
+.form-container {
+    background-color: #ffffff; /* Fondo blanco para el contenedor */
+    border: 1px solid #e0e0e0; /* Borde más sutil */
+    padding: 1.5rem; /* Reducir padding */
+    width: 100%;
+    max-width: 400px; /* Reducir el ancho máximo para que sea más compacto */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* ---- Título del Formulario (MODIFICADO) ---- */
+/* Esto se aplicaría si el título "FORMULARIO DE CONTACTO" fuera parte del .form-container y no del card-header */
+/* Para tu caso, el título está en un card-header, lo ajustamos más abajo */
+.form-title {
+    font-family: 'Playfair Display', serif;
+    background-color: #f8f9fa; /* Fondo gris claro como en la imagen */
+    color: #343a40; /* Color de texto más oscuro */
+    text-align: center;
+    padding: 1rem; /* Ajustar padding */
+    font-size: 1.25rem;
+    font-weight: normal;
+    margin: -1.5rem -1.5rem 1.5rem -1.5rem; /* Ajustar márgenes para integrar con el nuevo padding */
+    border-bottom: 1px solid #e9ecef; /* Línea sutil debajo del título */
+    border-top-left-radius: 8px; /* Bordes redondeados */
+    border-top-right-radius: 8px;
+}
+
+/* ---- Grupos de Inputs (MODIFICADO) ---- */
+.form-group {
+    margin-bottom: 1rem; /* Reducir el espacio entre grupos de inputs */
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+/* ---- Campos de Input y Textarea (MODIFICADOS) ---- */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem; /* Ajustar padding para un aspecto más compacto */
+    border: 1px solid #ced4da; /* Borde más claro */
+    background-color: white;
+    font-size: 1rem;
+    border-radius: 4px;
+}
+
+/* Estilo para el <textarea> que añadí */
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Contenedor del botón (sin cambios) */
+.submit-container {
+    text-align: center;
+    margin-top: 1.5rem; /* Ajustar margen superior del botón */
+}
+
+/* ---- Botón de Enviar (MODIFICADO) ---- */
+.submit-btn {
+    background-color: #2E8B57;
+    color: white;
+    border: none; /* Eliminar borde del botón */
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 700;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.submit-btn:hover {
+    background-color: #25a25a;
+}
+
+.submit-btn:active {
+    background-color: #1e8a4c;
+}
+
+/* Mensaje de Error (sin cambios) */
+.error-message { 
+    color: red;
+    font-size: 0.9em; 
+    padding-top: 3px; 
+}
+
+.campo-motivo {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;        
+    width: 100%;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+/* --- ESTILOS ESPECÍFICOS PARA LAS CLASES DE BOOTSTRAP EN TU HTML --- */
+
+/* Ajuste para el card-header del formulario */
+.card-header {
+    background-color: #f8f9fa !important; /* Fondo gris claro */
+    border-bottom: 1px solid #e9ecef !important; /* Borde sutil */
+    padding: 1rem 1.5rem !important; /* Ajustar padding */
+    border-top-left-radius: 8px !important;
+    border-top-right-radius: 8px !important;
+}
+
+/* Ajuste para el título dentro del card-header */
+.card-header h5 {
+    color: #343a40 !important; /* Color de texto más oscuro */
+    font-weight: 600 !important; /* Un poco más de negrita */
+    font-size: 1.15rem !important; /* Tamaño de fuente ligeramente menor */
+    text-align: left !important; /* Alinear a la izquierda como en la imagen */
+    margin-bottom: 0 !important;
+}
+
+/* Ajuste para el card-body */
+.card-body {
+    padding: 1.5rem !important; /* Reducir padding del cuerpo de la tarjeta */
+}
+
+/* Ajuste para los form-label de Bootstrap */
+.form-label {
+    font-size: 0.9rem !important;
+    color: #343a40 !important; /* Color de texto más oscuro */
+    font-weight: 500 !important;
+    margin-bottom: 0.3rem !important; /* Reducir el margen inferior */
+    text-transform: none !important; /* Asegurar que no esté en mayúsculas forzadas */
+}
+
+/* Ajuste para los input de Bootstrap */
+.form-control-lg {
+    padding: 0.75rem 1rem !important; /* Padding ajustado */
+    font-size: 1rem !important;
+    border-radius: 4px !important;
+    border: 1px solid #ced4da !important; /* Borde más claro */
+}
+
+/* Ajuste para el botón de Bootstrap */
+.btn-lg {
+    padding: 0.75rem 2rem !important;
+    font-size: 1rem !important;
+    border-radius: 4px !important;
+    border: none !important; /* Sin borde */
+}
+
+/* --- FIN ESTILOS ESPECÍFICOS BOOTSTRAP ---
