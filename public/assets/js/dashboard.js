@@ -163,31 +163,36 @@ class DashboardManager {
     async getProyeccionCompras() {
         try {
             const ahora = new Date();
-            const mesActualInicio = new Date(ahora.getFullYear(), ahora.getMonth(), 1);
-            const mesAnteriorInicio = new Date(ahora.getFullYear(), ahora.getMonth() - 1, 1);
-            const mesAnteriorFin = new Date(ahora.getFullYear(), ahora.getMonth(), 0);
-
+    
+            const año = ahora.getFullYear();
+            const mes = ahora.getMonth();
+            const diaActual = ahora.getDate();
+    
+            const inicioMes = new Date(año, mes, 1);
+            const finMes = new Date(año, mes + 1, 0);
+            const totalDiasMes = finMes.getDate();
+    
+            // Compras del mes actual
             const snapshotActual = await this.db.collection("compras")
-                .where("fecha", ">=", mesActualInicio)
+                .where("fecha", ">=", inicioMes)
                 .where("fecha", "<=", ahora)
                 .get();
+    
             const comprasActual = snapshotActual.size;
-
-            const snapshotAnterior = await this.db.collection("compras")
-                .where("fecha", ">=", mesAnteriorInicio)
-                .where("fecha", "<=", mesAnteriorFin)
-                .get();
-            const comprasAnterior = snapshotAnterior.size;
-
-            if (comprasAnterior === 0) return comprasActual > 0 ? 100 : 0;
-            
-            const aumento = ((comprasActual - comprasAnterior) / comprasAnterior) * 100;
-            return Math.round(aumento);
+    
+            if (comprasActual === 0) return 0;
+    
+            // Proyección por ritmo diario
+            const proyeccion = Math.round((comprasActual / diaActual) * totalDiasMes);
+    
+            return proyeccion;
+    
         } catch (error) {
             console.error("Error al calcular proyección:", error);
-            return 15;
+            return 0;
         }
     }
+    
 
     async getTotalProductos() {
         try {

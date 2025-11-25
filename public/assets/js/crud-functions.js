@@ -191,14 +191,29 @@ class CRUDFunctions {
 
     calcularProyeccion(compras) {
         if (compras.length === 0) return 0;
-        
-        const ultimoMes = this.obtenerComprasUltimoMes(compras);
-        const mesAnterior = this.obtenerComprasMesAnterior(compras);
-        
-        if (mesAnterior.length === 0) return 100;
-        
-        const crecimiento = ((ultimoMes.length - mesAnterior.length) / mesAnterior.length) * 100;
-        return Math.max(0, Math.round(crecimiento));
+    
+        const ahora = new Date();
+        const año = ahora.getFullYear();
+        const mes = ahora.getMonth();
+    
+        const primerDiaMes = new Date(año, mes, 1);
+        const ultimoDiaMes = new Date(año, mes + 1, 0);
+    
+        const diaActual = ahora.getDate();
+        const totalDiasMes = ultimoDiaMes.getDate();
+    
+        // Compras del mes actual
+        const comprasMes = compras.filter(compra => {
+            const fecha = compra.fecha?.toDate ? compra.fecha.toDate() : new Date(compra.fecha);
+            return fecha >= primerDiaMes;
+        }).length;
+    
+        if (comprasMes === 0) return 0;
+    
+        // Proyección basada en ritmo diario
+        const proyeccion = Math.round((comprasMes / diaActual) * totalDiasMes);
+    
+        return proyeccion;
     }
 
     obtenerComprasUltimoMes(compras) {
