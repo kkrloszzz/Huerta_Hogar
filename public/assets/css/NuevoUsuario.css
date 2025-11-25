@@ -1,153 +1,221 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-.a_carrito{
-    color: #2E8B57;
-    text-decoration: none;
+/* ===========================================
+   BASE
+=========================================== */
 
-}
-.profile-icon, .carrito_logo {
-    height: 35px;
-    width: auto;
-}
-.l_empresa{
-    height: 100px;
-    width: auto;
-    border-radius: 50%;
-    object-fit: cover;
-}
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f5f5f5;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
+    display: block;
+    width: 100%;
 }
-
-/* Header */
-header {
-    background-color: #3d4447;
-    padding: 15px 40px;
+  /* HEADER */
+  .header {
+    
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    
+  }
+  
+  /* Línea Superior del Header */
+  .header-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: white;
-}
-
-.logo {
-    font-size: 18px;
-    font-weight: 500;
-}
-
-nav {
+    padding: 15px 40px;
+    border-bottom: 1px solid #e9ecef;
+    
+  }
+  /* Buscador */
+  .search-container {
     display: flex;
-    gap: 25px;
-    align-items: center;
-}
-
-nav a {
-    color: #b8babb;
-    text-decoration: none;
-    font-size: 14px;
-    transition: color 0.3s;
-}
-
-nav a:hover {
-    color: white;
-}
-
-.carrito {
-    color: white;
-    font-size: 14px;
-}
-
-/* Main Content */
-.main-content {
+    gap: 10px;
     flex: 1;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  /* Input de búsqueda */
+  .search-input {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    font-size: 14px;
+  }
+  /* Botón de búsqueda */
+  .btn-buscar {
+    padding: 10px 20px;
+    background: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  /* Efecto hover en botón */
+  .btn-buscar:hover {
+    background: #5a6268;
+  }
+  /* Botones de autenticación */
+  .auth-buttons {
     display: flex;
-    flex-direction: column;
+    gap: 10px;
+  }
+  /* Estilos para botones de login y signup */
+  .btn-login {
+    padding: 8px 20px;
+    background: white;
+    color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  /* Estilos para botón de registro */
+  .btn-signup {
+    padding: 8px 20px;
+    background: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  /* Efecto hover en botones */
+  .btn-login:hover {
+    background: #f8f9fa;
+  }
+  /* Efecto hover en botón de registro */
+  .btn-signup:hover {
+    background: #0056b3;
+  }
+  /* Línea Inferior - Nav */
+  .nav-main {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding: 40px 20px;
+    padding: 15px 40px;
+    background: white;
+    position: relative;
+  }
+  /* Centrar enlaces de navegación */
+  .nav-center {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  /* Alinear carrito a la derecha */
+  .nav-right {
+    margin-left: auto;
+  }
+  /* Botón del carrito */
+  .btn-carrito {
+    padding: 10px 20px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  /* Efecto hover en botón del carrito */
+  .btn-carrito:hover {
+    background: #218838;
+    transform: translateY(-2px);
+  }
+  /* Ícono del carrito */
+  .carrito-icon {
+    font-size: 16px;
+  }
+  /* Total del carrito */
+  .nav-link {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s;
+    white-space: nowrap;
+  }
+  /* Efecto hover en enlaces de navegación */
+  .nav-link:hover {
+    color: #007bff;
+  }
+
+/* ===========================================
+   MAIN CONTENT
+=========================================== */
+
+.main-content {
+    width: 100%;
+    padding: 40px 0;
 }
 
 .logo-container {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
-.logo-image {
+.logo-image img {
     width: 100px;
     height: 100px;
-    background-color: #4a7c59;
     border-radius: 50%;
-    margin: 0 auto 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 56px;
 }
 
 h1 {
     color: #4a7c59;
-    font-size: 42px;
-    font-weight: 600;
-    margin-bottom: 10px;
+    font-size: 36px;
+    margin: 10px 0 0;
 }
 
 h2 {
-    color: #2c3e50;
-    font-size: 28px;
-    font-weight: 500;
+    font-size: 22px;
+    color: #333;
 }
 
-/* Form Container */
+/* ===========================================
+   FORMULARIO
+=========================================== */
+
 .form-container {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 40px;
     width: 100%;
-    max-width: 500px;
-    margin-top: 30px;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .form-title {
     font-size: 20px;
-    color: #2c3e50;
-    margin-bottom: 30px;
-    font-weight: 500;
-}
-
-.form-group {
     margin-bottom: 20px;
 }
 
+.form-group {
+    margin-bottom: 18px;
+}
+
 label {
-    display: block;
-    color: #555;
     font-size: 14px;
-    margin-bottom: 8px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 input {
     width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-    transition: border-color 0.3s;
-    background-color: #fafafa;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background: #fafafa;
 }
 
 input:focus {
-    outline: none;
     border-color: #4a7c59;
-    background-color: white;
+    background: white;
+    outline: none;
 }
 
 .form-row {
@@ -159,64 +227,29 @@ input:focus {
 .submit-btn {
     width: 100%;
     padding: 14px;
-    background-color: #3d8b5c;
+    background: #3d8b5c;
     color: white;
     border: none;
-    border-radius: 4px;
-    font-size: 15px;
-    font-weight: 600;
+    border-radius: 6px;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
 }
 
 .submit-btn:hover {
-    background-color: #2d7a4c;
+    background: #2d7a4c;
 }
 
 .login-link {
+    margin-top: 15px;
     text-align: center;
-    margin-top: 20px;
-    font-size: 14px;
-    color: #666;
 }
 
-.login-link a {
-    color: #3d8b5c;
-    text-decoration: none;
-    font-weight: 600;
-}
+/* ===========================================
+   RESPONSIVE
+=========================================== */
 
-.login-link a:hover {
-    text-decoration: underline;
-}
-
-/* Responsive */
 @media (max-width: 768px) {
-    header {
-        padding: 15px 20px;
-    }
-
-    nav {
-        gap: 15px;
-        font-size: 13px;
-    }
-
-    .form-container {
-        padding: 30px 20px;
-    }
-
     .form-row {
         grid-template-columns: 1fr;
-    }
-
-    h1 {
-        font-size: 32px;
-    }
-
-    h2 {
-        font-size: 22px;
     }
 }

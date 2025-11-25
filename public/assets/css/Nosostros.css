@@ -8,7 +8,7 @@ body {
 }
 
 body {
-            padding-top: 72px;
+            padding-top:0;
         }
 
         /* 2. FIX DE ALINEACIÓN DE TEXTO */
@@ -24,7 +24,148 @@ body {
             text-align: left;
         }
 /* Header and Navigation */
-
+ /* HEADER */
+ .header {
+    
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    
+  }
+  
+  /* Línea Superior del Header */
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    border-bottom: 1px solid #e9ecef;
+    
+  }
+  /* Buscador */
+  .search-container {
+    display: flex;
+    gap: 10px;
+    flex: 1;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  /* Input de búsqueda */
+  .search-input {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    font-size: 14px;
+  }
+  /* Botón de búsqueda */
+  .btn-buscar {
+    padding: 10px 20px;
+    background: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  /* Efecto hover en botón */
+  .btn-buscar:hover {
+    background: #5a6268;
+  }
+  /* Botones de autenticación */
+  .auth-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  /* Estilos para botones de login y signup */
+  .btn-login {
+    padding: 8px 20px;
+    background: white;
+    color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  /* Estilos para botón de registro */
+  .btn-signup {
+    padding: 8px 20px;
+    background: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  /* Efecto hover en botones */
+  .btn-login:hover {
+    background: #f8f9fa;
+  }
+  /* Efecto hover en botón de registro */
+  .btn-signup:hover {
+    background: #0056b3;
+  }
+  /* Línea Inferior - Nav */
+  .nav-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: white;
+    position: relative;
+  }
+  /* Centrar enlaces de navegación */
+  .nav-center {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  /* Alinear carrito a la derecha */
+  .nav-right {
+    margin-left: auto;
+  }
+  /* Botón del carrito */
+  .btn-carrito {
+    padding: 10px 20px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  /* Efecto hover en botón del carrito */
+  .btn-carrito:hover {
+    background: #218838;
+    transform: translateY(-2px);
+  }
+  /* Ícono del carrito */
+  .carrito-icon {
+    font-size: 16px;
+  }
+  /* Total del carrito */
+  .nav-link {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s;
+    white-space: nowrap;
+  }
+  /* Efecto hover en enlaces de navegación */
+  .nav-link:hover {
+    color: #007bff;
+  }
 
 /* Main Content */
 main {
