@@ -344,11 +344,14 @@ function irAlCheckout() {
         return;
     }
 
+    // Check both Firebase Auth state and localStorage
     const user = auth.currentUser;
+    const storedUser = localStorage.getItem('usuario');
 
-    if (user) {
-        console.log('Usuario logueado:', user.email);
-        window.location.href = 'checkout.html';
+    if (user || storedUser) {
+        const email = user ? user.email : (storedUser ? JSON.parse(storedUser).correo : 'N/A');
+        console.log('Usuario logueado:', email);
+        window.location.href = 'Checkout.html';
     } else {
         console.log('Usuario no logueado');
         mostrarNotificacion('Debes iniciar sesión para poder comprar', 'error');
