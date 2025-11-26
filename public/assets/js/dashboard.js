@@ -96,6 +96,9 @@ class DashboardManager {
         if (seccion === 'dashboard' && this.firebaseInicializado) {
             this.cargarEstadisticasReales();
         }
+        if (seccion === 'tienda' && this.firebaseInicializado) {
+            this.cargarTiendas();
+        }
     }
 
     // ==================== MÉTODOS DEL DASHBOARD ====================
@@ -248,6 +251,48 @@ class DashboardManager {
         }
     }
 
+    async cargarTiendas() {
+        if (!this.firebaseInicializado) {
+            console.error('Firebase no está inicializado.');
+            return;
+        }
+    
+        const tbody = document.getElementById('tiendas-tbody');
+        tbody.innerHTML = '<tr><td colspan="2" class="no-data">Cargando tiendas...</td></tr>';
+    
+        try {
+            const snapshot = await this.db.collection('Tienda').get();
+    
+            if (snapshot.empty) {
+                tbody.innerHTML = '<tr><td colspan="2" class="no-data">No hay tiendas registradas.</td></tr>';
+                return;
+            }
+    
+            let rows = '';
+            snapshot.forEach(doc => {
+                const tienda = doc.data();
+                const id = doc.id;
+    
+                // Usar los nombres de campo correctos proporcionados por el usuario
+                const nombre = tienda.Nombre || 'N/A';
+                const stock = tienda.stock || 0;
+    
+                rows += `
+                    <tr data-id="${id}">
+                        <td>${nombre}</td>
+                        <td>${stock}</td>
+                    </tr>
+                `;
+            });
+    
+            tbody.innerHTML = rows;
+    
+        } catch (error) {
+            console.error('Error cargando tiendas:', error);
+            tbody.innerHTML = '<tr><td colspan="2" class="no-data">Error al cargar las tiendas.</td></tr>';
+        }
+    }
+
     // ==================== MÉTODOS UI ====================
 
     usarDatosEjemplo() {
@@ -320,6 +365,16 @@ function navegarA(seccion) {
 
 function irATienda() {
     window.location.href = '../../index.html';
+}
+
+function editarTienda(id) {
+    console.log(`Función editarTienda llamada para el ID: ${id}`);
+    // Aquí se podría abrir un modal con la información de la tienda para editar
+}
+
+function eliminarTienda(id) {
+    console.log(`Función eliminarTienda llamada para el ID: ${id}`);
+    // Aquí se podría implementar la lógica para eliminar la tienda de Firebase
 }
 
 // Inicialización

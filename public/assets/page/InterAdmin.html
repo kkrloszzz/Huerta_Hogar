@@ -496,6 +496,40 @@
                 </div>
             </section>
 
+            <!-- Sección de Tiendas -->
+            <section id="tienda" style="display: none;">
+                <div class="welcome-section">
+                    <h2 class="welcome-title">Gestión de Tiendas</h2>
+                    <p class="welcome-subtitle">Administra la información de las tiendas asociadas</p>
+                </div>
+                <div class="crud-container">
+                    <div class="crud-header">
+                        <h3>Lista de Tiendas</h3>
+                        <div class="crud-actions">
+                            <button class="btn btn-primary" onclick="window.dashboardManager.cargarTiendas()">
+                                <i class="bi bi-arrow-repeat"></i> Actualizar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="crud-table">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Stock</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tiendas-tbody">
+                                <tr>
+                                    <td colspan="3" class="no-data">Haz clic en Actualizar para cargar las tiendas</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
             <!-- Sección de Mensajes de Contacto -->
             <section id="contactos" style="display: none;">
                 <div class="welcome-section">
